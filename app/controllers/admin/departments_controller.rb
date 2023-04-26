@@ -28,6 +28,13 @@ class Admin::DepartmentsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @department = Department.find(params[:id])
+    @department.destroy
+    flash[:alert] = "部署を削除しました"
+    redirect_to request.referer
+  end
 
   private
 

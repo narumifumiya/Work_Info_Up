@@ -17,13 +17,10 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "得意先一覧", admin_companies_path %>
-      </li>
+      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+      <li><%= link_to "得意先一覧", admin_companies_path %></li>
       <li><%= link_to "部署一覧", admin_departments_path %></li>
+      <li><%= link_to "メンバー", admin_users_path %></li>
     <% else %>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
