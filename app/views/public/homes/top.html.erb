@@ -1,1 +1,21 @@
 <h1>ユーザー側トップページ</h1>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
+        <%= link_to root_path, class: "nav-link" do %>
+            <i class="fas fa-address-card fa-lg" style="color: #f5cab3;"></i> About
+            <i class="fa-solid fa-user"></i>
+        <% end %>
+      </th>
+      <th class="me">所属部署</th>
+      <th><i class="fas fa-user"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>鳴海郁哉</td>
+      <td>第三営業部</td>
+    </tr>
+  </tbody>
+</table>
