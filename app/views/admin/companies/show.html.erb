@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="text-center">得意先詳細</h2>
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <%= image_tag @company.get_company_image(400,400) %>
+    </div>
+    <div class="col-md-6">
+      <p>企業名：<%= @company.name%></p>
+      <div>
+        <%= link_to "編集", edit_admin_company_path(@company), class: "btn btn-sm btn-success"%>
+        <%= link_to "削除", admin_company_path(@company), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+      </div>
+    </div>
+  </div>
+</div>

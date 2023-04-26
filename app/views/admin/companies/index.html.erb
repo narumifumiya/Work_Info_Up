@@ -1,0 +1,41 @@
+<div class="container">
+
+    <h2 class="text-center">得意先<br>新規登録/一覧</h2>
+
+  <div class="row">
+    <%= form_with model:@company, url: admin_companies_path, method: :post do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>企業名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>画像</th>
+          <td><%= f.file_field :company_image, accept: 'image/*' %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+
+  <div class="row ">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>企業名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+          <tr>
+            <td><%= link_to company.name, admin_company_path(company.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

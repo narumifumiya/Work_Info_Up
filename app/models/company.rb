@@ -1,0 +1,15 @@
+class Company < ApplicationRecord
+
+  has_one_attached :company_image
+
+  validates :name, presence: true
+
+  def get_company_image(width, height)
+    unless company_image.attached?
+      file_path = Rails.root.join('app/assets/images/company.jpg')
+      company_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    company_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+end

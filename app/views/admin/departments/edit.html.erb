@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="text-center">部署編集</h2>
+
+  <div class="row">
+
+    <%= form_with model:@department, url: admin_department_path(@department), method: :patch do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>部署名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "更新", class: "btn btn-sm btn-success"%></td>
+        </tr>
+      </table>
+    <% end %>
+
+  </div>
+  <p class="text-right"><%= link_to "戻る", admin_departments_path %></p>
+</div>
