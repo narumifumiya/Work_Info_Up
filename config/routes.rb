@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # ユーザー用
   scope module: :public do
     root to: 'homes#top'
+    resources :users, only: [:index, :show, :edit, :update]
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers
