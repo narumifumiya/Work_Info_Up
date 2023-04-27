@@ -17,9 +17,9 @@
       <p>電話番号：<%= @user.phone_number %></p>
 
         <% if @user.is_deleted == false %>
-          <p>在籍中</p>
+          <p class="text-success">在籍中</p>
         <% else %>
-          <p>退社済</p>
+          <p class="text-danger">退社済</p>
         <% end %>
 
       <div>

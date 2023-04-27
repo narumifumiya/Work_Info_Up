@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-    get 'users/edit'
-    get 'users/show'
-  end
   # ユーザー用
   scope module: :public do
     root to: 'homes#top'
+    resources :companies, only: [:index, :show] do
+      resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
+      resources :customers
+    end
   end
 
   # 管理者用

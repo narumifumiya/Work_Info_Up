@@ -7,8 +7,9 @@
     <div class="col-md-6">
       <p>企業名：<%= @company.name%></p>
       <div>
-        <%= link_to "編集", edit_admin_company_path(@company), class: "btn btn-sm btn-success"%>
-        <%= link_to "削除", admin_company_path(@company), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+        <p><%= link_to "事業所一覧", company_offices_path(@company) %></p>
+        <p><%= link_to "顧客一覧", company_customers_path(@company) %></p>
+        <p><%= link_to "プロジェクト一覧", root_path %></p>
       </div>
     </div>
   </div>

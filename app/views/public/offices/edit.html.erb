@@ -1,0 +1,39 @@
+<div class="containern">
+  <h2 class="text-center">事業所<br>編集</h2>
+
+  <div class="row">
+    <div class="col-md-7 mx-auto">
+    <%#= form_with (model: [@company, @office]), url: company_offices_path(@company), method: :post do |f| %>
+    <%= form_with model: [@company, @office] ,method: :patch do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>事業所名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>郵便番号（ハイフンなし）</th>
+          <td><%= f.text_field :post_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= f.text_field :phone_number %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "更新", class: "btn btn-sm btn-success"%></td>
+        </tr>
+      </table>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+    <p class="text-right"><%= link_to "戻る", company_offices_path(@company) %></p>
+    </div>
+  </div>
+
+</div>
