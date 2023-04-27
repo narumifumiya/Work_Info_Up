@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
+  namespace :public do
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+
   # ユーザー用
   scope module: :public do
     root to: 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
+    # resources :users, only: [:index, :show, :edit, :update]
+    resources :departments, only: [:show]
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers

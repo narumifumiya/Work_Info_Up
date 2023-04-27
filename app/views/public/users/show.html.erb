@@ -24,7 +24,7 @@
 
       <div>
         <% if @user.id == current_user.id %>
-          <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-success"%>
+          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-sm btn-success"%>
         <% end %>
       </div>
     </div>
@@ -32,7 +32,7 @@
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", users_path %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", public_users_path %></p>
     </div>
   </div>
 

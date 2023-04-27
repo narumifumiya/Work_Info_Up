@@ -30,12 +30,12 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to users_path, class: 'nav-link text-dark' do %>
+                <%= link_to public_users_path, class: 'nav-link text-dark' do %>
                   <i class="fas fa-users"></i> メンバー
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                <%= link_to public_user_path(current_user), class: 'nav-link text-dark' do %>
                   <i class="fas fa-user"></i> マイページ
                 <% end %>
               </li>

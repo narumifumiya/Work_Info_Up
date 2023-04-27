@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="text-center"><%= @department.name %><br>メンバー</h2>
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>所属部署</th>
+          <th>役職</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, public_user_path(user.id) %></td>
+            <td>
+              <%if user.department_id.present? %>
+                <%= user.department.name %>
+              <% end %>
+            </td>
+            <td><%= user.position %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
