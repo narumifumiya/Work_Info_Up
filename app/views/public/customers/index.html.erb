@@ -15,7 +15,7 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td><%= customer.name %></td>
+            <td><%= link_to customer.name, company_customer_path(@company, customer.id) %></td>
             <td><%= customer.department %></td>
             <td><%= customer.position %></td>
             <td><%= customer.phone_number %></td>

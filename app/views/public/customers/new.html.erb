@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-7 mx-auto">
-    <%= form_with model: [@company, @customer], method: :patch do |f| %>
+    <%= form_with model: [@company, @customer] do |f| %>
       <table class="table table-borderless">
         <tr>
           <th>名前</th>
@@ -30,7 +30,7 @@
           <td><%= f.file_field :customer_image, accept: 'image/*' %></td>
         </tr>
           <th></th>
-          <td><%= f.submit "更新", class: "btn btn-sm btn-success"%></td>
+          <td><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></td>
         </tr>
       </table>
     <% end %>
@@ -38,7 +38,7 @@
   </div>
   <div class="row">
     <div class="col-md-9">
-    <p class="text-right"><%= link_to "戻る", company_customer_path(@company, @customer) %></p>
+    <p class="text-right"><%= link_to "戻る", company_customers_path(@company) %></p>
     </div>
   </div>
 

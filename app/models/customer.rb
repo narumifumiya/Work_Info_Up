@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
   belongs_to :company
 
   has_one_attached :customer_image
+  
+  validates :name, presence: 
 
   def get_customer_image(width, height)
     unless customer_image.attached?

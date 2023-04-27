@@ -31,11 +31,10 @@ class Public::OfficesController < ApplicationController
     @company = Company.find(params[:company_id])
     @office = Office.find(params[:id])
     if @office.update(office_params)
-      flash[:notice] = "事業所情報を変更しました"
+      flash[:notice] = "事業所情報を更新しました"
       redirect_to company_offices_path(@company)
     else
       @company = Company.find(params[:company_id])
-      @office = Office.find(params[:id])
       render :edit
     end
   end
