@@ -23,8 +23,10 @@
         <% end %>
 
       <div>
-        <% if @user.id == current_user.id %>
-          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-sm btn-success"%>
+        <% if user_signed_in? %> <!--未ログインだと編集ボタンは表示しない-->
+          <% if @user.id == current_user.id %> <!--＠user.idとログインユーザーのidが一致しない場合編集ボタンは表示しない-->
+            <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-sm btn-success"%>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update]
+
 
   def index
     @users = User.all
@@ -25,6 +27,15 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
+  # params[:id]とcurrent_user.idが違う場合、マイページに遷移する
+  # before_actionにてedit,updateのみ使用
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to public_user_path(current_user.id)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :name_kana, :email, :phone_number, :position, :department_id, :profile_image)
