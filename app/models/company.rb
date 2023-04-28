@@ -2,6 +2,7 @@ class Company < ApplicationRecord
   
   has_many :offices,   dependent: :destroy
   has_many :customers, dependent: :destroy 
+  has_many :projects,  dependent: :destroy 
 
   has_one_attached :company_image
 

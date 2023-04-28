@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="text-center"><% @company.name %><br>プロジェクト一覧</h2>
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>プロジェクト名</th>
+          <th>受注ステータス</th>
+          <th>進捗ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.name, company_project_path(@company, project.id) %></td>
+            <td><span class="text-success"><%= project.order_status_i18n %></span></td>
+            <td><span class="text-primary"><%= project.progress_status_i18n %></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_to "プロジェクトを追加する", new_company_project_path(@company), class: "btn btn-sm btn-success" %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
+    </div>
+  </div>
+
+
+</div>

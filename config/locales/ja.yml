@@ -1,0 +1,11 @@
+ja:
+  enums:
+    project:
+      order_status:
+        under_negotiation: "営業中"
+        ordered: "受注済"
+        lost_orders: "失注"
+      progress_status:
+        not_started_yet: "未着手"
+        while_working: "作業中"
+        completion: "完了"

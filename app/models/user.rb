@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :department, optional: true
+  has_many   :projects
 
   has_one_attached :profile_image
 

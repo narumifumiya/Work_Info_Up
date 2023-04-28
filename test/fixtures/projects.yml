@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 
+  user_id: 1
+  name: MyString
+  period: MyString
+  introduction: MyString
+  contract_amount: 1
+  order_status: 1
+  progress_status: 1
+
+two:
+  company_id: 
+  user_id: 1
+  name: MyString
+  period: MyString
+  introduction: MyString
+  contract_amount: 1
+  order_status: 1
+  progress_status: 1
