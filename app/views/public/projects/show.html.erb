@@ -28,6 +28,17 @@
           <span class="text-success font-weight-bold"><%= @project.progress_status_i18n %></span>
         <% end %>
       </p>
+      <p>
+        <table>
+          <td class="d-flex align-items-start">タグ：</td>
+          <td>
+            <% @project_tags.each do |tag| %>
+              <li style="list-style: none"><%= tag.tag_name %>
+            <% end %>
+          </td>
+        </table>
+
+      </p>
       <p>説明：<%= @project.introduction %></p>
       <!--  いいねボタン　-->
       <div id="favorite_btn_<%= @project.id %>">

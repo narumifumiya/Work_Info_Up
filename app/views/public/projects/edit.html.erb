@@ -40,6 +40,12 @@
             <%= f.label :progress_stauts_completion, "完了" %><%= f.radio_button :progress_status, "completion" %>
           </td>
         </tr>
+
+        <tr>
+          <th>タグ(,で区切ると複数登録が可能)</th>
+          <td><%= f.text_field :tag_name,value: @tag_list %></td>
+        </tr>
+
         <tr>
           <th>画像</th>
           <td><%= f.file_field :project_image, accept: 'image/*' %></td>

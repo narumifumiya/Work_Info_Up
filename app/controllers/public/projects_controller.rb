@@ -17,7 +17,12 @@ class Public::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.company_id = @company.id
     @project.user_id = current_user.id
+    # 受け取った値を,で区切って配列にする
+    tag_list = params[:project][:tag_name].split(',')
     if @project.save
+      # project.rbで設定したsave_tags(sent-tags)メソッドを発動
+      # 結果として@projectにタグを保存している。詳しい処理内容はproject.rbで確認
+      @project.save_tags(tag_list)
       flash[:notice] = "プロジェクトを追加しました"
       redirect_to company_project_path(@company, @project)
     else
@@ -30,6 +35,7 @@ class Public::ProjectsController < ApplicationController
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
     @project_comment = ProjectComment.new
+    @project_tags = @project.tags
   end
 
 
@@ -37,12 +43,19 @@ class Public::ProjectsController < ApplicationController
   def edit
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
+    # 編集フォームで登録済のタグを初期値として表示する為に必要
+    @tag_list = @project.tags.pluck(:tag_name).join(',')
   end
 
   def update
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
+    # 受け取った値を,で区切って配列にする
+    tag_list = params[:project][:tag_name].split(',')
     if @project.update(project_params)
+      # project.rbで設定したsave_tags(sent-tags)メソッドを発動
+      # 結果として@projectにタグを保存している。詳しい処理内容はproject.rbで確認
+      @project.save_tags(tag_list)
       flash[:notice] = "プロジェクト情報を更新しました"
       redirect_to company_project_path(@company, @project)
     else
