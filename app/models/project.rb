@@ -58,6 +58,6 @@ class Project < ApplicationRecord
      self.tags << new_project_tag
     end
   end
-
+  
 
 end

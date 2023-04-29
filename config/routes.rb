@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     # resources :users, only: [:index, :show, :edit, :update]
     resources :departments, only: [:show]
+    get "search" => "searches#search"
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers
