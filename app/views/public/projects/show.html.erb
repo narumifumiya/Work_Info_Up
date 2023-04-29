@@ -28,19 +28,10 @@
         <% end %>
       </p>
       <p>説明：<%= @project.introduction %></p>
-      <% if @project.favorited_by?(current_user) %>
-        <p>
-          <%= link_to company_project_favorites_path(@company, @project), method: :delete do %>
-            ♥<%= @project.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to company_project_favorites_path(@company, @project), method: :post do %>
-            ♡<%= @project.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
+      <!--  いいねボタン　-->
+      <div id="favorite_btn_<%= @project.id %>">
+        <%= render 'public/favorites/btn', company: @company, project: @project %>
+      </div>
 
       <div>
         <% if @project.user_id == current_user.id %>
