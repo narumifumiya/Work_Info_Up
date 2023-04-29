@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :customers
       resources :projects, except: [:destroy] do
         resources :project_comments, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
       end
     end
   end

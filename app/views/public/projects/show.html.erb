@@ -1,9 +1,11 @@
 <div class="container">
   <h2 class="text-center mb-5">プロジェクト詳細</h2>
   <div class="row">
+
     <div class="col-md-6 text-center">
       <%= image_tag @project.get_project_image(300,300) %>
     </div>
+
     <div class="col-md-6">
       <p>プロジェクト名：<%= @project.name %></p>
       <p>期間：<%= @project.start_date %> 〜 <%= @project.end_date %></p>
@@ -26,11 +28,27 @@
         <% end %>
       </p>
       <p>説明：<%= @project.introduction %></p>
+      <% if @project.favorited_by?(current_user) %>
+        <p>
+          <%= link_to company_project_favorites_path(@company, @project), method: :delete do %>
+            ♥<%= @project.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to company_project_favorites_path(@company, @project), method: :post do %>
+            ♡<%= @project.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
 
       <div>
-        <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-sm btn-success"%>
+        <% if @project.user_id == current_user.id %>
+          <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-sm btn-success"%>
+        <% end %>
       </div>
     </div>
+
   </div>
 
   <div class="mt-5">

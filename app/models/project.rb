@@ -2,7 +2,8 @@ class Project < ApplicationRecord
 
   belongs_to :company
   belongs_to :user
-  has_many :project_comments, dependent: :destroy
+  has_many   :project_comments, dependent: :destroy
+  has_many   :favorites       , dependent: :destroy
 
   has_one_attached :project_image
 
@@ -17,6 +18,10 @@ class Project < ApplicationRecord
       project_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     project_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end

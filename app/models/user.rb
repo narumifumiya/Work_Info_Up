@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :department, optional: true
+  belongs_to :department,       optional: true
   has_many   :projects
-  has_many :project_comments, dependent: :destroy
+  has_many   :project_comments, dependent: :destroy
+  has_many   :favorites,        dependent: :destroy
 
   has_one_attached :profile_image
 
