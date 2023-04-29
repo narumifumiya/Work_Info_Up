@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="text-center mb-5"><%= @user.name%></h2>
+  <h4 class="text-center mb-5">いいね一覧</h4>
+  
+  <div class="row mt-5">
+    <table class="table table-hover">
+      <thead>
+        <th>プロジェクト名</th>
+        <th>受注ステータス</th>
+        <th>進捗ステータス</th>
+      </thead>
+      <tbody>
+        <% @favorites.each do |favorite| %>
+          <tr>
+            <td><%= link_to favorite.project.name, company_project_path(@company, favorite.project.id) %></td>
+
+            <td class="font-weight-bold">
+              <% if favorite.project.order_status == "under_negotiation" %>
+                <span class="text-secondary"><%= favorite.project.order_status_i18n %></span>
+              <% elsif favorite.project.order_status == "ordered" %>
+                <span class="text-success"><%= favorite.project.order_status_i18n %></span>
+              <% else %>
+                 <span class="text-danger"><%= favorite.project.order_status_i18n %></span>
+              <% end %>
+            </td>
+
+            <td class="font-weight-bold">
+              <% if favorite.project.progress_status == "not_started_yet" %>
+                <span class="text-secondary"><%= favorite.project.progress_status_i18n %></span>
+              <% elsif favorite.project.progress_status == "while_working" %>
+                <span class="text-primary"><%= favorite.project.progress_status_i18n %></span>
+              <% else %>
+                <span class="text-success"><%= favorite.project.progress_status_i18n %></span>
+              <% end %>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", public_user_path(@user) %></p>
+    </div>
+  </div>
+
+  
+</div>

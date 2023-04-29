@@ -10,6 +10,8 @@ class Public::UsersController < ApplicationController
 
    def show
      @user = User.find(params[:id])
+     @projects = @user.projects
+     @company = Company.find(params[:id])
    end
 
   def edit
@@ -24,6 +26,12 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.favorites
+    @company = Company.find(params[:id])
   end
 
   private

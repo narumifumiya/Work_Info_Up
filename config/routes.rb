@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
   namespace :public do
     resources :users, only: [:index, :show, :edit, :update]
+    get '/users/:id/favorites' => 'users#favorites'
   end
 
   # ユーザー用
