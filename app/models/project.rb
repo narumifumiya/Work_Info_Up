@@ -11,6 +11,9 @@ class Project < ApplicationRecord
   enum progress_status: { not_started_yet: 0, while_working: 1, completion: 2 }
 
   validates :name, presence: true
+  # validates :start_date, presence: true
+  # validates :end_date, presence: true
+   validate :start_end_check
 
   def get_project_image(width, height)
     unless project_image.attached?
@@ -20,8 +23,18 @@ class Project < ApplicationRecord
     project_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  # ユーザーがいいねをしているかを確認
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  # 開始日と終了日の逆転を防ぐ
+  def start_end_check
+    if self.start_date.present? && self.end_date.present?
+      errors.add(:end_date, "は開始日より前の日付は登録できません。") unless
+      self.start_date < self.end_date
+    end
+  end
+
 
 end
