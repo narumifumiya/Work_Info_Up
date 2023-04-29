@@ -26,6 +26,7 @@ class Public::ProjectsController < ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
+    @project_comment = ProjectComment.new
   end
 
 

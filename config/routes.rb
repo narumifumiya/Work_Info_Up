@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers
-      resources :projects, except: [:destroy]
+      resources :projects, except: [:destroy] do
+        resources :project_comments, only: [:create, :destroy]
+      end
     end
   end
 

@@ -33,6 +33,36 @@
     </div>
   </div>
 
+  <div class="mt-5">
+    <p>コメント件数：<%= @project.project_comments.count %></p>
+    <table>
+    <% @project.project_comments.each do |project_comment| %>
+      <tr>
+        <td>
+          <%= link_to public_user_path(project_comment.user) do %>
+          <%= image_tag project_comment.user.get_profile_image(100, 100) %><br>
+          <%= project_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= project_comment.comment %></td>
+        <% if project_comment.user == current_user %>
+        <td><%= link_to "Destroy", company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment),method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  </div>
+
+  <div class="mt-5">
+    <%= form_with model: [@company, @project, @project_comment] do |f| %>
+    <div class="form-group", style="width:100%;">
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control" %>
+    </div>
+
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
     <p class="text-center"><%= link_to "一覧へ戻る", company_projects_path(@company) %></p>
