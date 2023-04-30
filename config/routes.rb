@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
   namespace :public do
     resources :users, only: [:index, :show, :edit, :update]
@@ -25,9 +26,17 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :companies
     resources :departments, only: [:index, :edit, :create, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :companies do
+      resources :projects, only: [:index, :show, :edit, :update, :destroy] do
+        resources :project_comments, only: [:destroy] do
+          collection do
+            delete "destroy_all"
+          end
+        end
+      end
+    end
   end
 
   # ユーザー用

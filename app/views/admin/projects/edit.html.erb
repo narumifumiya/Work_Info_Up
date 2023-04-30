@@ -2,11 +2,11 @@
   <div class="text-danger">
     <%= render 'layouts/errors', obj: @project  %>
   </div>
-  <h2 class="text-center">プロジェクト新規登録</h2>
+  <h2 class="text-center">プロジェクト編集</h2>
 
   <div class="row">
     <div class="col-md-7 mx-auto">
-    <%= form_with model: [@company, @project] do |f| %>
+    <%= form_with model: [@company, @project], url:admin_company_project_path(@company, @project), method: :patch do |f| %>
       <table class="table table-borderless">
         <tr>
           <th>プロジェクト名</th>
@@ -24,6 +24,7 @@
           <th>契約金額</th>
           <td><%= f.text_field :contract_amount %></td>
         </tr>
+        <tr>
         <tr>
           <th>説明</th>
           <td><%= f.text_area :introduction %></td>
@@ -47,7 +48,7 @@
 
         <tr>
           <th>タグ(,で区切ると複数登録が可能)</th>
-          <td><%= f.text_field :tag_name, value: @tag_list %></td>
+          <td><%= f.text_field :tag_name,value: @tag_list %></td>
         </tr>
 
         <tr>
@@ -55,7 +56,7 @@
           <td><%= f.file_field :project_image, accept: 'image/*' %></td>
         </tr>
           <th></th>
-          <td><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></td>
+          <td><%= f.submit "更新", class: "btn btn-sm btn-success"%></td>
         </tr>
       </table>
     <% end %>
@@ -63,7 +64,7 @@
   </div>
   <div class="row">
     <div class="col-md-9">
-    <p class="text-right"><%= link_to "戻る", company_projects_path(@company) %></p>
+    <p class="text-right"><%= link_to "戻る", admin_company_project_path(@company) %></p>
     </div>
   </div>
 
