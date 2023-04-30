@@ -58,6 +58,12 @@ class Project < ApplicationRecord
      self.tags << new_project_tag
     end
   end
-  
+
+  # 検索方法は部分一致のみ
+  def self.looks(search, word)
+    if search == "partial"
+      @project = Project.where("name LIKE?","%#{word}%")
+    end
+  end
 
 end

@@ -10,6 +10,8 @@ class Admin::SearchesController < ApplicationController
       @users = User.looks(@search, @word)
     elsif @range == "Company"
       @companies = Company.looks(@search, @word)
+    elsif @range == "Project"
+      @projects = Project.looks(@search, @word)
     elsif @range == "Tag"
       @tags = Tag.looks(@search, @word)
     end

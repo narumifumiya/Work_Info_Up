@@ -12,7 +12,7 @@
       <tbody>
         <% @favorites.each do |favorite| %>
           <tr>
-            <td><%= link_to favorite.project.name, company_project_path(@company, favorite.project.id) %></td>
+            <td><%= link_to favorite.project.name, company_project_path(favorite.project.company, favorite.project.id) %></td>
 
             <td class="font-weight-bold">
               <% if favorite.project.order_status == "under_negotiation" %>
