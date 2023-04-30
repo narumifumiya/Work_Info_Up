@@ -9,6 +9,7 @@
 
     <div class="col-md-6">
       <p>プロジェクト名：<%= @project.name %></p>
+      <p>契約金額：￥<%= @project.contract_amount.to_s(:delimited) %></p>
       <p>期間：<%= @project.start_date %> 〜 <%= @project.end_date %></p>
       <p>受注ステータス：
         <% if @project.order_status == "under_negotiation" %>

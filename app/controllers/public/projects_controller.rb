@@ -68,7 +68,7 @@ class Public::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :start_date, :end_date, :introduction, :contract_amount, :order_status, :progress_status, :project_image)
+    params.require(:project).permit(:name, :start_date, :end_date, :introduction, :contract_amount, :order_status, :progress_status, :project_image, :contract_amount)
   end
 
   # @bookの持つuser_idがログインユーザーと違う場合、books_pathへ遷移する
