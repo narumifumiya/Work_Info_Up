@@ -1,0 +1,81 @@
+<div class="container">
+  <h2 class="text-center mb-5">メンバー詳細</h2>
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <%= image_tag @user.get_profile_image(300,300) %>
+    </div>
+    <div class="col-md-6">
+      <p>名前：<%= @user.name %></p>
+      <p>フリガナ：<%= @user.name_kana%></p>
+      <p>役職：<%= @user.position %></p>
+      <p>所属部署：
+        <% if @user.department_id.present? %>
+          <%= @user.department.name %>
+        <% end %>
+      </p>
+      <p>メールアドレス：<%= @user.email %></p>
+      <p>電話番号：<%= @user.phone_number %></p>
+      <p><%= link_to "いいねしたプロジェクトを見る" , public_path(@user) %></p>
+
+        <% if @user.is_deleted == false %>
+          <p class="text-success">在籍中</p>
+        <% else %>
+          <p class="text-danger">退社済</p>
+        <% end %>
+
+      <div>
+        <% if user_signed_in? %> <!--未ログインだと編集ボタンは表示しない-->
+          <% if @user.id == current_user.id %> <!--＠user.idとログインユーザーのidが一致しない場合編集ボタンは表示しない-->
+            <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-sm btn-success"%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <h4>担当案件</h4>
+    <table class="table table-hover">
+      <thead>
+        <th>プロジェクト名</th>
+        <th>受注ステータス</th>
+        <th>進捗ステータス</th>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.name, company_project_path(@company, project.id) %></td>
+
+            <td class="font-weight-bold">
+              <% if project.order_status == "under_negotiation" %>
+                <span class="text-secondary"><%= project.order_status_i18n %></span>
+              <% elsif project.order_status == "ordered" %>
+                <span class="text-success"><%= project.order_status_i18n %></span>
+              <% else %>
+                 <span class="text-danger"><%= project.order_status_i18n %></span>
+              <% end %>
+            </td>
+
+            <td class="font-weight-bold">
+              <% if project.progress_status == "not_started_yet" %>
+                <span class="text-secondary"><%= project.progress_status_i18n %></span>
+              <% elsif project.progress_status == "while_working" %>
+                <span class="text-primary"><%= project.progress_status_i18n %></span>
+              <% else %>
+                <span class="text-success"><%= project.progress_status_i18n %></span>
+              <% end %>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", public_users_path %></p>
+    </div>
+  </div>
+
+</div>

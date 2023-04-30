@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="text-center">得意先一覧</h2>
+  
+  <div class="row ">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>企業名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+          <tr>
+            <td><%= link_to company.name, company_path(company.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+</div>

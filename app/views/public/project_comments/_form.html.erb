@@ -1,0 +1,6 @@
+<%= form_with model: [company, project, project_comment], local: false do |f| %>
+  <div class="form-group", style="width:100%;">
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control comment_textarea" %>
+  </div>
+  <%= f.submit "送信" %>
+<% end %>

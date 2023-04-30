@@ -1,0 +1,95 @@
+<div class="container">
+  <h2 class="text-center">検索結果</h2>
+  
+  <div class="row">
+    
+    <% if @range == "User" %>
+    
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>所属部署</th>
+            <th>役職</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= link_to user.name, public_user_path(user.id) %></td>
+              <td>
+                <%if user.department_id.present? %>
+                  <%= user.department.name %>
+                <% end %>
+              </td>
+              <td><%= user.position %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    <% elsif @range == "Company" %>
+      
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>企業名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+          <tr>
+            <td><%= link_to company.name, company_path(company.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <% else %>
+      
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>プロジェクト名</th>
+          <th>受注ステータス</th>
+          <th>進捗ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |project| %>
+          <tr>
+            <td><%= link_to project.name, company_project_path(project.company, project.id) %></td>
+
+            <td class="font-weight-bold">
+              <% if project.order_status == "under_negotiation" %>
+                <span class="text-secondary"><%= project.order_status_i18n %></span>
+              <% elsif project.order_status == "ordered" %>
+                <span class="text-success"><%= project.order_status_i18n %></span>
+              <% else %>
+                 <span class="text-danger"><%= project.order_status_i18n %></span>
+              <% end %>
+            </td>
+
+            <td class="font-weight-bold">
+              <% if project.progress_status == "not_started_yet" %>
+                <span class="text-secondary"><%= project.progress_status_i18n %></span>
+              <% elsif project.progress_status == "while_working" %>
+                <span class="text-primary"><%= project.progress_status_i18n %></span>
+              <% else %>
+                <span class="text-success"><%= project.progress_status_i18n %></span>
+              <% end %>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+      
+    <% end %>
+    
+  </div>
+  
+</div>
+  
+  
+  

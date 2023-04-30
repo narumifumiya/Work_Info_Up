@@ -1,0 +1,73 @@
+<div class="container">
+  <h2 class="text-center mb-5"><%= @company.name %></h2>
+  <h4 class="text-center mb-5">プロジェクト詳細</h4>
+  <div class="row">
+
+    <div class="col-md-6 text-center">
+      <%= image_tag @project.get_project_image(300,300) %>
+    </div>
+
+    <div class="col-md-6">
+      <p>プロジェクト名：<%= @project.name %></p>
+      <p>期間：<%= @project.start_date %> 〜 <%= @project.end_date %></p>
+      <p>受注ステータス：
+        <% if @project.order_status == "under_negotiation" %>
+          <span class="text-secondary font-weight-bold"><%= @project.order_status_i18n %></span>
+        <% elsif @project.order_status == "ordered" %>
+          <span class="text-success font-weight-bold"><%= @project.order_status_i18n %></span>
+        <% else %>
+          <span class="text-danger font-weight-bold"><%= @project.order_status_i18n %></span>
+        <% end %>
+      </p>
+      <p>進捗ステータス：
+        <% if @project.progress_status == "not_started_yet" %>
+          <span class="text-secondary font-weight-bold"><%= @project.progress_status_i18n %></span>
+        <% elsif @project.progress_status == "while_working" %>
+          <span class="text-primary font-weight-bold"><%= @project.progress_status_i18n %></span>
+        <% else %>
+          <span class="text-success font-weight-bold"><%= @project.progress_status_i18n %></span>
+        <% end %>
+      </p>
+      <p>
+        <table>
+          <td class="d-flex align-items-start">タグ：</td>
+          <td>
+            <% @project_tags.each do |tag| %>
+              <li style="list-style: none"><%= tag.tag_name %>
+            <% end %>
+          </td>
+        </table>
+
+      </p>
+      <p>説明：<%= @project.introduction %></p>
+      <!--  いいねボタン　-->
+      <div id="favorite_btn_<%= @project.id %>">
+        <%= render 'public/favorites/btn', company: @company, project: @project %>
+      </div>
+
+      <div>
+        <% if @project.user_id == current_user.id %>
+          <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-sm btn-success"%>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-5", id="comments_area">
+    <!--　コメント表示　-->
+    <%= render 'public/project_comments/index', project: @project %>
+  </div>
+
+  <div class="mt-5">
+    <!-- コメントフォーム　-->
+    <%= render 'public/project_comments/form', company: @company, project: @project, project_comment: @project_comment %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", company_projects_path(@company) %></p>
+    </div>
+  </div>
+
+</div>

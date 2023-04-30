@@ -4,7 +4,30 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :department,       optional: true
+  has_many   :projects
+  has_many   :project_comments, dependent: :destroy
+  has_many   :favorites,        dependent: :destroy
+
+  has_one_attached :profile_image
+
   validates :name,           presence: true
   validates :name_kana,      presence: true
   validates :phone_number,   presence: true
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/profile.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  # 検索方法は部分一致のみ
+  def self.looks(search, word)
+    if search == "partial"
+      @user = User.where("name LIKE?","%#{word}%")
+    end
+  end
+
 end

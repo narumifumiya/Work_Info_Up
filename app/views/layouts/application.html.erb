@@ -11,26 +11,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+  <body class="d-flex flex-column vh-100">
 
-  <body>
+    <%= render 'layouts/header' %>
+      <!-- フラッシュメッセージ -->
+    <% if flash[:notice] %>
+      <div class="text-success">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="text-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+  <main class="mt-5">
     <%= yield %>
+  </main>
+
   </body>
 </html>
