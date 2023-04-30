@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :departments, only: [:index, :edit, :create, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    get "search" => "searches#search"
     resources :companies do
       resources :projects, only: [:index, :show, :edit, :update, :destroy] do
         resources :project_comments, only: [:destroy] do
