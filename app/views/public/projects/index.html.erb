@@ -4,43 +4,7 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>プロジェクト名</th>
-            <th>受注ステータス</th>
-            <th>進捗ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @projects.each do |project| %>
-            <tr>
-              <td><%= link_to project.name, company_project_path(@company, project.id) %></td>
-
-              <td class="font-weight-bold">
-                <% if project.order_status == "under_negotiation" %>
-                  <span class="text-secondary"><%= project.order_status_i18n %></span>
-                <% elsif project.order_status == "ordered" %>
-                  <span class="text-success"><%= project.order_status_i18n %></span>
-                <% else %>
-                   <span class="text-danger"><%= project.order_status_i18n %></span>
-                <% end %>
-              </td>
-
-              <td class="font-weight-bold">
-                <% if project.progress_status == "not_started_yet" %>
-                  <span class="text-secondary"><%= project.progress_status_i18n %></span>
-                <% elsif project.progress_status == "while_working" %>
-                  <span class="text-primary"><%= project.progress_status_i18n %></span>
-                <% else %>
-                  <span class="text-success"><%= project.progress_status_i18n %></span>
-                <% end %>
-              </td>
-
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'public/projects/index', projects: @projects %>
     </div>
   </div>
 

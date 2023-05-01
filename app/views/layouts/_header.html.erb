@@ -34,7 +34,7 @@
                 <div class="search_form">
                   <%= form_with url: search_path, local: true, method: :get do |f| %>
                     <%= f.text_field :word %>
-                    <%= f.select :range, options_for_select([['User'], ['Company'],['Project'], ['Tag']]) %>
+                    <%= f.select :range, options_for_select([['ユーザー'], ['得意先'],['プロジェクト'], ['タグ']]) %>
                     <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
                     <%= f.submit "検索", class: "btn btn-primary" %>
                   <% end %>
