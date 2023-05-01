@@ -30,4 +30,12 @@ class User < ApplicationRecord
     end
   end
 
+  # ゲストログイン時に使用する
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com' ,name_kana: 'ゲストユーザー' , phone_number: '00000000000' ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
   before_action :is_matching_login_user, only: [:edit, :update]
 
 
@@ -33,6 +34,13 @@ class Public::UsersController < ApplicationController
   end
 
   private
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end  
 
   # userのparams[:id]とcurrent_user.idが違う場合、マイページに遷移する
   # before_actionにてedit,updateのみ使用
