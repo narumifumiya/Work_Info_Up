@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @company = Company.find(params[:company_id])
     @customers = @company.customers

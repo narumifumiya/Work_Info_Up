@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
 
 
@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
 
   private
 
-  # params[:id]とcurrent_user.idが違う場合、マイページに遷移する
+  # userのparams[:id]とcurrent_user.idが違う場合、マイページに遷移する
   # before_actionにてedit,updateのみ使用
   def is_matching_login_user
     user_id = params[:id].to_i

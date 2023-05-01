@@ -1,6 +1,6 @@
 class Public::ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
-
 
   def index
     @company = Company.find(params[:company_id])
@@ -71,7 +71,7 @@ class Public::ProjectsController < ApplicationController
     params.require(:project).permit(:name, :start_date, :end_date, :introduction, :contract_amount, :order_status, :progress_status, :project_image, :contract_amount)
   end
 
-  # @bookの持つuser_idがログインユーザーと違う場合、books_pathへ遷移する
+  # @projectの持つuser_idがログインユーザーと違う場合、プロジェクト詳細へ遷移する
   # before_actionにてedit,updateのみ使用
   def is_matching_login_user
     @company = Company.find(params[:company_id])

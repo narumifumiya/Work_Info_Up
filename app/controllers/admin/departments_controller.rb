@@ -1,4 +1,6 @@
 class Admin::DepartmentsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @departments = Department.all
     @department = Department.new

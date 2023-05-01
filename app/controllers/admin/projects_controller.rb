@@ -1,5 +1,6 @@
 class Admin::ProjectsController < ApplicationController
-
+  before_action :authenticate_admin!
+  
   def index
     @company = Company.find(params[:company_id])
     @projects = @company.projects

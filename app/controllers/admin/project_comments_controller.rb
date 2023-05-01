@@ -1,4 +1,5 @@
 class Admin::ProjectCommentsController < ApplicationController
+  before_action :authenticate_admin!
   
   def destroy
     @company = Company.find(params[:company_id])
