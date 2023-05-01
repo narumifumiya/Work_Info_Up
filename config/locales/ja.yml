@@ -82,3 +82,8 @@ ja:
         name: "プロジェクト名"
         start_date: "開始日"
         end_date: "終了日"
+      user:
+        name: "名前"
+        name_kana: "名前（フリガナ）"
+        email: "メールアドレス"
+        phone_number: "電話番号"

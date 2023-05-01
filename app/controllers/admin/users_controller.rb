@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @users = User.all
@@ -24,6 +25,14 @@ class Admin::UsersController < ApplicationController
   end
 
   private
+
+  # ゲストユーザーを編集できなくする
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to admin_user_path(@user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :name_kana, :email, :phone_number, :position, :department_id, :profile_image, :is_deleted)

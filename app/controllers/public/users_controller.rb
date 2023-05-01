@@ -35,6 +35,7 @@ class Public::UsersController < ApplicationController
 
   private
   
+  # ゲストユーザーを編集できなくする
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
