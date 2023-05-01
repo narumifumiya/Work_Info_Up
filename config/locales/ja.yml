@@ -93,3 +93,5 @@ ja:
         name: "名前"
       company:
         name: "企業名"
+      department:
+       name: "部署名"

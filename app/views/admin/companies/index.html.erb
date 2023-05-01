@@ -1,48 +1,34 @@
 <div class="container">
-
   <h2 class="text-center">得意先<br>新規登録/一覧</h2>
   <div>
     <%= render 'layouts/errors', obj: @company %>
   </div>
   <div class="row mt-5">
     <div class="col-10 col-md-7">
-    <%= form_with model:@company, url: admin_companies_path, method: :post do |f| %>
+      <%= form_with model:@company, url: admin_companies_path, method: :post do |f| %>
 
-      <div class="form-group row">
-        <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
-        <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
-      </div>
+        <div class="form-group row">
+          <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
+          <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
+        </div>
 
-      <div class="row">
-        <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
-        <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
-      </div>
+        <div class="row">
+          <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
+          <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
+        </div>
 
-      <div class="row mt-3">
-        <div class="col-md-3 mx-auto"></div>
-        <div class="col-md-9"><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></div>
-      </div>
+        <div class="row mt-3">
+          <div class="col-md-3 mx-auto"></div>
+          <div class="col-md-9"><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></div>
+        </div>
 
-    <% end %>
+      <% end %>
     </div>
   </div>
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>企業名</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @companies.each do |company| %>
-            <tr>
-              <td><%= link_to company.name, admin_company_path(company.id) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'admin/companies/index', companies: @companies %>
     </div>
   </div>
 
