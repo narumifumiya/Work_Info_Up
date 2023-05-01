@@ -2,28 +2,34 @@
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center">事業所一覧</h4>
 
-  <div class="row">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>事業所名</th>
-          <th>電話番号</th>
-          <th>所在地</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offices.each do |office| %>
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <td><%= office.name %></td>
-            <td><%= office.phone_number %></td>
-            <td><%= office.address %></td>
-            <td><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></td>
+            <th>事業所名</th>
+            <th>所在地</th>
+            <th>電話番号</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @offices.each do |office| %>
+            <tr>
+              <td><%= office.name %></td>
+              <td><%= office.total_address %></td>
+              <td><%= office.phone_number %></td>
+              <td>
+                <div class="row">
+                  <div class="m-1"><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-sm btn-success" %></div>
+                  <div class="m-1"><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="row">

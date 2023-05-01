@@ -1,10 +1,12 @@
 <div class="container">
-  <h2 class="text-center mb-5">顧客詳細</h2>
-  <div class="row">
-    <div class="col-md-6 text-center">
+  <h2 class="text-center"><%= @company.name %></h2>
+  <h4 class="text-center">顧客詳細</h4>
+  
+  <div class="row mt-5">
+    <div class="col-md-6 text-center mb-3">
       <%= image_tag @customer.get_customer_image(300,300) %>
     </div>
-    <div class="col-md-6">
+    <div class="col-8 col-md-6 mx-auto">
       <p>名前：<%= @customer.name %></p>
       <p>役職：<%= @customer.position %></p>
       <p>所属部署：<%= @customer.department %></p>

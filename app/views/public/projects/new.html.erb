@@ -2,67 +2,17 @@
   <div class="text-danger">
     <%= render 'layouts/errors', obj: @project  %>
   </div>
-  <h2 class="text-center">プロジェクト新規登録</h2>
+  <h2 class="text-center"><%= @company.name %></h2>
+  <h4 class="text-center">プロジェクト新規登録</h4>
 
-  <div class="row">
-    <div class="col-md-7 mx-auto">
-    <%= form_with model: [@company, @project] do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <th>プロジェクト名</th>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <th>開始日</th>
-          <td><%= f.date_field :start_date %></td>
-        </tr>
-        <tr>
-          <th>終了日</th>
-          <td><%= f.date_field :end_date %></td>
-        </tr>
-        <tr>
-          <th>契約金額</th>
-          <td><%= f.text_field :contract_amount %></td>
-        </tr>
-        <tr>
-          <th>説明</th>
-          <td><%= f.text_area :introduction %></td>
-        </tr>
-        <tr>
-          <th>受注ステータス</th>
-          <td>
-            <%= f.label :order_stauts_under_negotiation, "営業中" %><%= f.radio_button :order_status, "under_negotiation" %>
-            <%= f.label :order_stauts_ordered, "受注済" %><%= f.radio_button :order_status, "ordered" %>
-            <%= f.label :order_lost_orders, "失注" %><%= f.radio_button :order_status, "lost_orders" %>
-          </td>
-        </tr>
-        <tr>
-          <th>進捗ステータス</th>
-          <td>
-            <%= f.label :progress_stauts_not_started_yet, "未着手" %><%= f.radio_button :progress_status, "not_started_yet" %>
-            <%= f.label :progress_stauts_while_working, "作業中" %><%= f.radio_button :progress_status, "while_working" %>
-            <%= f.label :progress_stauts_completion, "完了" %><%= f.radio_button :progress_status, "completion" %>
-          </td>
-        </tr>
-
-        <tr>
-          <th>タグ(,で区切ると複数登録が可能)</th>
-          <td><%= f.text_field :tag_name, value: @tag_list %></td>
-        </tr>
-
-        <tr>
-          <th>画像</th>
-          <td><%= f.file_field :project_image, accept: 'image/*' %></td>
-        </tr>
-          <th></th>
-          <td><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></td>
-        </tr>
-      </table>
-    <% end %>
+  <div class="row mt-5">
+    <div class="col-10 col-md-7 mx-auto">
+      <%= render 'public/projects/form', company: @company, project: @project %>
     </div>
   </div>
+  
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-10 col-md-9">
     <p class="text-right"><%= link_to "戻る", company_projects_path(@company) %></p>
     </div>
   </div>
