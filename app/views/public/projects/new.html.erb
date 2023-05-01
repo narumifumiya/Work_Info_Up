@@ -1,6 +1,6 @@
 <div class="containern">
-  <div class="text-danger">
-    <%= render 'layouts/errors', obj: @project  %>
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @project %>
   </div>
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center">プロジェクト新規登録</h4>
@@ -10,7 +10,7 @@
       <%= render 'public/projects/form', company: @company, project: @project %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-10 col-md-9">
     <p class="text-right"><%= link_to "戻る", company_projects_path(@company) %></p>

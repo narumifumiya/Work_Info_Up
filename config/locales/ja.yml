@@ -87,3 +87,9 @@ ja:
         name_kana: "名前（フリガナ）"
         email: "メールアドレス"
         phone_number: "電話番号"
+      office:
+        name: "事業所名"
+      customer:
+        name: "名前"
+      company:
+        name: "企業名"

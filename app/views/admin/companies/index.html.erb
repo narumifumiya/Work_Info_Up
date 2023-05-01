@@ -1,41 +1,49 @@
 <div class="container">
 
-    <h2 class="text-center">得意先<br>新規登録/一覧</h2>
-
-  <div class="row">
+  <h2 class="text-center">得意先<br>新規登録/一覧</h2>
+  <div>
+    <%= render 'layouts/errors', obj: @company %>
+  </div>
+  <div class="row mt-5">
+    <div class="col-10 col-md-7">
     <%= form_with model:@company, url: admin_companies_path, method: :post do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <th>企業名</th>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <th>画像</th>
-          <td><%= f.file_field :company_image, accept: 'image/*' %></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></td>
-        </tr>
-      </table>
+
+      <div class="form-group row">
+        <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
+        <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
+        <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-3 mx-auto"></div>
+        <div class="col-md-9"><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></div>
+      </div>
+
     <% end %>
+    </div>
   </div>
 
-  <div class="row ">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>企業名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @companies.each do |company| %>
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <td><%= link_to company.name, admin_company_path(company.id) %></td>
+            <th>企業名</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @companies.each do |company| %>
+            <tr>
+              <td><%= link_to company.name, admin_company_path(company.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

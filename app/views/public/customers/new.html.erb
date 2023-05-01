@@ -1,4 +1,7 @@
 <div class="containern">
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @customer %>
+  </div>
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center">顧客新規登録</h4>
 
@@ -7,7 +10,7 @@
       <%= render 'public/customers/form', company: @company, customer: @customer %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-10 col-md-9">
     <p class="text-right"><%= link_to "戻る", company_customers_path(@company) %></p>

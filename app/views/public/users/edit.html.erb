@@ -1,5 +1,7 @@
 <div class="containern">
-  <%= render 'layouts/errors', obj: @user %>
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @user %>
+  </div>
   <h2 class="text-center">メンバー編集</h2>
 
   <div class="row mt-5">
@@ -8,7 +10,7 @@
 
           <div class="form-group row">
             <div class="col-md-3 mx-auto"><label for="name">名前</label></div>
-            <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name", placeholder: "Name" %></div>
+            <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
           </div>
 
 

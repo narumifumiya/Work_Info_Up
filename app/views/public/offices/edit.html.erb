@@ -1,4 +1,7 @@
 <div class="containern">
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @office %>
+  </div>
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center mb-5">事業所 編集</h4>
 
@@ -7,11 +10,11 @@
       <%= render 'public/offices/form', company: @company, office: @office %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-10 col-md-9">
     <p class="text-right"><%= link_to "戻る", company_offices_path(@company) %></p>
     </div>
   </div>
-  
+
 </div>
