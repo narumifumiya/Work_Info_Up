@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     # resources :users, only: [:index, :show, :edit, :update]
     resources :departments, only: [:show]
     get "search" => "searches#search"
+    resources :groups, except: [:destroy] do
+      resource :group_users, only: [:create, :destroy]
+    end
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers

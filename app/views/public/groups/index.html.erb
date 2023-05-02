@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class="text-center">グループ一覧</h2>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-10 mx-auto">
+      <%= render 'public/groups/index', groups: @groups %>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "戻る", public_users_path %></p>
+    </div>
+  </div>
+
+</div>

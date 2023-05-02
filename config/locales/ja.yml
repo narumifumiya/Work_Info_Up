@@ -94,4 +94,7 @@ ja:
       company:
         name: "企業名"
       department:
-       name: "部署名"
+        name: "部署名"
+      group:
+        name: "グループ名"
+      
