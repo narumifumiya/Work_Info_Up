@@ -15,7 +15,7 @@ class EventMailer < ApplicationMailer
     mail(
       from: ENV['KEY'],
       to:   member.email,
-      subject: 'New Event Notice!!'
+      subject: '新規お知らせ'
     )
   end
 

@@ -1,12 +1,12 @@
 <div class="container">
   <h2 class="text-center mb-5">メンバー詳細</h2>
-  
+
   <div class="row mt-5">
-    
+
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @user.get_profile_image(300,300) %>
     </div>
-    
+
     <div class="col-8 col-md-6 mx-auto">
       <p>名前：<%= @user.name %></p>
       <p>フリガナ：<%= @user.name_kana%></p>
@@ -32,7 +32,7 @@
         <% end %>
       </div>
     </div>
-    
+
   </div>
 
   <div class="row mt-5">
@@ -48,7 +48,7 @@
           <% @projects.each do |project| %>
             <tr>
               <td><%= link_to project.name, company_project_path(project.company, project.id) %></td>
-  
+
               <td class="font-weight-bold">
                 <% if project.order_status == "under_negotiation" %>
                   <span class="text-secondary"><%= project.order_status_i18n %></span>
@@ -58,7 +58,7 @@
                    <span class="text-danger"><%= project.order_status_i18n %></span>
                 <% end %>
               </td>
-  
+
               <td class="font-weight-bold">
                 <% if project.progress_status == "not_started_yet" %>
                   <span class="text-secondary"><%= project.progress_status_i18n %></span>
@@ -68,7 +68,7 @@
                   <span class="text-success"><%= project.progress_status_i18n %></span>
                 <% end %>
               </td>
-  
+
             </tr>
           <% end %>
         </tbody>

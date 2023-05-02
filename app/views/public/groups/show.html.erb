@@ -20,9 +20,8 @@
       <% end %>
 
       <% if @group.owner_id == current_user.id %>
-        <p>
-          <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-        </p>
+        <p><%= link_to 'グループ編集', edit_group_path(@group), class: "btn btn-sm btn-success" %></p>
+        <p><%= link_to 'グループメール作成', new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %></p>
       <% end %>
     </div>
 
