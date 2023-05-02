@@ -4,7 +4,16 @@ class Public::ProjectsController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @projects = @company.projects
+
+    if params[:latest] #新しい順
+      @projects = @company.projects.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @projects = @company.projects.old.page(params[:page])
+    else
+      @projects = @company.projects.page(params[:page])
+    end
+
+    # @projects = @company.projects
   end
 
   def new

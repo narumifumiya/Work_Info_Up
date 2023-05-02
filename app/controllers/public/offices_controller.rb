@@ -1,9 +1,18 @@
 class Public::OfficesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @company = Company.find(params[:company_id])
-    @offices = @company.offices
+    
+    if params[:latest] #新しい順
+      @offices = @company.offices.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @offices = @company.offices.old.page(params[:page])
+    else
+      @offices = @company.offices.page(params[:page])
+    end
+    
+    # @offices = @company.offices
   end
 
   def new
@@ -36,8 +45,9 @@ class Public::OfficesController < ApplicationController
       flash[:notice] = "事業所情報を更新しました"
       redirect_to company_offices_path(@company)
     else
-      @company = Company.find(params[:company_id])
-      render :edit
+       flash[:alert] = "事業所名が入力されていません"
+      redirect_to request.referer
+
     end
   end
 

@@ -1,9 +1,18 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @company = Company.find(params[:company_id])
-    @customers = @company.customers
+
+    if params[:latest] #新しい順
+      @customers = @company.customers.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @customers = @company.customers.old.page(params[:page])
+    else
+      @customers = @company.customers.page(params[:page])
+    end
+
+    # @customers = @company.customers
   end
 
   def new

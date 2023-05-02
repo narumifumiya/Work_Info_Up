@@ -4,13 +4,19 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', admin_company_projects_path(latest: "true") %>|
+        <%= link_to '古い順', admin_company_projects_path(old: "true") %>|
+      </P>
+
       <%= render 'admin/projects/index', projects: @projects %>
     </div>
   </div>
 
    <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "戻る", admin_company_path(@company) %></p>
+      <div class="d-flex justify-content-center"><%= paginate @projects %></div>
+      <p class="text-center"><%= link_to "戻る", admin_company_path(@company) %></p>
     </div>
   </div>
 

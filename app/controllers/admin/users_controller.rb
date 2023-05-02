@@ -3,7 +3,15 @@ class Admin::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.all
+    if params[:latest] #新しい順
+      @users = User.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @users = User.old.page(params[:page])
+    else
+      @users = User.page(params[:page])
+    end
+
+    # @users = User.all
   end
 
   def show

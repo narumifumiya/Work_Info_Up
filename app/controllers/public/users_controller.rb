@@ -5,7 +5,14 @@ class Public::UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    if params[:latest] #新しい順
+      @users = User.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @users = User.old.page(params[:page])
+    else
+      @users = User.page(params[:page])
+    end
+    # @users = User.page(params[:page])
     @departments = Department.all
   end
 
@@ -34,14 +41,14 @@ class Public::UsersController < ApplicationController
   end
 
   private
-  
+
   # ゲストユーザーを編集できなくする
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
       redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
+  end
 
   # userのparams[:id]とcurrent_user.idが違う場合、マイページに遷移する
   # before_actionにてedit,updateのみ使用

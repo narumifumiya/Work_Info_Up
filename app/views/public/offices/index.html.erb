@@ -4,6 +4,10 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', company_offices_path(latest: "true") %>|
+        <%= link_to '古い順', company_offices_path(old: "true") %>|
+      </P>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -36,9 +40,12 @@
     <%= link_to "事業所を追加する", new_company_office_path(@company), class: "btn btn-sm btn-success" %>
   </div>
 
+
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
+      <div class="d-flex justify-content-center"><%= paginate @offices %></div>
+      <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
     </div>
   </div>
 

@@ -4,14 +4,19 @@
   <div class="row mt-5">
 
     <div class="col-md-8">
-      
+
       <div>
         <%= link_to 'グループを作成する', new_group_path %>
         |
         <%= link_to 'グループ一覧', groups_path %>
       </div>
-      
+      <P>
+        <%= link_to '新しい順', public_users_path(latest: "true") %>|
+        <%= link_to '古い順', public_users_path(old: "true") %>|
+      </P>
+
       <%= render 'public/users/index', users: @users %>
+
     </div>
 
     <div class="col-md-3 offset-md-1 text-center">
@@ -29,11 +34,11 @@
         </ul>
       </div>
 
-
   </div>
 
-
+  <div class="mx-auto mt-5"><%= paginate @users %></div>
   </div>
+
 
 
 </div>

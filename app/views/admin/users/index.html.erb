@@ -3,8 +3,15 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', admin_users_path(latest: "true") %>|
+        <%= link_to '古い順', admin_users_path(old: "true") %>|
+      </P>
       <%= render 'admin/users/index', users: @users %>
     </div>
+
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
+
   </div>
 
 </div>

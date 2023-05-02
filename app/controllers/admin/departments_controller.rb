@@ -2,7 +2,15 @@ class Admin::DepartmentsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @departments = Department.all
+    if params[:latest] #新しい順
+      @departments = Department.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @departments = Department.old.page(params[:page])
+    else
+      @departments = Department.page(params[:page])
+    end
+    
+    # @departments = Department.all
     @department = Department.new
   end
 

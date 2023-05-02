@@ -17,6 +17,9 @@ class User < ApplicationRecord
   validates :name_kana,      presence: true
   validates :phone_number,   presence: true
 
+   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
+   scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/profile.jpg')
@@ -39,5 +42,7 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+
+  
 
 end
