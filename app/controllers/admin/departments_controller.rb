@@ -13,6 +13,19 @@ class Admin::DepartmentsController < ApplicationController
     # @departments = Department.all
     @department = Department.new
   end
+  
+  def show
+    @department = Department.find(params[:id])
+    
+    if params[:latest] #新しい順
+      @users = @department.users.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @users = @department.users.old.page(params[:page])
+    else
+      @users = @department.users.page(params[:page])
+    end
+    # @users = @department.users.page(params[:page])
+  end
 
   def create
     @department = Department.new(department_params)

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get "event_notices" => "event_notices#sent"
       resources :chats, only: [:index, :create, :destroy]
     end
-
+    # 得意先周辺
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers
@@ -33,9 +33,10 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :departments, only: [:index, :edit, :create, :update, :destroy]
+    resources :departments
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     get "search" => "searches#search"
+    # 得意先周辺
     resources :companies do
       resources :projects, only: [:index, :show, :edit, :update, :destroy] do
         resources :project_comments, only: [:destroy] do

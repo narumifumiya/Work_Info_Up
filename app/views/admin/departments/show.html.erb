@@ -3,20 +3,18 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
-      <P>
-        <%= link_to '新しい順', department_path(@department, latest: "true") %>|
-        <%= link_to '古い順', department_path(@department, old: "true") %>|
+       <P>
+        <%= link_to '新しい順', admin_department_path(@department, latest: "true") %>|
+        <%= link_to '古い順', admin_department_path(@department, old: "true") %>|
       </P>
-      <%= render 'public/users/index', users: @users %>
+      <%= render 'admin/users/index', users: @users %>
     </div>
-    
     <div class="mx-auto mt-5"><%= paginate @users %></div>
-    
   </div>
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", public_users_path %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", admin_departments_path %></p>
     </div>
   </div>
 
