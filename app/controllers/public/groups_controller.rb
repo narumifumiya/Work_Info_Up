@@ -3,11 +3,20 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @groups = Group.all
+    if params[:latest] #新しい順
+      @groups = Group.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @groups = Group.old.page(params[:page])
+    else
+      @groups = Group.page(params[:page])
+    end
+    
+    # @groups = Group.all
   end
 
   def show
     @group = Group.find(params[:id])
+    @users = @group.users.page(params[:page])
   end
 
   def new

@@ -22,7 +22,7 @@
       <% if @group.owner_id == current_user.id %>
         <p><%= link_to 'グループ編集', edit_group_path(@group), class: "btn btn-sm btn-success" %></p>
         <p><%= link_to 'グループメール作成', new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %></p>
-        <p><%= link_to 'グループを削除する', group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
+        <p><%= link_to 'グループを削除する', group_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></p>
       <% end %>
     </div>
 
@@ -31,10 +31,13 @@
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <h4 class="text-center mb-3">グループメンバー</h4>
-      <%= render 'public/users/index', users: @group.users %>
+      <%= render 'public/users/index', users: @users %>
     </div>
+
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
+
   </div>
-  
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
     <p class="text-center"><%= link_to "グループ一覧", groups_path %></p>

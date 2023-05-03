@@ -12,9 +12,11 @@
       <% elsif @range == "プロジェクト" %>
         <%= render 'public/projects/index', projects: @projects %>
 
-      <% else %>
+      <% elsif @range == "タグ" %>
         <%= render 'public/projects/index', projects: @tags %>
 
+      <% else %>
+        <%= render 'public/groups/index', groups: @groups %>
       <% end %>
     </div>
   </div>
