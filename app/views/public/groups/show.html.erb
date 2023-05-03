@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center">グループ詳細</h2>
-
+  <div><%= link_to 'チャットルーム', group_chats_path(@group) %></div>
   <div class="row mt-5">
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @group.get_group_image(300,300) %>
