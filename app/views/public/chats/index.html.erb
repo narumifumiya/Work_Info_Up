@@ -5,42 +5,12 @@
   <div class="row mt-5">
     <div class="col-11 col-md-10 mx-auto">
 
-      <div class="message mx-auto">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-            <div class=" p-2">
-              <div class="d-flex justify-content-end">
-                <span class="border border-warning rounded p-1 bg-warning">
-                  <%= chat.message %>
-                </span>
-              </div>
-              <div class="d-flex justify-content-end">
-                <span class="mr-2"><%= chat.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-                <%= link_to '削除', group_chat_path(chat.group, chat.id), method: :delete, class: "text-danger" %>
-              </div>
-            </div>
-          <% else %>
-            <div class="p-2">
-              <div class="d-flex justify-content-start">
-                <%= chat.user.name %>
-                <span class="ml-2"><%= chat.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-              </div>
-              <div class="d-flex justify-content-start">
-                <span class="border border-dark rounded p-1 bg-light"><%= chat.message %></span>
-                
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+      <div class="message mx-auto" id="messages_area">
+        <%= render 'public/chats/index', group: @group %>
       </div>
 
       <div class="mt-5">
-        <%= form_with model: [@group, @chat] do |f| %>
-        　<div class="form-group", style="width:100%;">
-            <%= f.text_area :message, rows: '5', placeholder: "メッセージをここに", class: "form-control" %>
-          </div>
-          <%= f.submit "送信" %>
-        <% end %>
+        <%= render 'public/chats/form', group: @group, chat: @chat %>
       </div>
 
     </div>

@@ -1,0 +1,6 @@
+<%= form_with model: [group, chat], local: false do |f| %>
+　<div class="form-group", style="width:100%;">
+    <%= f.text_area :message, rows: '5', placeholder: "メッセージをここに", class: "form-control message_textarea" %>
+  </div>
+  <%= f.submit "送信" %>
+<% end %>
