@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     # resources :users, only: [:index, :show, :edit, :update]
     resources :departments, only: [:show]
     get "search" => "searches#search"
-    resources :groups, except: [:destroy] do
+    resources :groups do
       resource :group_users, only: [:create, :destroy]
       resources :event_notices, only: [:new, :create]
       get "event_notices" => "event_notices#sent"

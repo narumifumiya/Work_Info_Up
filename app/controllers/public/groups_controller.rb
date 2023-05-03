@@ -37,6 +37,18 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    if @group.owner_id == current_user.id
+      @group.destroy
+      flash[:notice] = "グループを削除しました"
+      redirect_to groups_path
+    else
+      flash[:alert] = "グループ作成者のみ削除ができます"
+      redirect_to request.referer
+    end
+  end
+
   private
 
   def group_params
