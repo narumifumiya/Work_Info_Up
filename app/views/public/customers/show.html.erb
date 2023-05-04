@@ -14,15 +14,15 @@
       <p>電話番号：<%= @customer.phone_number %></p>
 
       <div>
-        <%= link_to "編集", edit_company_customer_path(@company, @customer), class: "btn btn-sm btn-success"%>
-        <%= link_to "削除", company_customer_path(@company, @customer), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "編集", edit_company_customer_path(@company, @customer), class: "btn btn-outline-success btn-sm"%>
+        <%= link_to "削除", company_customer_path(@company, @customer), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
       </div>
     </div>
   </div>
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", company_customers_path(@company) %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", company_customers_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

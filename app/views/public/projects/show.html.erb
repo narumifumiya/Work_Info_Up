@@ -53,7 +53,7 @@
 
       <div>
         <% if @project.user_id == current_user.id %>
-          <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-sm btn-success"%>
+          <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
         <% end %>
       </div>
     </div>
@@ -72,7 +72,7 @@
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", company_projects_path(@company) %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", company_projects_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

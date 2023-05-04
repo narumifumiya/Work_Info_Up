@@ -5,8 +5,8 @@
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <P>
-        <%= link_to '新しい順', company_offices_path(latest: "true") %>|
-        <%= link_to '古い順', company_offices_path(old: "true") %>|
+        <%= link_to '新しい順', company_offices_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', company_offices_path(old: "true"), class: 'text-dark' %>
       </P>
       <table class="table table-hover">
         <thead>
@@ -25,8 +25,8 @@
               <td><%= office.phone_number %></td>
               <td>
                 <div class="row">
-                  <div class="m-1"><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-sm btn-success" %></div>
-                  <div class="m-1"><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></div>
+                  <div class="m-1"><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-outline-success btn-sm" %></div>
+                  <div class="m-1"><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %></div>
                 </div>
               </td>
             </tr>
@@ -45,7 +45,7 @@
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
       <div class="d-flex justify-content-center"><%= paginate @offices %></div>
-      <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
+      <p class="text-center"><%= link_to "戻る", company_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

@@ -5,7 +5,7 @@
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @user.get_profile_image(300,300) %>
     </div>
-    
+
     <div class="col-8 col-md-6 mx-auto">
       <p>名前：<%= @user.name %></p>
       <p>フリガナ：<%= @user.name_kana%></p>
@@ -19,13 +19,13 @@
       <p>電話番号：<%= @user.phone_number %></p>
 
         <% if @user.is_deleted == false %>
-          <p class="text-success">在籍中</p>
+          <p class="text-success font-weight-bold">在籍中</p>
         <% else %>
-          <p class="text-danger">退社済</p>
+          <p class="text-danger font-weight-bold">退社済</p>
         <% end %>
 
       <div>
-        <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-sm btn-success"%>
+        <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-outline-success btn-sm"%>
         <%#= link_to "削除", admin_company_path(@company), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", admin_users_path %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", admin_users_path, class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

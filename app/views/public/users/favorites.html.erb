@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="text-center mb-5"><%= @user.name%>さん</h2>
   <h4 class="text-center mb-5">いいね一覧</h4>
-  
+
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <table class="table table-hover">
@@ -14,7 +14,7 @@
           <% @favorites.each do |favorite| %>
             <tr>
               <td><%= link_to favorite.project.name, company_project_path(favorite.project.company, favorite.project.id) %></td>
-  
+
               <td class="font-weight-bold">
                 <% if favorite.project.order_status == "under_negotiation" %>
                   <span class="text-secondary"><%= favorite.project.order_status_i18n %></span>
@@ -24,7 +24,7 @@
                    <span class="text-danger"><%= favorite.project.order_status_i18n %></span>
                 <% end %>
               </td>
-  
+
               <td class="font-weight-bold">
                 <% if favorite.project.progress_status == "not_started_yet" %>
                   <span class="text-secondary"><%= favorite.project.progress_status_i18n %></span>
@@ -34,7 +34,7 @@
                   <span class="text-success"><%= favorite.project.progress_status_i18n %></span>
                 <% end %>
               </td>
-  
+
             </tr>
           <% end %>
         </tbody>
@@ -44,9 +44,9 @@
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", public_user_path(@user) %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", public_user_path(@user), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 
-  
+
 </div>

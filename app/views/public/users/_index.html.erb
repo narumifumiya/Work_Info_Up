@@ -9,7 +9,7 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= link_to user.name, public_user_path(user.id) %></td>
+        <td><%= link_to user.name, public_user_path(user.id), class: 'text-dark' %></td>
         <td>
           <%if user.department_id.present? %>
             <%= user.department.name %>

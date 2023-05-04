@@ -3,8 +3,8 @@
 
   <div class="row mt-5">
     <P>
-      <%= link_to '新しい順', admin_groups_path(latest: "true") %>|
-      <%= link_to '古い順', admin_groups_path(old: "true") %>|
+      <%= link_to '新しい順', admin_groups_path(latest: "true"), class: 'text-dark' %> |
+      <%= link_to '古い順', admin_groups_path(old: "true"), class: 'text-dark' %>
     </P>
     <div class="col-11 col-md-12 mx-auto">
       <%= render 'admin/groups/index', groups: @groups %>
@@ -16,7 +16,7 @@
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "戻る", admin_users_path %></p>
+    <p class="text-center"><%= link_to "戻る", admin_users_path, class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

@@ -5,8 +5,8 @@
   <div class="row mt-5">
     <div class="col-11 col-md-10 mx-auto">
       <P>
-        <%= link_to '新しい順', company_customers_path(latest: "true") %>|
-        <%= link_to '古い順', company_customers_path(old: "true") %>|
+        <%= link_to '新しい順', company_customers_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', company_customers_path(old: "true"), class: 'text-dark' %>
       </P>
 
       <table class="table table-hover">
@@ -21,7 +21,7 @@
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
-              <td><%= link_to customer.name, company_customer_path(@company, customer.id) %></td>
+              <td><%= link_to customer.name, company_customer_path(@company, customer.id), class: 'text-dark' %></td>
               <td><%= customer.position %></td>
               <td><%= customer.department %></td>
 
@@ -41,7 +41,7 @@
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
       <div class="d-flex justify-content-center"><%= paginate @customers %></div>
-      <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
+      <p class="text-center"><%= link_to "戻る", company_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

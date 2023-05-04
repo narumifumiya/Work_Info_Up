@@ -3,15 +3,15 @@
   <% project.project_comments.each do |project_comment| %>
     <tr>
       <td>
-        <%= link_to public_user_path(project_comment.user) do %>
-        <%= image_tag project_comment.user.get_profile_image(100, 100) %><br>
-        <%= project_comment.user.name %>
+        <%= link_to public_user_path(project_comment.user), class: 'text-dark' do %>
+          <%= image_tag project_comment.user.get_profile_image(100, 100) %><br>
+          <%= project_comment.user.name %>
         <% end %>
       </td>
       <td><%= project_comment.comment %></td>
       <% if project_comment.user == current_user %>
       <td>
-        <%= link_to "Destroy", company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment),method: :delete, remote: true, class: "btn btn-sm btn-danger", remote: true %>
+        <%= link_to "コメント削除", company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment),method: :delete, remote: true, class: "btn btn-outline-danger btn-sm", remote: true %>
       </td>
       <% end %>
     </tr>

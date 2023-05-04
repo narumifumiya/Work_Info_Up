@@ -53,8 +53,8 @@
 
       <div>
         <%# if @project.user_id == current_user.id %>
-          <%= link_to "編集", edit_admin_company_project_path(@company, @project), class: "btn btn-sm btn-success"%>
-          <%= link_to "削除", admin_company_project_path(@company, @project), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "編集", edit_admin_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
+          <%= link_to "削除", admin_company_project_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
         <%# end %>
       </div>
     </div>
@@ -63,14 +63,14 @@
 
   <div class="mt-5", id="admin_comments_area" >
     <p class="text-right">
-      <%= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+      <%= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
     </p>
     <%= render 'admin/project_comments/index', project: @project %>
   </div>
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "一覧へ戻る", admin_company_projects_path(@company) %></p>
+    <p class="text-center"><%= link_to "一覧へ戻る", admin_company_projects_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

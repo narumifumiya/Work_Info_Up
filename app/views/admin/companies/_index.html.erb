@@ -7,7 +7,7 @@
   <tbody>
     <% companies.each do |company| %>
       <tr>
-        <td><%= link_to company.name, admin_company_path(company.id) %></td>
+        <td><%= link_to company.name, admin_company_path(company.id), class: 'text-dark' %></td>
       </tr>
     <% end %>
   </tbody>

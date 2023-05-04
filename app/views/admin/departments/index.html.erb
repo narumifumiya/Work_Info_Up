@@ -24,8 +24,8 @@
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <P>
-        <%= link_to '新しい順', admin_departments_path(latest: "true") %>|
-        <%= link_to '古い順', admin_departments_path(old: "true") %>|
+        <%= link_to '新しい順', admin_departments_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', admin_departments_path(old: "true"), class: 'text-dark' %>
       </P>
       <table class="table table-hover">
         <thead>
@@ -37,10 +37,10 @@
         <tbody>
           <% @departments.each do |department| %>
             <tr>
-              <td><%= link_to department.name, admin_department_path(department.id) %></td>
+              <td><%= link_to department.name, admin_department_path(department.id), class: 'text-dark' %></td>
               <td class="text-right">
-                <%= link_to "編集", edit_admin_department_path(department.id), class: "btn btn-sm btn-success" %>
-                <%= link_to "削除", admin_department_path(department.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+                <%= link_to "編集", edit_admin_department_path(department.id), class: "btn btn-outline-success btn-sm" %>
+                <%= link_to "削除", admin_department_path(department.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
               </td>
             </tr>
           <% end %>

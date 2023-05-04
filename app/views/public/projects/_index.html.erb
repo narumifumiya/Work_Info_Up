@@ -9,7 +9,7 @@
   <tbody>
     <% projects.each do |project| %>
       <tr>
-        <td><%= link_to project.name, company_project_path(project.company, project.id) %></td>
+        <td><%= link_to project.name, company_project_path(project.company, project.id), class: 'text-dark' %></td>
 
         <td class="font-weight-bold">
           <% if project.order_status == "under_negotiation" %>
