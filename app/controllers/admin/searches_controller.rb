@@ -15,6 +15,8 @@ class Admin::SearchesController < ApplicationController
       @projects = Project.looks(@search, @word)
     elsif @range == "タグ"
       @tags = Tag.looks(@search, @word)
+    elsif @range == "グループ"
+      @groups = Group.looks(@search, @word)
     end
   end
 

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :departments
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :groups, only: [:index, :destroy]
     get "search" => "searches#search"
     # 得意先周辺
     resources :companies do

@@ -1,0 +1,22 @@
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>グループ名</th>
+      <th>紹介文</th>
+      <th>メンバー数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% groups.each do |group| %>
+      <tr>
+        <td><%= image_tag group.get_group_image(50,50) %></td>
+        <td><%= group.name %></td>
+        <td><%= group.introduction %></td>
+        <td><%= group.group_users.count %></td>
+        <td><%= link_to '削除', admin_group_path(group.id), method: :delete, class: " btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" }%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
