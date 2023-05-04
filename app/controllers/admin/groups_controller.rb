@@ -2,7 +2,14 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @groups = Group.all
+    if params[:latest] #新しい順
+      @groups = Group.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @groups = Group.old.page(params[:page])
+    else
+      @groups = Group.page(params[:page])
+    end
+    # @groups = Group.all
   end
 
   def destroy
