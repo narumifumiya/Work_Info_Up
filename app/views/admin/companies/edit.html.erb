@@ -7,24 +7,7 @@
 
   <div class="row mt-5">
     <div class="col-10 col-md-7 mx-auto">
-    <%= form_with model:@company, url: admin_company_path(@company), method: :patch do |f| %>
-
-      <div class="form-group row">
-        <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
-        <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
-        <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
-      </div>
-
-      <div class="row mt-3">
-        <div class="col-md-3 mx-auto"></div>
-        <div class="col-md-9"><%= f.submit "登録", class: "btn btn-sm btn-success"%></div>
-      </div>
-
-    <% end %>
+      <%= render 'admin/companies/form', company: @company %>
     </div>
   </div>
 
