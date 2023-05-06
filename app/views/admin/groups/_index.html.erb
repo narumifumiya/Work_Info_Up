@@ -15,7 +15,7 @@
         <td><%= group.name %></td>
         <td><%= group.introduction %></td>
         <td><%= group.group_users.count %></td>
-        <td><%= link_to '削除', admin_group_path(group.id), method: :delete, class: " btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" }%></td>
+        <td><%= link_to '削除', admin_group_path(group.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" }%></td>
       </tr>
     <% end %>
   </tbody>

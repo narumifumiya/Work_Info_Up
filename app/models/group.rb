@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
   has_many :chats, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   # active_recordを導入している為、下記にてカラムと同じようにimageを呼び出す事が出来る
   has_one_attached :group_image
 

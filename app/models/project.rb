@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   enum order_status: { under_negotiation: 0, ordered: 1, lost_orders: 2 }
   enum progress_status: { not_started_yet: 0, while_working: 1, completion: 2 }
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   # validates :start_date, presence: true
   # validates :end_date, presence: true
   validate :start_end_check

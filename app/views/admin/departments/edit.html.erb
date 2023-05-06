@@ -1,5 +1,8 @@
 <div class="container">
   <h2 class="text-center">部署編集</h2>
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @department %>
+  </div>
 
   <div class="row">
     <div class="col-md-7 mx-auto">
@@ -17,7 +20,7 @@
     <% end %>
     </div>
   </div>
-  
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
       <p class="text-center"><%= link_to "戻る", admin_departments_path, class: 'text-dark font-weight-bold' %></p>
