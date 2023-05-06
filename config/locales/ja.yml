@@ -80,6 +80,7 @@ ja:
     attributes:
       project:
         name: "プロジェクト名"
+        introduction: "説明"
         start_date: "開始日"
         end_date: "終了日"
       user:

@@ -13,6 +13,7 @@ class Project < ApplicationRecord
   enum progress_status: { not_started_yet: 0, while_working: 1, completion: 2 }
 
   validates :name, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 140 }
   # validates :start_date, presence: true
   # validates :end_date, presence: true
   validate :start_end_check
