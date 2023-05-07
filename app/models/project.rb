@@ -12,10 +12,14 @@ class Project < ApplicationRecord
   enum order_status: { under_negotiation: 0, ordered: 1, lost_orders: 2 }
   enum progress_status: { not_started_yet: 0, while_working: 1, completion: 2 }
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 140 }
   # validates :start_date, presence: true
   # validates :end_date, presence: true
-   validate :start_end_check
+  validate :start_end_check
+
+  scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
+  scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
 
   def get_project_image(width, height)
     unless project_image.attached?
@@ -58,6 +62,12 @@ class Project < ApplicationRecord
      self.tags << new_project_tag
     end
   end
-  
+
+  # 検索方法は部分一致のみ
+  def self.looks(search, word)
+    if search == "partial"
+      @project = Project.where("name LIKE?","%#{word}%")
+    end
+  end
 
 end

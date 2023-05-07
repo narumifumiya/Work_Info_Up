@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="text-center"><%= @department.name %></h2>
+  <h4 class="text-center">メンバー</h4>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+       <P>
+        <%= link_to '新しい順', admin_department_path(@department, latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', admin_department_path(@department, old: "true"), class: 'text-dark' %>
+      </P>
+      <%= render 'admin/users/index', users: @users %>
+    </div>
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", admin_departments_path, class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

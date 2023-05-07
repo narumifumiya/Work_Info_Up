@@ -1,6 +1,15 @@
 class Admin::CompaniesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
-    @companies = Company.all
+    if params[:latest] #新しい順
+      @companies = Company.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @companies = Company.old.page(params[:page])
+    else
+      @companies = Company.page(params[:page])
+    end
+    # @companies = Company.all
     @company = Company.new
   end
 
@@ -10,8 +19,8 @@ class Admin::CompaniesController < ApplicationController
       flash[:notice] = "得意先を追加しました"
       redirect_to request.referer
     else
-      @companies = Company.all
-      render :index
+      flash[:alert] = "得意先名が入力されていません"
+      redirect_to request.referer
     end
   end
 

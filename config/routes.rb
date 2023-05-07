@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
   namespace :public do
     resources :users, only: [:index, :show, :edit, :update]
@@ -12,6 +13,13 @@ Rails.application.routes.draw do
     # resources :users, only: [:index, :show, :edit, :update]
     resources :departments, only: [:show]
     get "search" => "searches#search"
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
+      resources :event_notices, only: [:new, :create]
+      get "event_notices" => "event_notices#sent"
+      resources :chats, only: [:index, :create, :destroy]
+    end
+    # 得意先周辺
     resources :companies, only: [:index, :show] do
       resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
       resources :customers
@@ -25,9 +33,20 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :companies
-    resources :departments, only: [:index, :edit, :create, :update, :destroy]
+    resources :departments
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :groups, only: [:index, :destroy]
+    get "search" => "searches#search"
+    # 得意先周辺
+    resources :companies do
+      resources :projects, only: [:index, :show, :edit, :update, :destroy] do
+        resources :project_comments, only: [:destroy] do
+          collection do
+            delete "destroy_all"
+          end
+        end
+      end
+    end
   end
 
   # ユーザー用
@@ -36,6 +55,11 @@ devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+# ゲストログイン用
+devise_scope :user do
+  post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+end
 
 # 管理者用
 # URL /admin/sign_in ...

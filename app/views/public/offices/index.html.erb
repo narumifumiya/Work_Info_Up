@@ -1,37 +1,27 @@
 <div class="container">
-  <h2 class="text-center">事業所一覧</h2>
+  <h2 class="text-center"><%= @company.name %></h2>
+  <h4 class="text-center">事業所一覧</h4>
 
-  <div class="row">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>事業所名</th>
-          <th>電話番号</th>
-          <th>所在地</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offices.each do |office| %>
-          <tr>
-            <td><%= office.name %></td>
-            <td><%= office.phone_number %></td>
-            <td><%= office.address %></td>
-            <td><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', company_offices_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', company_offices_path(old: "true"), class: 'text-dark' %>
+      </P>
+      <%= render 'public/offices/index', offices: @offices %>
+    </div>
   </div>
 
   <div class="row">
     <%= link_to "事業所を追加する", new_company_office_path(@company), class: "btn btn-sm btn-success" %>
   </div>
 
+
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
-    <p class="text-center"><%= link_to "戻る", company_path(@company) %></p>
+      <div class="d-flex justify-content-center"><%= paginate @offices %></div>
+      <p class="text-center"><%= link_to "戻る", company_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
 

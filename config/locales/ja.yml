@@ -80,5 +80,29 @@ ja:
     attributes:
       project:
         name: "プロジェクト名"
+        introduction: "説明"
         start_date: "開始日"
         end_date: "終了日"
+      user:
+        name: "名前"
+        name_kana: "名前（フリガナ）"
+        email: "メールアドレス"
+        phone_number: "電話番号"
+      office:
+        name: "事業所名"
+      customer:
+        name: "名前"
+      company:
+        name: "企業名"
+      department:
+        name: "部署名"
+      group:
+        name: "グループ名"
+
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

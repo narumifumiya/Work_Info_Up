@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="text-center">グループ詳細</h2>
+
+  <div class="row mt-5">
+    <div class="col-md-6 text-center mb-3">
+      <%= image_tag @group.get_group_image(300,300) %>
+    </div>
+
+    <div class="col-8 col-md-6 mx-auto">
+      <p>グループ名：<%= @group.name %></p>
+      <p>紹介文：<%= @group.introduction %></p>
+      <p><%= link_to 'チャットルーム', group_chats_path(@group) %></p>
+      <!-- @groupに紐づいたgroup_user（user_idカラムに自分のIDを持っている）があるかどうかを確かめる。-->
+      <% if @group.group_users.exists?(user_id: current_user.id) %>
+        <!-- group_usersコントローラーの#destroyアクションを発動　@groupからgroup_user(自分)を消す -->
+        <p><%= link_to 'グループを退出する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
+      <% else %>
+      <!-- group_usersコントローラーの#createアクションを発動　@groupにgroup_user(自分)を追加する -->
+        <p><%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %></p>
+      <% end %>
+
+      <% if @group.owner_id == current_user.id %>
+        <p><%= link_to 'グループ編集', edit_group_path(@group), class: "btn btn-sm btn-success" %></p>
+        <p><%= link_to 'グループメール作成', new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %></p>
+        <p><%= link_to 'グループを削除する', group_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %></p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <h4 class="text-center mb-3">グループメンバー</h4>
+      <%= render 'public/users/index', users: @users %>
+    </div>
+
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
+
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "グループ一覧", groups_path, class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

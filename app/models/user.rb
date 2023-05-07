@@ -8,12 +8,19 @@ class User < ApplicationRecord
   has_many   :projects
   has_many   :project_comments, dependent: :destroy
   has_many   :favorites,        dependent: :destroy
+  has_many   :group_users,      dependent: :destroy
+  has_many   :groups,           through: :group_users
+  has_many   :chats,         dependent: :destroy
 
   has_one_attached :profile_image
 
   validates :name,           presence: true
   validates :name_kana,      presence: true
-  validates :phone_number,   presence: true
+  validates :phone_number,   presence: true, uniqueness: true
+  validates :email, uniqueness: true
+
+   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
+   scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -29,5 +36,15 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?","%#{word}%")
     end
   end
+
+  # ゲストログイン時に使用する
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com' ,name_kana: 'ゲストユーザー' , phone_number: '00000000000' ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+
 
 end

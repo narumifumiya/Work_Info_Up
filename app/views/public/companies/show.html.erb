@@ -1,16 +1,25 @@
 <div class="container">
   <h2 class="text-center">得意先詳細</h2>
+
   <div class="row mt-5">
-    <div class="col-md-6 text-center">
-      <%= image_tag @company.get_company_image(400,400) %>
+    <div class="col-md-6 text-center mb-3">
+      <%= image_tag @company.get_company_image(350,350) %>
     </div>
-    <div class="col-md-6">
+
+    <div class="col-8 col-md-6 mx-auto">
       <p>企業名：<%= @company.name%></p>
       <div>
-        <p><%= link_to "事業所一覧", company_offices_path(@company) %></p>
-        <p><%= link_to "顧客一覧", company_customers_path(@company) %></p>
-        <p><%= link_to "プロジェクト一覧", company_projects_path(@company) %></p>
+        <p><%= link_to "事業所一覧", company_offices_path(@company), class: 'btn btn-outline-secondary' %></p>
+        <p><%= link_to "顧客一覧", company_customers_path(@company), class: 'btn btn-outline-secondary' %></p>
+        <p><%= link_to "プロジェクト一覧", company_projects_path(@company), class: 'btn btn-outline-secondary' %></p>
       </div>
     </div>
   </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", companies_path, class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
 </div>

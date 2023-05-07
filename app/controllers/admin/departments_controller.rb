@@ -1,7 +1,30 @@
 class Admin::DepartmentsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
-    @departments = Department.all
+    if params[:latest] #新しい順
+      @departments = Department.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @departments = Department.old.page(params[:page])
+    else
+      @departments = Department.page(params[:page])
+    end
+
+    # @departments = Department.all
     @department = Department.new
+  end
+
+  def show
+    @department = Department.find(params[:id])
+
+    if params[:latest] #新しい順
+      @users = @department.users.latest.page(params[:page])
+    elsif params[:old] == true #古い順
+      @users = @department.users.old.page(params[:page])
+    else
+      @users = @department.users.page(params[:page])
+    end
+    # @users = @department.users.page(params[:page])
   end
 
   def create
@@ -10,8 +33,8 @@ class Admin::DepartmentsController < ApplicationController
       flash[:notice] = "部署の登録が成功しました"
       redirect_to request.referer
     else
-      @departments = Department.all
-      render :index
+      flash[:alert] = "部署名が入力されていません"
+      redirect_to request.referer
     end
   end
 
@@ -28,7 +51,7 @@ class Admin::DepartmentsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @department = Department.find(params[:id])
     @department.destroy

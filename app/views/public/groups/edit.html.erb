@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h2 class="text-center">グループ編集</h2>
+
+  <div class="col-10 col-md-7 mx-auto">
+    <%= render 'layouts/errors', obj: @group %>
+  </div>
+
+  <div class='row mt-5'>
+    <div class="col-10 col-md-7 mx-auto">
+        <%= render 'public/groups/form', group: @group %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10 col-md-9">
+    <p class="text-right"><%= link_to "戻る", group_path(@group), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

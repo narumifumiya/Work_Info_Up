@@ -1,31 +1,21 @@
 <div class="container">
   <h2 class="text-center">メンバー</h2>
 
-  <div class="row">
+  <div class="row mt-5">
 
     <div class="col-md-8">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>所属部署</th>
-            <th>役職</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= link_to user.name, public_user_path(user.id) %></td>
-              <td>
-                <%if user.department_id.present? %>
-                  <%= user.department.name %>
-                <% end %>
-              </td>
-              <td><%= user.position %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <div>
+          <%= link_to 'グループを作成する', new_group_path, class: 'text-dark' %>
+          |
+          <%= link_to 'グループ一覧', groups_path, class: 'text-dark' %>
+        </div>
+        <p>
+          <%= link_to '新しい順', public_users_path(latest: "true"),  class: 'text-dark' %> |
+          <%= link_to '古い順', public_users_path(old: "true"),  class: 'text-dark' %>
+        </p>
+
+      <%= render 'public/users/index', users: @users %>
+
     </div>
 
     <div class="col-md-3 offset-md-1 text-center">
@@ -43,11 +33,11 @@
         </ul>
       </div>
 
-
   </div>
 
-
+  <div class="mx-auto mt-5"><%= paginate @users %></div>
   </div>
+
 
 
 </div>

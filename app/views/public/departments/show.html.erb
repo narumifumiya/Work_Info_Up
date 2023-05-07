@@ -1,28 +1,23 @@
 <div class="container">
   <h2 class="text-center"><%= @department.name %><br>メンバー</h2>
 
-  <div class="row">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>名前</th>
-          <th>所属部署</th>
-          <th>役職</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.name, public_user_path(user.id) %></td>
-            <td>
-              <%if user.department_id.present? %>
-                <%= user.department.name %>
-              <% end %>
-            </td>
-            <td><%= user.position %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', department_path(@department, latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', department_path(@department, old: "true"), class: 'text-dark' %>
+      </P>
+      <%= render 'public/users/index', users: @users %>
+    </div>
+    
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
+    
   </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "一覧へ戻る", public_users_path, class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
 </div>
