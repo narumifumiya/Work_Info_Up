@@ -1,5 +1,4 @@
 class Project < ApplicationRecord
-
   belongs_to :company
   belongs_to :user
   has_many   :project_comments, dependent: :destroy
@@ -14,8 +13,6 @@ class Project < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 140 }
-  # validates :start_date, presence: true
-  # validates :end_date, presence: true
   validate :start_end_check
 
   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
