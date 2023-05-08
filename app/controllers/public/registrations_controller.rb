@@ -7,8 +7,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     public_user_path(current_user)
  end
 
-
-
  protected
 
  def configure_permitted_parameters

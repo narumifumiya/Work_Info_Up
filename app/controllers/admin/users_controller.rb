@@ -10,8 +10,6 @@ class Admin::UsersController < ApplicationController
     else
       @users = User.page(params[:page])
     end
-
-    # @users = User.all
   end
 
   def show

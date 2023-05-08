@@ -11,8 +11,6 @@ class Public::OfficesController < ApplicationController
     else
       @offices = @company.offices.page(params[:page])
     end
-    
-    # @offices = @company.offices
   end
 
   def new

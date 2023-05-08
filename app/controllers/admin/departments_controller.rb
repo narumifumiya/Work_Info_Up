@@ -10,7 +10,6 @@ class Admin::DepartmentsController < ApplicationController
       @departments = Department.page(params[:page])
     end
 
-    # @departments = Department.all
     @department = Department.new
   end
 
@@ -24,7 +23,6 @@ class Admin::DepartmentsController < ApplicationController
     else
       @users = @department.users.page(params[:page])
     end
-    # @users = @department.users.page(params[:page])
   end
 
   def create

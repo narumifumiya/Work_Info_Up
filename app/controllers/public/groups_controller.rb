@@ -10,8 +10,6 @@ class Public::GroupsController < ApplicationController
     else
       @groups = Group.page(params[:page])
     end
-    
-    # @groups = Group.all
   end
 
   def show

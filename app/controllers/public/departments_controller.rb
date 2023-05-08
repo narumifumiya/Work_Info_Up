@@ -11,6 +11,6 @@ class Public::DepartmentsController < ApplicationController
     else
       @users = @department.users.page(params[:page])
     end
-    # @users = @department.users
   end
+  
 end

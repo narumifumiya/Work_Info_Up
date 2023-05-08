@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
     else
       @users = User.page(params[:page])
     end
-    # @users = User.page(params[:page])
+
     @departments = Department.all
   end
 

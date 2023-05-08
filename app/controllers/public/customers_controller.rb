@@ -11,8 +11,6 @@ class Public::CustomersController < ApplicationController
     else
       @customers = @company.customers.page(params[:page])
     end
-
-    # @customers = @company.customers
   end
 
   def new
