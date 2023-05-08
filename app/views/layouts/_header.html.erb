@@ -2,11 +2,11 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
       <% if admin_signed_in? %>
-        <a class="navbar-brand p-3 font-weight-bold" href="/admin">
+        <a class="navbar-brand p-3 font-weight-bold logo" href="/admin">
           <%= image_tag 'logo.png', size: "50x50" %> Work Info Up
         </a>
       <% else %>
-        <a class="navbar-brand p-3 font-weight-bold" href="/">
+        <a class="navbar-brand p-3 font-weight-bold logo" href="/">
           <%= image_tag 'logo.png', size: "50x50" %> Work Info Up
         </a>
       <% end %>
