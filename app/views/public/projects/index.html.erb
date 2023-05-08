@@ -8,7 +8,6 @@
         <%= link_to '新しい順', company_projects_path(latest: "true"), class: 'text-dark' %> |
         <%= link_to '古い順', company_projects_path(old: "true"), class: 'text-dark' %>
       </P>
-
       <%= render 'public/projects/index', projects: @projects %>
     </div>
   </div>

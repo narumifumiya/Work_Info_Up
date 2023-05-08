@@ -2,7 +2,6 @@
   <h2 class="text-center"><%= @range %> 検索結果</h2>
 
   <div class="row mt-5">
-    
     <div class="col-11 col-md-12 mx-auto">
       <% if @range == "ユーザー" %>
         <%= render 'public/users/index', users: @users %>
@@ -27,7 +26,6 @@
     <% else %>
       <div class="row mx-auto mt-5"><%= paginate @groups %></div>
     <% end %>
-
   </div>
 
 </div>

@@ -12,7 +12,6 @@
       <p>所属部署：<%= @customer.department %></p>
       <p>メールアドレス：<%= @customer.email %></p>
       <p>電話番号：<%= @customer.phone_number %></p>
-
       <div>
         <%= link_to "編集", edit_company_customer_path(@company, @customer), class: "btn btn-outline-success btn-sm"%>
         <%= link_to "削除", company_customer_path(@company, @customer), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>

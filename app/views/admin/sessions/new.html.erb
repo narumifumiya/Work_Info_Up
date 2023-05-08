@@ -1,12 +1,8 @@
 <div class="container">
   <h2 class="text-center">管理者 Log in</h2>
-
   <div class="row mt-5">
     <div class="col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6 mx-auto card p-5">
-
-
       <%= form_with model: @admin, url: admin_session_path do |f| %>
-      <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <div><label for="email">メールアドレス</label></div>
           <div><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email", placeholder: "Email" %></div>
@@ -27,10 +23,8 @@
               <%= f.label :remember_me %>
           </div>
         <% end %>
-
       <% end %>
      </div>
   </div>
   <%#= render "admin/shared/links" %>
-
 </div>

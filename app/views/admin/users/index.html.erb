@@ -1,6 +1,5 @@
 <div class="container">
   <h2 class="text-center">メンバー</h2>
-
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <div>
@@ -12,9 +11,7 @@
       </P>
       <%= render 'admin/users/index', users: @users %>
     </div>
-
+    
     <div class="mx-auto mt-5"><%= paginate @users %></div>
-
   </div>
-
 </div>

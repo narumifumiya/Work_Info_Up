@@ -1,8 +1,6 @@
 <div class="container">
   <h2 class="text-center"><%= @range %> 検索結果</h2>
-
   <div class="row mt-5">
-    
     <div class="col-11 col-md-12 mx-auto">
       <% if @range == "ユーザー" %>
         <%= render 'admin/users/index', users: @users %>
@@ -29,5 +27,4 @@
     <% end %>
 
   </div>
-
 </div>

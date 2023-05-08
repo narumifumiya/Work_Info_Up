@@ -5,7 +5,6 @@
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @group.get_group_image(300,300) %>
     </div>
-
     <div class="col-8 col-md-6 mx-auto">
       <p>グループ名：<%= @group.name %></p>
       <p>紹介文：<%= @group.introduction %></p>
@@ -25,7 +24,6 @@
         <p><%= link_to 'グループを削除する', group_path(@group), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %></p>
       <% end %>
     </div>
-
   </div>
 
   <div class="row mt-5">
@@ -33,9 +31,7 @@
       <h4 class="text-center mb-3">グループメンバー</h4>
       <%= render 'public/users/index', users: @users %>
     </div>
-
     <div class="mx-auto mt-5"><%= paginate @users %></div>
-
   </div>
 
   <div class="row mt-5">

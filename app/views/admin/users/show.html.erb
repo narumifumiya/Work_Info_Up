@@ -1,11 +1,9 @@
 <div class="container">
   <h2 class="text-center">メンバー詳細</h2>
-
   <div class="row mt-5">
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @user.get_profile_image(300,300) %>
     </div>
-
     <div class="col-8 col-md-6 mx-auto">
       <p>名前：<%= @user.name %></p>
       <p>フリガナ：<%= @user.name_kana%></p>
@@ -17,13 +15,12 @@
       </p>
       <p>メールアドレス：<%= @user.email %></p>
       <p>電話番号：<%= @user.phone_number %></p>
-
-        <% if @user.is_deleted == false %>
-          <p class="text-success font-weight-bold">在籍中</p>
-        <% else %>
-          <p class="text-danger font-weight-bold">退社済</p>
-        <% end %>
-
+      <!-- ユーザーの在籍状態によって文字色変更 -->
+      <% if @user.is_deleted == false %>
+        <p class="text-success font-weight-bold">在籍中</p>
+      <% else %>
+        <p class="text-danger font-weight-bold">退社済</p>
+      <% end %>
       <div>
         <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-outline-success btn-sm"%>
         <%#= link_to "削除", admin_company_path(@company), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>

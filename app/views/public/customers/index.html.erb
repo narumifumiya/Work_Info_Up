@@ -15,7 +15,6 @@
             <th>名前</th>
             <th>役職</th>
             <th>所属部署</th>
-
           </tr>
         </thead>
         <tbody>
@@ -24,7 +23,6 @@
               <td><%= link_to customer.name, company_customer_path(@company, customer.id), class: 'text-dark' %></td>
               <td><%= customer.position %></td>
               <td><%= customer.department %></td>
-
             </tr>
           <% end %>
         </tbody>
@@ -44,6 +42,5 @@
       <p class="text-center"><%= link_to "戻る", company_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
-
 
 </div>

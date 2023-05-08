@@ -3,11 +3,9 @@
   <h4 class="text-center">プロジェクト詳細</h4>
 
   <div class="row mt-5">
-
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @project.get_project_image(300,300) %>
     </div>
-
     <div class="col-12 col-sm-8 col-md-6 mx-auto">
       <p>プロジェクト名：<%= @project.name %></p>
       <p><!-- .to_s(:delimited)がデータがない場合干渉する為、if分にてエラー回避 -->
@@ -17,6 +15,7 @@
         <% end %>
       </p>
       <p>期間：<%= @project.start_date %> 〜 <%= @project.end_date %></p>
+      <!-- プロジェクトの注文ステータスによって文字色変更 -->
       <p>受注ステータス：
         <% if @project.order_status == "under_negotiation" %>
           <span class="text-secondary font-weight-bold"><%= @project.order_status_i18n %></span>
@@ -26,6 +25,7 @@
           <span class="text-danger font-weight-bold"><%= @project.order_status_i18n %></span>
         <% end %>
       </p>
+      <!-- プロジェクトの進捗ステータスによって文字色変更 -->
       <p>進捗ステータス：
         <% if @project.progress_status == "not_started_yet" %>
           <span class="text-secondary font-weight-bold"><%= @project.progress_status_i18n %></span>
@@ -51,14 +51,13 @@
       <div id="favorite_btn_<%= @project.id %>">
         <%= render 'public/favorites/btn', company: @company, project: @project %>
       </div>
-
+      <!-- プロジェクト作成者のみ編集可能 -->
       <div>
         <% if @project.user_id == current_user.id %>
           <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
         <% end %>
       </div>
     </div>
-
   </div>
 
   <div class="mt-5", id="comments_area">

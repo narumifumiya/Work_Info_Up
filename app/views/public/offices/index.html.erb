@@ -16,14 +16,11 @@
     <%= link_to "事業所を追加する", new_company_office_path(@company), class: "btn btn-sm btn-success" %>
   </div>
 
-
-
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
       <div class="d-flex justify-content-center"><%= paginate @offices %></div>
       <p class="text-center"><%= link_to "戻る", company_path(@company), class: 'text-dark font-weight-bold' %></p>
     </div>
   </div>
-
 
 </div>

@@ -1,6 +1,5 @@
 <div class="container">
   <h2 class="text-center">グループ一覧</h2>
-
   <div class="row mt-5">
     <P>
       <%= link_to '新しい順', admin_groups_path(latest: "true"), class: 'text-dark' %> |
@@ -9,9 +8,7 @@
     <div class="col-11 col-md-12 mx-auto">
       <%= render 'admin/groups/index', groups: @groups %>
     </div>
-
     <div class="mx-auto mt-5"><%= paginate @groups %></div>
-
   </div>
 
   <div class="row mt-5">
