@@ -46,10 +46,6 @@
         </table>
       </p>
       <p>説明：<%= @project.introduction %></p>
-      <!--  いいねボタン　-->
-      <!--<div id="favorite_btn_<#%= @project.id %>">-->
-      <!--  <%#= render 'public/favorites/btn', company: @company, project: @project %>-->
-      <!--</div>-->
 
       <div>
         <%# if @project.user_id == current_user.id %>
@@ -62,9 +58,9 @@
   </div>
 
   <div class="mt-5", id="admin_comments_area" >
-    <p class="text-right">
-      <%= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
-    </p>
+    <!--<p class="text-right">-->
+    <!--  <%#= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>-->
+    <!--</p>-->
     <%= render 'admin/project_comments/index', project: @project %>
   </div>
 

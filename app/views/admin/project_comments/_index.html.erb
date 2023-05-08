@@ -1,5 +1,10 @@
-<p>コメント件数：<%= project.project_comments.count %></p>
-  <table>
+<div class="d-flex justify-content-between">
+  <p>コメント件数：<%= project.project_comments.count %></p>
+  <p>
+    <%= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+  </p>
+</div>
+<table>
   <% project.project_comments.each do |project_comment| %>
     <tr>
       <td>

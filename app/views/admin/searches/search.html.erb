@@ -6,6 +6,7 @@
       <% if @range == "ユーザー" %>
         <%= render 'admin/users/index', users: @users %>
 
+
       <% elsif @range == "得意先" %>
         <%= render 'admin/companies/index', companies: @companies %>
 
@@ -20,6 +21,24 @@
 
       <% end %>
     </div>
+
+    <% if @range == "ユーザー" %>
+       <div class="row mx-auto mt-5"><%= paginate @users %></div>
+       
+      <% elsif @range == "得意先" %>
+        <div class="row mx-auto mt-5"><%= paginate @companies %></div>
+
+      <% elsif @range == "プロジェクト" %>
+         <div class="row mx-auto mt-5"><%= paginate @projects %></div>
+
+      <% elsif @range == "タグ" %>
+
+      <% else %>
+         <div class="row mx-auto mt-5"><%= paginate @groups %></div>
+
+    <% end %>
+
+
   </div>
 
 </div>
