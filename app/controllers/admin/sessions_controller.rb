@@ -6,6 +6,4 @@ class Admin::SessionsController < Devise::SessionsController
     admin_root_path
   end
 
-
-
 end

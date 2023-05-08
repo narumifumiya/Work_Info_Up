@@ -9,7 +9,6 @@ class Admin::GroupsController < ApplicationController
     else
       @groups = Group.page(params[:page])
     end
-    # @groups = Group.all
   end
 
   def destroy
@@ -18,4 +17,5 @@ class Admin::GroupsController < ApplicationController
     flash[:alert] = "グループを削除しました"
     redirect_to admin_groups_path
   end
+  
 end

@@ -12,8 +12,6 @@ class Public::ProjectsController < ApplicationController
     else
       @projects = @company.projects.page(params[:page])
     end
-
-    # @projects = @company.projects
   end
 
   def new
@@ -47,8 +45,6 @@ class Public::ProjectsController < ApplicationController
     @project_tags = @project.tags
   end
 
-
-
   def edit
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
@@ -71,7 +67,6 @@ class Public::ProjectsController < ApplicationController
       @company = Company.find(params[:company_id])
       render :edit
     end
-
   end
 
   private

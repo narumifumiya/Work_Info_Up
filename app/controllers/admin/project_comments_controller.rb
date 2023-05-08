@@ -5,7 +5,6 @@ class Admin::ProjectCommentsController < ApplicationController
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:project_id])
     ProjectComment.find(params[:id]).destroy
-    # redirect_to request.referer
   end
   
   def destroy_all

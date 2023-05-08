@@ -1,13 +1,10 @@
 <div class="container">
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center">プロジェクト詳細</h4>
-  
   <div class="row mt-5">
-
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @project.get_project_image(300,300) %>
     </div>
-
     <div class="col-12 col-sm-8 col-md-6 mx-auto">
       <p>プロジェクト名：<%= @project.name %></p>
       <p><!-- .to_s(:delimited)がデータがない場合干渉する為、if分にてエラー回避 -->
@@ -17,6 +14,7 @@
         <% end %>
       </p>
       <p>期間：<%= @project.start_date %> 〜 <%= @project.end_date %></p>
+      <!-- 受注ステータスによって文字色変更 -->
       <p>受注ステータス：
         <% if @project.order_status == "under_negotiation" %>
           <span class="text-secondary font-weight-bold"><%= @project.order_status_i18n %></span>
@@ -26,6 +24,7 @@
           <span class="text-danger font-weight-bold"><%= @project.order_status_i18n %></span>
         <% end %>
       </p>
+      <!-- 進捗ステータスによって文字色変更 -->
       <p>進捗ステータス：
         <% if @project.progress_status == "not_started_yet" %>
           <span class="text-secondary font-weight-bold"><%= @project.progress_status_i18n %></span>
@@ -46,11 +45,7 @@
         </table>
       </p>
       <p>説明：<%= @project.introduction %></p>
-      <!--  いいねボタン　-->
-      <!--<div id="favorite_btn_<#%= @project.id %>">-->
-      <!--  <%#= render 'public/favorites/btn', company: @company, project: @project %>-->
-      <!--</div>-->
-
+      <p>営業担当：<%= link_to @project.user.name, admin_user_path(@project.user.id), class: 'text-dark' %></p>
       <div>
         <%# if @project.user_id == current_user.id %>
           <%= link_to "編集", edit_admin_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
@@ -62,9 +57,9 @@
   </div>
 
   <div class="mt-5", id="admin_comments_area" >
-    <p class="text-right">
-      <%= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
-    </p>
+    <!--<p class="text-right">-->
+    <!--  <%#= link_to "コメントを全て削除", destroy_all_admin_company_project_project_comments_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>-->
+    <!--</p>-->
     <%= render 'admin/project_comments/index', project: @project %>
   </div>
 

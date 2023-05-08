@@ -10,7 +10,7 @@
     <% projects.each do |project| %>
       <tr>
         <td><%= link_to project.name, admin_company_project_path(project.company, project.id), class: 'text-dark' %></td>
-
+        <!-- 受注ステータスによって文字色変更 -->
         <td class="font-weight-bold">
           <% if project.order_status == "under_negotiation" %>
             <span class="text-secondary"><%= project.order_status_i18n %></span>
@@ -20,7 +20,7 @@
              <span class="text-danger"><%= project.order_status_i18n %></span>
           <% end %>
         </td>
-
+        <!-- 進捗ステータスによって文字色変更 -->
         <td class="font-weight-bold">
           <% if project.progress_status == "not_started_yet" %>
             <span class="text-secondary"><%= project.progress_status_i18n %></span>
@@ -30,7 +30,6 @@
             <span class="text-success"><%= project.progress_status_i18n %></span>
           <% end %>
         </td>
-
       </tr>
     <% end %>
   </tbody>

@@ -2,15 +2,14 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
       <% if admin_signed_in? %>
-        <a class="navbar-brand p-3 font-weight-bold" href="/admin">
+        <a class="navbar-brand p-3 font-weight-bold logo" href="/admin">
           <%= image_tag 'logo.png', size: "50x50" %> Work Info Up
         </a>
       <% else %>
-        <a class="navbar-brand p-3 font-weight-bold" href="/">
+        <a class="navbar-brand p-3 font-weight-bold logo" href="/">
           <%= image_tag 'logo.png', size: "50x50" %> Work Info Up
         </a>
       <% end %>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -83,7 +82,6 @@
           </li>
 
         <% else %>
-
           <li class="nav-item">
             <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-user-plus"></i> 新規登録

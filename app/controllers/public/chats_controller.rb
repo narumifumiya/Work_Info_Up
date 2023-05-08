@@ -12,14 +12,13 @@ class Public::ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @chat.group_id = @group.id
     @chat.save
-    # redirect_to request.referer
   end
 
   def destroy
     @group = Group.find(params[:group_id])
     @chat= Chat.find_by(id: params[:id], user_id: current_user.id)
     @chat.destroy
-    # redirect_to request.referer
+
   end
 
 

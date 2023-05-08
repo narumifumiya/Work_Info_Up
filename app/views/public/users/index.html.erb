@@ -13,13 +13,10 @@
           <%= link_to '新しい順', public_users_path(latest: "true"),  class: 'text-dark' %> |
           <%= link_to '古い順', public_users_path(old: "true"),  class: 'text-dark' %>
         </p>
-
       <%= render 'public/users/index', users: @users %>
-
     </div>
 
     <div class="col-md-3 offset-md-1 text-center">
-
       <div class="card">
         <div class="card-header">
           部署一覧
@@ -32,12 +29,9 @@
           <% end %>
         </ul>
       </div>
+    </div>
 
+    <div class="mx-auto mt-5"><%= paginate @users %></div>
   </div>
-
-  <div class="mx-auto mt-5"><%= paginate @users %></div>
-  </div>
-
-
 
 </div>

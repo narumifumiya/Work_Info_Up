@@ -1,5 +1,4 @@
 class Customer < ApplicationRecord
-
   belongs_to :company
 
   has_one_attached :customer_image

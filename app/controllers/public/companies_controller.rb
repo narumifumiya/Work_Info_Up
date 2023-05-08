@@ -9,10 +9,10 @@ class Public::CompaniesController < ApplicationController
     else
       @companies = Company.page(params[:page])
     end
-    # @companies = Company.all
   end
 
   def show
     @company = Company.find(params[:id])
   end
+  
 end

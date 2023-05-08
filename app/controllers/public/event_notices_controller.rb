@@ -24,12 +24,10 @@ class Public::EventNoticesController < ApplicationController
 
     # @group,@title,@bodyのデータを持ったまま、view/event_notices/sent.html.erbを表示する
     render :sent
-
   end
 
   def sent
     redirect_to group_path(params[:group_id])
   end
-
 
 end

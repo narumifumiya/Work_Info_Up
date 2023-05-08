@@ -11,8 +11,6 @@ class Admin::ProjectsController < ApplicationController
     else
       @projects = @company.projects.page(params[:page])
     end
-    
-    # @projects = @company.projects
   end
 
   def show
@@ -59,9 +57,5 @@ class Admin::ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :start_date, :end_date, :introduction, :contract_amount, :order_status, :progress_status, :project_image, :contract_amount)
   end
-
-
-
-
 
 end

@@ -1,5 +1,4 @@
 class Office < ApplicationRecord
-
   belongs_to :company
 
   validates :name, presence: true

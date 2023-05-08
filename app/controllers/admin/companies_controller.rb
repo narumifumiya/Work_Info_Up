@@ -9,7 +9,7 @@ class Admin::CompaniesController < ApplicationController
     else
       @companies = Company.page(params[:page])
     end
-    # @companies = Company.all
+    
     @company = Company.new
   end
 

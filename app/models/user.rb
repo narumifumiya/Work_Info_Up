@@ -19,8 +19,8 @@ class User < ApplicationRecord
   validates :phone_number,   presence: true, uniqueness: true
   validates :email, uniqueness: true
 
-   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
-   scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
+  scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
+  scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -44,7 +44,5 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
-
-
 
 end
