@@ -2,23 +2,32 @@
   <h2 class="text-center"><%= @range %> 検索結果</h2>
 
   <div class="row mt-5">
+    
     <div class="col-11 col-md-12 mx-auto">
       <% if @range == "ユーザー" %>
         <%= render 'public/users/index', users: @users %>
-
       <% elsif @range == "得意先" %>
         <%= render 'public/companies/index', companies: @companies %>
-
       <% elsif @range == "プロジェクト" %>
         <%= render 'public/projects/index', projects: @projects %>
-
       <% elsif @range == "タグ" %>
         <%= render 'public/projects/index', projects: @tags %>
-
       <% else %>
         <%= render 'public/groups/index', groups: @groups %>
       <% end %>
     </div>
+    
+    <% if @range == "ユーザー" %>
+      <div class="row mx-auto mt-5"><%= paginate @users %></div>
+    <% elsif @range == "得意先" %>
+      <div class="row mx-auto mt-5"><%= paginate @companies %></div>
+    <% elsif @range == "プロジェクト" %>
+      <div class="row mx-auto mt-5"><%= paginate @projects %></div>
+    <% elsif @range == "タグ" %>
+    <% else %>
+      <div class="row mx-auto mt-5"><%= paginate @groups %></div>
+    <% end %>
+
   </div>
 
 </div>

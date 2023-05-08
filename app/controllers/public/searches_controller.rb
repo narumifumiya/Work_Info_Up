@@ -8,15 +8,15 @@ class Public::SearchesController < ApplicationController
 
 
     if @range == "ユーザー"
-      @users = User.looks(@search, @word)
+      @users = User.looks(@search, @word).page(params[:page])
     elsif @range == "得意先"
-      @companies = Company.looks(@search, @word)
+      @companies = Company.looks(@search, @word).page(params[:page])
     elsif @range == "プロジェクト"
-      @projects = Project.looks(@search, @word)
+      @projects = Project.looks(@search, @word).page(params[:page])
     elsif @range == "タグ"
       @tags = Tag.looks(@search, @word)
     elsif @range == "グループ"
-      @groups = Group.looks(@search, @word)
+      @groups = Group.looks(@search, @word).page(params[:page])
     end
   end
 
