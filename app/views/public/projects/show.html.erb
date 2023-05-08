@@ -46,6 +46,7 @@
         </table>
       </p>
       <p>説明：<%= @project.introduction %></p>
+      <p>営業担当：<%= link_to @project.user.name, public_user_path(@project.user.id), class: 'text-dark' %></p>
       <!--  いいねボタン　-->
       <div id="favorite_btn_<%= @project.id %>">
         <%= render 'public/favorites/btn', company: @company, project: @project %>
