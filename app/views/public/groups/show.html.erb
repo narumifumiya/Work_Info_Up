@@ -8,18 +8,18 @@
     <div class="col-8 col-md-6 mx-auto">
       <p>グループ名：<%= @group.name %></p>
       <p>紹介文：<%= @group.introduction %></p>
+      <p>グループオーナー：<%= @group_owner.name %></p>
       <p><%= link_to 'チャットルーム', group_chats_path(@group) %></p>
       <!-- @groupに紐づいたgroup_user（user_idカラムに自分のIDを持っている）があるかどうかを確かめる。-->
       <% if @group.group_users.exists?(user_id: current_user.id) %>
         <!-- group_usersコントローラーの#destroyアクションを発動　@groupからgroup_user(自分)を消す -->
         <p><%= link_to 'グループを退出する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
       <% else %>
-      <!-- group_usersコントローラーの#createアクションを発動　@groupにgroup_user(自分)を追加する -->
+        <!-- group_usersコントローラーの#createアクションを発動　@groupにgroup_user(自分)を追加する -->
         <p><%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %></p>
       <% end %>
-
+      <p><%= link_to 'グループメール作成', new_group_event_notice_path(@group), class: "btn btn-outline-info btn-sm" %></p>
       <% if @group.owner_id == current_user.id %>
-        <p><%= link_to 'グループメール作成', new_group_event_notice_path(@group), class: "btn btn-outline-info btn-sm" %></p>
         <p><%= link_to 'グループ編集', edit_group_path(@group), class: "btn btn-outline-success btn-sm" %></p>
         <p><%= link_to 'グループを削除する', group_path(@group), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %></p>
       <% end %>
