@@ -11,7 +11,7 @@
     <% groups.each do |group| %>
       <tr>
         <td><%= image_tag group.get_group_image(50,50) %></td>
-        <td><%= link_to group.name, group_path(group) %></td>
+        <td><%= link_to group.name, group_path(group),class: 'text-dark' %></td>
         <td><%= group.introduction %></td>
         <td><%= group.group_users.count %></td>
       </tr>
