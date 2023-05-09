@@ -1,18 +1,25 @@
 <div class="container">
-  <h1 class='text-center'>Welcome Work Info UP</h1>
+  <h1 class='text-center top-title font-weight-bold'>Work Info UP</h1>
+  <div class="row mt-5">
+    <div class="col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6 mx-auto border-top border-bottom border-dark p-2">
+      <p>Work Info Upでは誰もが簡単に各営業が抱えている案件情報を確認することが出来ます。<br>
+      また、グループ機能からメール配信やチャットが利用でき、用途に合わせたグループでのコミュニケーションが可能となります。
+      </p>
+    </div>
+  </div>
 
   <div class="row mt-5">
     <div class="col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6 mx-auto card p-5">
       <%= link_to 'ログイン', new_user_session_path, class: "btn btn-success btn-sm btn-block mb-3 sign_in" %>
       <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary btn-sm btn-block mb-3 sign_in" %>
-      <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      <%= link_to 'ゲストログイン', public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
     </div>
   </div>
-  
+
   <div class="row">
      <div class="col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6 mx-auto mt-2">
       <%= link_to '管理者の方はこちらから', new_admin_session_path %>
     </div>
   </div>
-  
+
 </div>
