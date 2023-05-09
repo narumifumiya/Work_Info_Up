@@ -83,11 +83,12 @@ ja:
         introduction: "説明"
         start_date: "開始日"
         end_date: "終了日"
-      user:
+      user: 
         name: "名前"
         name_kana: "名前（フリガナ）"
         email: "メールアドレス"
         phone_number: "電話番号"
+        password: "パスワード"
       office:
         name: "事業所名"
       customer:

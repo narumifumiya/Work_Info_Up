@@ -18,7 +18,6 @@ class Public::ChatsController < ApplicationController
     @group = Group.find(params[:group_id])
     @chat= Chat.find_by(id: params[:id], user_id: current_user.id)
     @chat.destroy
-
   end
 
 

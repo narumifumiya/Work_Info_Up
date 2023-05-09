@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   # ユーザー用
   scope module: :public do
     root to: 'homes#top'
-    # resources :users, only: [:index, :show, :edit, :update]
+    # sign_upのエラーメッセージ表示後にリロードした際に
+    get "users" => 'users#users'
     resources :departments, only: [:show]
     get "search" => "searches#search"
     resources :groups do
