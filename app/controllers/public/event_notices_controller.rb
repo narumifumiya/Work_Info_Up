@@ -1,4 +1,6 @@
 class Public::EventNoticesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :join_group_user?
 
   def new
     # view/event_notices/new.html.erbのフォームでグループIDが必要な為
@@ -28,6 +30,18 @@ class Public::EventNoticesController < ApplicationController
 
   def sent
     redirect_to group_path(params[:group_id])
+  end
+  
+  private
+  
+  # グループに参加していないとチャットルームにはいけない
+  def join_group_user?
+    @group = Group.find(params[:group_id])
+    @group_users = @group.group_users
+    unless @group_users.exists?(user_id: current_user.id)
+        flash[:alert] = "グループに参加してください"
+        redirect_to request.referer
+    end
   end
 
 end

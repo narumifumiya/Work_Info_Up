@@ -4,17 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
 
 
-
-
-
 html,　body {
   height: 100%;
 }
-// メインの背景色と最小高さ
-main {
-  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
-  background-size: cover
-}
+
 // ヘッダーの背景色
 .header-bg {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
@@ -22,4 +15,11 @@ main {
 
 .logo {
   font-family: 'Philosopher', sans-serif;
+}
+
+// メインの背景色と最小高さ
+.main-wrapper {
+  min-height: 70vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  background-size: cover
 }
