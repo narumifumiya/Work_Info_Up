@@ -11,14 +11,15 @@ class Public::ChatsController < ApplicationController
     @group = Group.find(params[:group_id])
     @chat = current_user.chats.new(chat_params)
     @chat.group_id = @group.id
-    @chat.save
+    unless @chat.save
+      render 'error'
+    end
   end
 
   def destroy
     @group = Group.find(params[:group_id])
     @chat= Chat.find_by(id: params[:id], user_id: current_user.id)
     @chat.destroy
-
   end
 
 

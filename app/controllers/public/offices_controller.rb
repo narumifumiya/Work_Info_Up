@@ -3,7 +3,7 @@ class Public::OfficesController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    
+
     if params[:latest] #新しい順
       @offices = @company.offices.latest.page(params[:page])
     elsif params[:old] == true #古い順
@@ -43,7 +43,7 @@ class Public::OfficesController < ApplicationController
       flash[:notice] = "事業所情報を更新しました"
       redirect_to company_offices_path(@company)
     else
-       flash[:alert] = "事業所名が入力されていません"
+       flash[:alert] = "事業所名が空欄または既に使用されている為、登録できません"
       redirect_to request.referer
 
     end

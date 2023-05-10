@@ -2,24 +2,24 @@
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 // ヘッダーとフッダーのロゴフォント
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&family=Philosopher&family=Work+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP:wght@600&family=Philosopher&family=Work+Sans:wght@600&display=swap');
 
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+}
 // ヘッダーの背景色
 .header-bg {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
-
 .logo, .top-title {
   font-family: 'Philosopher', sans-serif;
 }
-
 // メインの背景色と最小高さ
 main {
   min-height: 65vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
   background-size: cover
 }
-
 .top-title {
   font-family: 'Work Sans', sans-serif;
 }

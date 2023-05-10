@@ -88,6 +88,7 @@ ja:
         name_kana: "名前（フリガナ）"
         email: "メールアドレス"
         phone_number: "電話番号"
+        password: "パスワード"
       office:
         name: "事業所名"
       customer:
@@ -98,6 +99,10 @@ ja:
         name: "部署名"
       group:
         name: "グループ名"
+      project_comment:
+        comment: "コメント"
+      chat:
+        message: "メッセージ"
 
   views:
     pagination:

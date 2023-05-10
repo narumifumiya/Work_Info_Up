@@ -9,7 +9,7 @@ class Admin::CompaniesController < ApplicationController
     else
       @companies = Company.page(params[:page])
     end
-    
+
     @company = Company.new
   end
 
@@ -17,7 +17,7 @@ class Admin::CompaniesController < ApplicationController
     @company = Company.new(company_params)
     if @company.save
       flash[:notice] = "得意先を追加しました"
-      redirect_to request.referer
+      redirect_to admin_company_path(@company)
     else
       flash[:alert] = "得意先名が入力されていません"
       redirect_to request.referer

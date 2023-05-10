@@ -65,6 +65,11 @@
     <%= render 'public/project_comments/index', project: @project %>
   </div>
 
+  <div id="comments_error">
+    <!--　エラーメッセージ　-->
+    <%= render 'layouts/errors', obj: @project_comment %>
+  </div>
+
   <div class="mt-5">
     <!-- コメントフォーム　-->
     <%= render 'public/project_comments/form', company: @company, project: @project, project_comment: @project_comment %>

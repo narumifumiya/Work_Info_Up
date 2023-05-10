@@ -39,6 +39,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites
   end
+  
+  def users
+  end
 
   private
 

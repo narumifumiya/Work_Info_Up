@@ -1,6 +1,6 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     if params[:latest] #新しい順
@@ -28,7 +28,7 @@ class Public::GroupsController < ApplicationController
     # ↓誰が作ったグループかを判断する為に必要。
     @group.owner_id = current_user.id
     if @group.save
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       render :new
     end
@@ -40,7 +40,7 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
