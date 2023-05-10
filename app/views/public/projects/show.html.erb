@@ -64,6 +64,10 @@
     <!--　コメント表示　-->
     <%= render 'public/project_comments/index', project: @project %>
   </div>
+  
+  <div id="comments_error">
+    <%= render 'layouts/errors', obj: @project_comment %>
+  </div>
 
   <div class="mt-5">
     <!-- コメントフォーム　-->

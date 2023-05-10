@@ -4,9 +4,11 @@ class Public::ProjectCommentsController < ApplicationController
   def create
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:project_id])
-    comment = current_user.project_comments.new(project_comment_params)
-    comment.project_id = @project.id
-    comment.save
+    @comment = current_user.project_comments.new(project_comment_params)
+    @comment.project_id = @project.id
+    unless @comment.save
+      render 'error'
+    end
   end
 
   def destroy

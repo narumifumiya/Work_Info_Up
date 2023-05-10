@@ -99,6 +99,8 @@ ja:
         name: "部署名"
       group:
         name: "グループ名"
+      project_comment:
+        comment: "コメント"
 
   views:
     pagination:
