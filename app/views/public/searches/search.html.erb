@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center"><%= @range %> 検索結果</h2>
-
+  <h4 class="text-center">検索ワード "<%= @word %>"</h4>
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <% if @range == "ユーザー" %>
@@ -15,7 +15,7 @@
         <%= render 'public/groups/index', groups: @groups %>
       <% end %>
     </div>
-    
+
     <% if @range == "ユーザー" %>
       <div class="row mx-auto mt-5"><%= paginate @users %></div>
     <% elsif @range == "得意先" %>
