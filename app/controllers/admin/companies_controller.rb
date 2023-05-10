@@ -19,7 +19,7 @@ class Admin::CompaniesController < ApplicationController
       flash[:notice] = "得意先を追加しました"
       redirect_to admin_company_path(@company)
     else
-      flash[:alert] = "得意先名が入力されていません"
+      flash[:alert] = "企業名が空欄または既に使用されている為、登録ができません"
       redirect_to request.referer
     end
   end
