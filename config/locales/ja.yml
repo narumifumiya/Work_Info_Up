@@ -83,7 +83,7 @@ ja:
         introduction: "説明"
         start_date: "開始日"
         end_date: "終了日"
-      user: 
+      user:
         name: "名前"
         name_kana: "名前（フリガナ）"
         email: "メールアドレス"
@@ -101,6 +101,8 @@ ja:
         name: "グループ名"
       project_comment:
         comment: "コメント"
+      chat:
+        message: "メッセージ"
 
   views:
     pagination:

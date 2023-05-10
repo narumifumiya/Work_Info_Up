@@ -7,6 +7,12 @@
       <div class="message mx-auto" id="messages_area">
         <%= render 'public/chats/index', group: @group %>
       </div>
+
+      <div id="chats_error">
+        <!--　エラーメッセージ　-->
+        <%= render 'layouts/errors', obj: @chat %>
+      </div>
+
       <div class="mt-5">
         <%= render 'public/chats/form', group: @group, chat: @chat %>
       </div>
