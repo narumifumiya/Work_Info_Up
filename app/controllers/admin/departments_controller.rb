@@ -31,7 +31,7 @@ class Admin::DepartmentsController < ApplicationController
       flash[:notice] = "部署の登録が成功しました"
       redirect_to request.referer
     else
-      flash[:alert] = "部署名が入力されていません"
+      flash[:alert] = "部署名が空欄または既に使用されている為、登録できません"
       redirect_to request.referer
     end
   end
