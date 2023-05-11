@@ -6,7 +6,9 @@ class Public::ProjectCommentsController < ApplicationController
     @project = Project.find(params[:project_id])
     @comment = current_user.project_comments.new(project_comment_params)
     @comment.project_id = @project.id
-    unless @comment.save
+    if @comment.save
+      @project.create_notification_comment!(current_user, @comment.id)
+    else
       render 'error'
     end
   end

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
         resource :favorites, only: [:create, :destroy]
       end
     end
+    # 通知用
+    resources :notifications, only: [:index] do
+      collection do
+        delete "destroy_all"
+      end
+    end
   end
 
   # 管理者用
