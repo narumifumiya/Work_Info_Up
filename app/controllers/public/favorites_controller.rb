@@ -6,6 +6,8 @@ class Public::FavoritesController < ApplicationController
     @project = Project.find(params[:project_id])
     favorite = current_user.favorites.new(project_id: @project.id)
     favorite.save
+    # いいね通知も作成する
+    @project.create_notification_favorite!(current_user)
   end
 
   def destroy

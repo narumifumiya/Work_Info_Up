@@ -1,0 +1,9 @@
+<div>
+  <p>
+    <%= notification_form(notification) %><span><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+    <br>
+    <% if !@comment.nil? %>
+      <span class="text-secondary"><%= @comment_content %></span>
+    <% end %>
+  </p>
+</div>
