@@ -16,11 +16,9 @@ class Admin::CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      flash[:notice] = "得意先を追加しました"
-      redirect_to admin_company_path(@company)
+      redirect_to admin_company_path(@company), notice: "得意先を追加しました"
     else
-      flash[:alert] = "企業名が空欄または既に使用されている為、登録ができません"
-      redirect_to request.referer
+      render :error
     end
   end
 
@@ -35,8 +33,7 @@ class Admin::CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     if @company.update(company_params)
-      flash[:notice] = "得意先情報を編集しました"
-      redirect_to admin_company_path(@company)
+      redirect_to admin_company_path(@company), notice: "得意先情報を編集しました"
     else
       render :edit
     end
@@ -45,8 +42,7 @@ class Admin::CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     if @company.destroy
-      flash[:alert] = "得意先を削除しました"
-      redirect_to admin_companies_path
+      redirect_to admin_companies_path, alert: "得意先を削除しました"
     end
   end
 

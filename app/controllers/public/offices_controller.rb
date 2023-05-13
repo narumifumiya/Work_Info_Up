@@ -23,8 +23,7 @@ class Public::OfficesController < ApplicationController
     @office = Office.new(office_params)
     @office.company_id = @company.id
     if @office.save
-      flash[:notice] = "事業所を追加しました"
-      redirect_to company_offices_path(@company)
+      redirect_to company_offices_path(@company), notice: "事業所を追加しました"
     else
       @company = Company.find(params[:company_id])
       render :new
@@ -40,12 +39,9 @@ class Public::OfficesController < ApplicationController
     @company = Company.find(params[:company_id])
     @office = Office.find(params[:id])
     if @office.update(office_params)
-      flash[:notice] = "事業所情報を更新しました"
-      redirect_to company_offices_path(@company)
+      redirect_to company_offices_path(@company), notice: "事業所情報を更新しました"
     else
-      flash[:alert] = "事業所名が入力されていません"
-      redirect_to request.referer
-
+      redirect_to request.referer, alert: "事業所名が入力されていません"
     end
   end
 
@@ -53,8 +49,7 @@ class Public::OfficesController < ApplicationController
     @company = Company.find(params[:company_id])
     @office = Office.find(params[:id])
     @office.destroy
-    flash[:alert] = "事業所を削除しました"
-    redirect_to request.referer
+    redirect_to request.referer, alert: "事業所を削除しました"
   end
 
   private

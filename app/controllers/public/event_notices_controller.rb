@@ -31,16 +31,15 @@ class Public::EventNoticesController < ApplicationController
   def sent
     redirect_to group_path(params[:group_id])
   end
-  
+
   private
-  
+
   # グループに参加していないとチャットルームにはいけない
   def join_group_user?
     @group = Group.find(params[:group_id])
     @group_users = @group.group_users
     unless @group_users.exists?(user_id: current_user.id)
-        flash[:alert] = "グループに参加してください"
-        redirect_to request.referer
+      redirect_to request.referer, alert: "グループに参加してください"
     end
   end
 

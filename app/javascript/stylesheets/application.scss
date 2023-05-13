@@ -23,3 +23,19 @@ main {
 .top-title {
   font-family: 'Work Sans', sans-serif;
 }
+
+// モーダル用
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-dialog {
+  max-width: 600px;
+}
+
+.modal_submit {
+  margin-bottom: 40px;
+}
+.modal-form {
+  padding: 30px;
+}

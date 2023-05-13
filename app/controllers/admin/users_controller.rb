@@ -23,8 +23,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "メンバー情報を変更しました"
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), notice: "メンバー情報を変更しました"
     else
       render :edit
     end
@@ -36,7 +35,7 @@ class Admin::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
-      redirect_to admin_user_path(@user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to admin_user_path(@user) , alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

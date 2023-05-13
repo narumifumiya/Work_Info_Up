@@ -1,9 +1,9 @@
 class Admin::ProjectsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @company = Company.find(params[:company_id])
-    
+
     if params[:latest] #新しい順
       @projects = @company.projects.latest.page(params[:page])
     elsif params[:old] == true #古い順
@@ -36,8 +36,7 @@ class Admin::ProjectsController < ApplicationController
       # project.rbで設定したsave_tags(sent-tags)メソッドを発動
       # 結果として@projectにタグを保存している。詳しい処理内容はproject.rbで確認
       @project.save_tags(tag_list)
-      flash[:notice] = "プロジェクト情報を更新しました"
-      redirect_to admin_company_project_path(@company, @project)
+      redirect_to admin_company_project_path(@company, @project), notice: "プロジェクト情報を更新しました"
     else
       @company = Company.find(params[:company_id])
       render :edit
@@ -48,8 +47,7 @@ class Admin::ProjectsController < ApplicationController
     @company = Company.find(params[:company_id])
     @project = Project.find(params[:id])
     @project.destroy
-    flash[:alert] = "プロジェクトを削除しました"
-    redirect_to  admin_company_projects_path(@company)
+    redirect_to  admin_company_projects_path(@company), alert: "プロジェクトを削除しました"
   end
 
   private
