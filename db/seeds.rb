@@ -186,3 +186,27 @@ Chat.create!(
     {user_id: 10, group_id: 2, message: '場所は多目的ルームでお願いします。'},
   ]
 )
+# タグ
+Tag.create!(
+  [
+    {tag_name: 'マンション'},
+    {tag_name: '社屋'},
+    {tag_name: '札幌'},
+    {tag_name: '工場'},
+    {tag_name: '公園'}
+  ]
+)
+# タグの中間テーブル
+ProjectTag.create!(
+  [
+    {project_id: 2, tag_id: 1},
+    {project_id: 3, tag_id: 1},
+    {project_id: 1, tag_id: 2},
+    {project_id: 4, tag_id: 1},
+    {project_id: 4, tag_id: 3},
+    {project_id: 6, tag_id: 3},
+    {project_id: 7, tag_id: 4},
+    {project_id: 8, tag_id: 5},
+    {project_id: 9, tag_id: 1}
+  ]
+)
