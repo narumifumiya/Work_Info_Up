@@ -25,10 +25,10 @@ class Public::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    # ↓誰が作ったグループかを判断する為に必要。
+    # 誰が作ったグループかを判断する為に必要。
     @group.owner_id = current_user.id
     if @group.save
-      redirect_to group_path(@group)
+      redirect_to group_path(@group), notice: "グループを作成しました"
     else
       render :new
     end
@@ -40,7 +40,7 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to group_path(@group)
+      redirect_to group_path(@group), notice: "グループ情報を更新しました"
     else
       render :edit
     end
@@ -48,14 +48,8 @@ class Public::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
-    if @group.owner_id == current_user.id
-      @group.destroy
-      flash[:notice] = "グループを削除しました"
-      redirect_to groups_path
-    else
-      flash[:alert] = "グループ作成者のみ削除ができます"
-      redirect_to request.referer
-    end
+    @group.destroy
+    redirect_to groups_path, notice: "グループを削除しました"
   end
 
   private

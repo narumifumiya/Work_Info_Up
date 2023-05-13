@@ -1,30 +1,29 @@
 <div class="container">
-  <h2 class="text-center">得意先<br>新規登録/一覧</h2>
-  <div>
-    <%= render 'layouts/errors', obj: @company %>
+  <h2 class="text-center mb-3">得意先<br>新規登録/一覧</h2>
+
+  <!--モーダルフォーム-->
+  <div class="button_new">
+    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#companyModal" data-whatever="@company">新規登録</button>
   </div>
-  <div class="row mt-5">
-    <div class="col-10 col-md-7">
-      <%= form_with model:@company, url: admin_companies_path, method: :post do |f| %>
-        <div class="form-group row">
-          <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
-          <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
-        </div>
 
-        <div class="row">
-          <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
-          <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-md-3 mx-auto"></div>
-          <div class="col-md-9"><%= f.submit "新規登録", class: "btn btn-sm btn-success"%></div>
-        </div>
-      <% end %>
+  <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+  	  <div class="modal-content">
+  	  <div class="modal-header">
+  		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  		  <span aria-hidden="true">×</span>
+  		  </button>
+  	  </div>
+  		<div class="set_center_outer">
+  		<h2 class="page_title_en text-center">得意先 新規登録</h2>
+  		</div>
+  		<%= render "modal_company_form", company: @company %>
+   	  </div>
     </div>
   </div>
+  <!-- ここまで -->
 
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col-11 col-md-12 mx-auto">
       <P>
         <%= link_to '新しい順', admin_companies_path(latest: "true"), class: 'text-dark' %> |

@@ -30,8 +30,7 @@ class Public::ProjectsController < ApplicationController
       # project.rbで設定したsave_tags(sent-tags)メソッドを発動
       # 結果として@projectにタグを保存している。詳しい処理内容はproject.rbで確認
       @project.save_tags(tag_list)
-      flash[:notice] = "プロジェクトを追加しました"
-      redirect_to company_project_path(@company, @project)
+      redirect_to company_project_path(@company, @project), notice: "プロジェクトを追加しました"
     else
       @company = Company.find(params[:company_id])
       render :new
@@ -61,8 +60,7 @@ class Public::ProjectsController < ApplicationController
       # project.rbで設定したsave_tags(sent-tags)メソッドを発動
       # 結果として@projectにタグを保存している。詳しい処理内容はproject.rbで確認
       @project.save_tags(tag_list)
-      flash[:notice] = "プロジェクト情報を更新しました"
-      redirect_to company_project_path(@company, @project)
+      redirect_to company_project_path(@company, @project), notice: "プロジェクト情報を更新しました"
     else
       @company = Company.find(params[:company_id])
       render :edit

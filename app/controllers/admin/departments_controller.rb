@@ -28,11 +28,9 @@ class Admin::DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     if @department.save
-      flash[:notice] = "部署の登録が成功しました"
-      redirect_to request.referer
+      redirect_to request.referer, notice: "部署の登録が成功しました"
     else
-      flash[:alert] = "部署名が空欄または既に使用されている為、登録できません"
-      redirect_to request.referer
+      render :error
     end
   end
 
@@ -43,8 +41,7 @@ class Admin::DepartmentsController < ApplicationController
   def update
     @department = Department.find(params[:id])
     if @department.update(department_params)
-      flash[:notice] = "部署名を変更しました"
-      redirect_to admin_departments_path
+      redirect_to admin_departments_path, notice:  "部署名を変更しました"
     else
       render :edit
     end
@@ -53,8 +50,7 @@ class Admin::DepartmentsController < ApplicationController
   def destroy
     @department = Department.find(params[:id])
     @department.destroy
-    flash[:alert] = "部署を削除しました"
-    redirect_to request.referer
+    redirect_to request.referer, alert:  "部署を削除しました"
   end
 
   private
