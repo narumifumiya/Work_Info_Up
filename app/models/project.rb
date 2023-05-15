@@ -68,7 +68,7 @@ class Project < ApplicationRecord
       @project = Project.where("name LIKE?","%#{word}%")
     end
   end
-  
+
   # いいね通知作成メソッド
   def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
@@ -87,7 +87,7 @@ class Project < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   # コメント通知作成メソッド
   def create_notification_comment!(current_user, project_comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
@@ -96,9 +96,9 @@ class Project < ApplicationRecord
       save_notification_comment!(current_user, project_comment_id, temp_id['user_id'])
     end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
-   save_notification_comment!(current_user, project_comment_id, user_id) 
+   save_notification_comment!(current_user, project_comment_id, user_id) if temp_ids.blank?
   end
-  
+
   def save_notification_comment!(current_user, project_comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(

@@ -10,7 +10,7 @@
 
 
   <div class="row mt-2 ">
-    <div class="col-11 col-md-10 col-lg-8 mx-auto bg-white border border-dark rounded p-3">
+    <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
 
       <% @notifications = @notifications.where.not(visitor_id: current_user.id) %>
       <% if @notifications.present? %>
