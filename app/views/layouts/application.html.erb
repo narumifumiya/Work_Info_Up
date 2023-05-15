@@ -11,17 +11,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column">
+  <body class="d-flex flex-column pt-5">
     <!-- ヘッダー -->
-    <%= render 'layouts/header' %>
- 
+    <div class="fixed-top">
+      <%= render 'layouts/header' %>
+    </div>
+    
+    <main class="pt-5 pb-5 h-auto">
       <!-- フラッシュメッセージ -->
       <div class="p-3">
         <%= render 'layouts/flash' %>
       </div>
-      <main class="pt-5 pb-5 h-auto">
-        <%= yield %>
-      </main>
+      <%= yield %>
+    </main>
 
     <!-- フッター -->
     <%= render 'layouts/footer' %>
