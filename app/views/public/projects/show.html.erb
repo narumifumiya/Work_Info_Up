@@ -5,7 +5,7 @@
   <div class="row mt-5">
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @project.get_project_image(300,300) %><br>
-      <%= link_to url_for(@project.project_image) do %>
+      <%= link_to url_for(@project.project_image),class: 'text-dark' do %>
         画像表示
       <% end %>
     </div>
