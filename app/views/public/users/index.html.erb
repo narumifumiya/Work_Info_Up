@@ -2,21 +2,25 @@
   <h2 class="text-center">メンバー</h2>
 
   <div class="row mt-5">
-
-    <div class="col-md-8">
-        <div>
-          <%= link_to 'グループを作成する', new_group_path, class: 'text-dark' %>
-          |
-          <%= link_to 'グループ一覧', groups_path, class: 'text-dark' %>
-        </div>
+    <div class="col-lg-10 col-md-11 col-sm-8 mx-auto">
+      <div>
+        <%= link_to 'グループを作成する', new_group_path, class: 'text-dark' %>
+        |
+        <%= link_to 'グループ一覧', groups_path, class: 'text-dark' %>
+      </div>
         <p>
           <%= link_to '新しい順', public_users_path(latest: "true"),  class: 'text-dark' %> |
           <%= link_to '古い順', public_users_path(old: "true"),  class: 'text-dark' %>
         </p>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9 mb-3">
       <%= render 'public/users/index', users: @users %>
     </div>
 
-    <div class="col-md-3 offset-md-1 text-center">
+    <div class="col-md-3 text-center">
       <%= render 'public/departments/index', departments: @departments %>
     </div>
 
