@@ -2,13 +2,18 @@
   <h2 class="text-center"><%= @department.name %><br>メンバー</h2>
 
   <div class="row mt-5">
-    <div class="col-11 col-md-12 mx-auto">
+    <div class="col-md-8">
       <P>
         <%= link_to '新しい順', department_path(@department, latest: "true"), class: 'text-dark' %> |
         <%= link_to '古い順', department_path(@department, old: "true"), class: 'text-dark' %>
       </P>
       <%= render 'public/users/index', users: @users %>
     </div>
+
+    <div class="col-md-3 offset-md-1 text-center">
+      <%= render 'index', departments: @departments %>
+    </div>
+
     <div class="mx-auto mt-5"><%= paginate @users %></div>
   </div>
 

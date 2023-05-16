@@ -44,3 +44,22 @@ main {
 .modal-form {
   padding: 30px;
 }
+
+// カード様
+.user-card {
+  min-height: 260px;
+}
+
+.card-box .card {
+  box-shadow:none;
+  transition:box-shadow 0.3s, transform 0.3s;
+}
+
+.card-box .card:hover {
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+  transform:scale(1.02);
+}
+
+.card-box .card:hover::before {
+  box-shadow:none;
+}
