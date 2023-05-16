@@ -7,6 +7,11 @@
 * {
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+// header上部固定分の高さを調整
+body {
+  padding-top: 6rem;
+}
 // ヘッダーの背景色
 .header-bg {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
@@ -16,7 +21,7 @@
 }
 // メインの背景色と最小高さ
 main {
-  min-height: 65vh;
+  min-height: 70vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
   background-size: cover
 }
@@ -38,4 +43,31 @@ main {
 }
 .modal-form {
   padding: 30px;
+}
+
+// カード様
+.user-card {
+  min-height: 260px;
+}
+
+.card-box .card {
+  box-shadow:none;
+  transition:box-shadow 0.3s, transform 0.3s;
+}
+
+.card-box .card:hover {
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+  transform:scale(1.02);
+}
+
+.card-box .card:hover::before {
+  box-shadow:none;
+}
+
+// トップに戻るボタン
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 50px;
 }

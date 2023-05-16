@@ -6,11 +6,11 @@ class Public::UsersController < ApplicationController
 
   def index
     if params[:latest] #新しい順
-      @users = User.latest.page(params[:page])
+      @users = User.latest.page(params[:page]).per(12)
     elsif params[:old] == true #古い順
-      @users = User.old.page(params[:page])
+      @users = User.old.page(params[:page]).per(12)
     else
-      @users = User.page(params[:page])
+      @users = User.page(params[:page]).per(12)
     end
 
     @departments = Department.all
@@ -38,7 +38,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites
   end
-  
+
   def users
   end
 
