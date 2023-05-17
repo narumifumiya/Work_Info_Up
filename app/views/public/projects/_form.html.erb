@@ -1,42 +1,42 @@
 <%= form_with model: [company, project] do |f| %>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="name">プロジェクト名</label></div>
+    <label for="name", class="col-md-3 mx-auto">プロジェクト名</label>
     <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="contract_amount">契約金額</label></div>
+    <label for="contract_amount", class="col-md-3 mx-auto">契約金額</label>
     <div class="col-md-9"><%= f.text_field :contract_amount,  class: "form-control", id: "contract_amount" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="introduction">説明</label></div>
+    <label for="introduction", class="col-md-3 mx-auto">説明</label>
     <div class="col-md-9"><%= f.text_area :introduction,  class: "form-control", id: "introduction" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="tag_name">タグ(,区切ると複数登録可能)</label></div>
+    <label for="tag_name", class="col-md-3 mx-auto">タグ(,区切ると複数登録可能)</label>
     <div class="col-md-9"><%= f.text_field :tag_name,value: @tag_list, class: "form-control", id: "tag_name" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
+    <label for="image", class="col-md-3 mx-auto">画像</label>
     <div class="col-md-9"><%= f.file_field :project_image, accept: 'image/*', id: "image" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="start_date">開始日</label></div>
+    <label for="start_date", class="col-md-3 mx-auto">開始日</label>
     <div class="col-md-9"><%= f.date_field :start_date,  class: "form-control", id: "start_date" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="end">終了日</label></div>
+    <label for="end", class="col-md-3 mx-auto">終了日</label>
     <div class="col-md-9"><%= f.date_field :end_date,  class: "form-control", id: "end_date" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label>注文ステータス</label></div>
+    <div class="col-md-3 mx-auto">注文ステータス</div>
     <div class="col-md-9 d-flex justify-content-start">
       <div class="mr-3"><%= f.label :order_stauts_under_negotiation, "営業中" %><%= f.radio_button :order_status, "under_negotiation" %></div>
       <div class="mr-3"><%= f.label :order_stauts_ordered, "受注済" %><%= f.radio_button :order_status, "ordered" %></div>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label>進捗ステータス</label></div>
+    <div class="col-md-3 mx-auto">進捗ステータス</div>
     <div class="col-md-9 d-flex justify-content-start">
       <div class="mr-3"><%= f.label :progress_stauts_not_started_yet, "未着手" %><%= f.radio_button :progress_status, "not_started_yet" %></div>
       <div class="mr-3"><%= f.label :progress_stauts_while_working, "作業中" %><%= f.radio_button :progress_status, "while_working" %></div>
