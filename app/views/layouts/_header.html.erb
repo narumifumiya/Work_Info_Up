@@ -54,7 +54,9 @@
                 <%= f.select :range, options_for_select([['ユーザー'], ['得意先'],['プロジェクト'], ['タグ'],['グループ']]) %>
                 <%= f.text_field :word, placeholder: 'キーワードを入力' %>
                 <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
-                <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+                <%= button_tag :type => "submit", :class =>"btn btn-sm btn-info rounded-end" do %>
+                  <i class="fa fa-search"></i>
+                <% end %>
               <% end %>
           </li>
 
@@ -82,9 +84,11 @@
           <li class="nav-item">
             <%= form_with url: admin_search_path, local: true, method: :get, class: 'nav-link text-dark' do |f| %>
               <%= f.select :range, options_for_select([['ユーザー'], ['得意先'],['プロジェクト'], ['タグ'],['グループ']]) %>
-              <%= f.text_field :word %>
+              <%= f.text_field :word, placeholder: 'キーワードを入力' %>
               <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
-              <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+              <%= button_tag :type => "submit", :class =>"btn btn-sm btn-info rounded-end" do %>
+                <i class="fa fa-search"></i>
+              <% end %>
             <% end %>
           </li>
 
