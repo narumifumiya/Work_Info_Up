@@ -8,10 +8,12 @@ class EventMailer < ApplicationMailer
     @group = event[:group]
     @title = event[:title]
     @body = event[:body]
-
+    @image = event[:image]
     #メールを新規作成
      #from→送り主、to→送り先、subject→メールタイトルを入力
     @mail = EventMailer.new()
+    
+    attachments[@image.original_filename] = File.read(@image.tempfile) if @image.present?
     mail(
       from: ENV['KEY'],
       to:   member.email,
