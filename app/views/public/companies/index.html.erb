@@ -2,14 +2,21 @@
   <h2 class="text-center">得意先一覧</h2>
 
   <div class="row mt-5">
-    <P>
-      <%= link_to '新しい順', companies_path(latest: "true"), class: 'text-dark' %> |
-      <%= link_to '古い順', companies_path(old: "true"), class: 'text-dark' %>
-    </P>
-    <div class="col-11 col-md-12 mx-auto">
-      <%= render 'public/companies/index', companies: @companies %>
+    <div class="col-11 col-md-10 mx-auto">
+      <P>
+        <%= link_to '新しい順', companies_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', companies_path(old: "true"), class: 'text-dark' %>
+      </P>
+      <div class="col-11 col-md-12 mx-auto">
+        <%= render 'public/companies/index', companies: @companies %>
+      </div>
     </div>
-    <div class="mx-auto mt-5"><%= paginate @companies %></div>
   </div>
-
+  
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+      <div class="d-flex justify-content-center"><%= paginate @companies %></div>
+    </div>
+  </div>
+  
 </div>

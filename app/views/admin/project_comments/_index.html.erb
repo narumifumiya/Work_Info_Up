@@ -6,21 +6,24 @@
     <% end %>
   </p>
 </div>
-<table>
-  <% project.project_comments.each do |project_comment| %>
-    <tr>
-      <td>
-        <%= link_to public_user_path(project_comment.user), class: 'text-dark' do %>
-        <%= image_tag project_comment.user.get_profile_image(50, 50),class: 'rounded-circle' %><br>
-        <%= project_comment.user.name %>
+
+<% project.project_comments.each do |project_comment| %>
+  <div class="d-flex justify-content-between  p-2">
+    <div class="d-flex flex-row align-items-center">
+      <div>
+        <%= link_to admin_user_path(project_comment.user), class: 'text-dark' do %>
+          <%= image_tag project_comment.user.get_profile_image(50, 50),class: 'rounded-circle' %><br>
+          <%= project_comment.user.name %>
         <% end %>
-      </td>
-      <td><%= project_comment.comment %></td>
-      <td>
-        <%= link_to admin_company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment), method: :delete, remote: true, class: "text-danger" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+      </div>
+      <p>
+        <%= project_comment.comment %>
+      </p>
+    </div>
+    <div class="d-flex align-items-center">
+      <%= link_to admin_company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment), method: :delete, remote: true, class: "text-danger" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

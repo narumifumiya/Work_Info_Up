@@ -1,12 +1,12 @@
 <%= form_with model:company, url: admin_company_path(company) do |f| %>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="name">企業名</label></div>
+    <label for="name", class="col-md-3 mx-auto">企業名</label>
     <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 mx-auto"><label for="image">画像</label></div>
+    <label for="image", class="col-md-3 mx-auto">画像</label>
     <div class="col-md-9"><%= f.file_field :company_image, accept: 'image/*', id: "image" %></div>
   </div>
 

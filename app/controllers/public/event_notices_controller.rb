@@ -11,13 +11,15 @@ class Public::EventNoticesController < ApplicationController
     @group = Group.find(params[:group_id]) #newアクションと同じグループIDが入っている
     @title = params[:title] #フォームで入力された内容が入っている
     @body = params[:body] #フォームで入力された内容が入っている
+    @image = params[:image]
 
     # 上記でインスタンス変数のデータを変数eventのハッシュとして登録
     event = {
       # キー.   データ
       :group => @group,
       :title => @title,
-      :body => @body
+      :body => @body,
+      :image => @image
       # enent[:group]で@groupを呼び出せるようになる（event_mailerで使う）
     }
 
