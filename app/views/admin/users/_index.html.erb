@@ -1,22 +1,24 @@
-<table class="table table-hover bg-light">
-  <thead class="thead-dark">
-    <tr>
-      <th>名前</th>
-      <th>所属部署</th>
-      <th>役職</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+<div class="table-responsive">
+  <table class="table table-hover text-nowrap bg-light">
+    <thead class="thead-dark">
       <tr>
-        <td><%= link_to user.name, admin_user_path(user.id), class: 'text-dark' %></td>
-        <td>
-          <%if user.department_id.present? %>
-            <%= user.department.name %>
-          <% end %>
-        </td>
-        <td><%= user.position %></td>
+        <th>名前</th>
+        <th>所属部署</th>
+        <th>役職</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, admin_user_path(user.id), class: 'text-dark' %></td>
+          <td>
+            <%if user.department_id.present? %>
+              <%= user.department.name %>
+            <% end %>
+          </td>
+          <td><%= user.position %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

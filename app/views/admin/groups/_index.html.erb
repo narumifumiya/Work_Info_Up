@@ -1,22 +1,24 @@
-<table class="table table-hover bg-light">
-  <thead class="thead-dark">
-    <tr>
-      <th></th>
-      <th>グループ名</th>
-      <th>紹介文</th>
-      <th>メンバー数</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% groups.each do |group| %>
+<div class="table-responsive">
+  <table class="table table-hover text-nowrap bg-light">
+    <thead class="thead-dark">
       <tr>
-        <td><%= image_tag group.get_group_image(50,50) %></td>
-        <td><%= group.name %></td>
-        <td><%= group.introduction %></td>
-        <td><%= group.group_users.count %></td>
-        <td><%= link_to '削除', admin_group_path(group.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" }%></td>
+        <th></th>
+        <th>グループ名</th>
+        <th>紹介文</th>
+        <th>メンバー数</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% groups.each do |group| %>
+        <tr>
+          <td><%= image_tag group.get_group_image(50,50) %></td>
+          <td><%= group.name %></td>
+          <td><%= group.introduction %></td>
+          <td><%= group.group_users.count %></td>
+          <td><%= link_to '削除', admin_group_path(group.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" }%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
