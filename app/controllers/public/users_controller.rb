@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    @favorites = @user.favorites
+    @favorites = @user.favorites.page(params[:page])
   end
 
   def users

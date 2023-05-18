@@ -1,20 +1,22 @@
-<table class="table table-hover bg-light">
-  <thead class="thead-dark">
-    <tr>
-      <th></th>
-      <th>グループ名</th>
-      <th>紹介文</th>
-      <th>メンバー数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% groups.each do |group| %>
+<div class="table-responsive">
+  <table class="table table-hover text-nowrap bg-light">
+    <thead class="thead-dark">
       <tr>
-        <td><%= image_tag group.get_group_image(50,50) %></td>
-        <td><%= link_to group.name, group_path(group),class: 'text-dark' %></td>
-        <td><%= group.introduction %></td>
-        <td><%= group.group_users.count %></td>
+        <th></th>
+        <th>グループ名</th>
+        <th>紹介文</th>
+        <th>メンバー数</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% groups.each do |group| %>
+        <tr>
+          <td><%= image_tag group.get_group_image(50,50) %></td>
+          <td><%= link_to group.name, group_path(group),class: 'text-dark' %></td>
+          <td><%= group.introduction %></td>
+          <td><%= group.group_users.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
