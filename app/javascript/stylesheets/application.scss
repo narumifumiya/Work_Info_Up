@@ -71,3 +71,28 @@ main {
   bottom: 20px;
   font-size: 50px;
 }
+
+// 管理者トップページ
+
+.item {
+  background: #8ab1f5;
+  color: #fff;
+  margin: 5px;
+  // padding: 10px;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1);
+  transition: all .3s;
+}
+
+.item-box {
+  justify-content: center;
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1) ;
+    border-color: transparent;
+}

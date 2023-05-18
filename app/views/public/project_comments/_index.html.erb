@@ -1,21 +1,23 @@
 <p>コメント件数：<%= project.project_comments.count %></p>
-<table>
-  <% project.project_comments.each do |project_comment| %>
-    <tr>
-      <td>
+<% project.project_comments.each do |project_comment| %>
+  <div class="d-flex justify-content-between  p-2">
+    <div class="d-flex flex-row align-items-center">
+      <div>
         <%= link_to public_user_path(project_comment.user), class: 'text-dark' do %>
           <%= image_tag project_comment.user.get_profile_image(50, 50),class: 'rounded-circle' %><br>
           <%= project_comment.user.name %>
         <% end %>
-      </td>
-      <td><%= project_comment.comment %></td>
-      <% if project_comment.user == current_user %>
-      <td>
+      </div>
+      <p>
+        <%= project_comment.comment %>
+      </p>
+    </div>
+    <% if project_comment.user == current_user %>
+      <div class="d-flex align-items-center">
         <%= link_to company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment), method: :delete, remote: true, class: "text-dark ml-3" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-      </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+      </div>
+    <% end %>
+  </div>
+<% end %>
