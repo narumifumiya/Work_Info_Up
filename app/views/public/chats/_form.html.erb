@@ -2,5 +2,9 @@
 　<div class="form-group", style="width:100%;">
     <%= f.text_area :message, rows: '5', placeholder: "メッセージをここに(最大140字まで)", class: "form-control message_textarea" %>
   </div>
-  <%= f.submit "送信" %>
+  <div class="text-right">
+    <%= button_tag :type => "submit", :class =>"btn btn-sm btn-info rounded-end" do %>
+      <i class="fas fa-paper-plane"></i>
+    <% end %>
+  </div>
 <% end %>

@@ -9,12 +9,7 @@
         <%= link_to '古い順', company_projects_path(old: "true"), class: 'text-dark' %>
       </P>
       <%= render 'public/projects/index', projects: @projects %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-11 col-md-12 mx-auto">
-      <%= link_to "プロジェクトを追加する", new_company_project_path(@company), class: "btn btn-sm btn-success" %>
+      <%= link_to "プロジェクトを追加する", new_company_project_path(@company), class: "btn btn-sm btn-primary mt-2" %>
     </div>
   </div>
 

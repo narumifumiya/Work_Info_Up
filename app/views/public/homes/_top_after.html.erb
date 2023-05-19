@@ -1,0 +1,71 @@
+<div class="row mt-5">
+  <div class="col-lg-12 col-md-6 col-sm-8 col-12 mx-auto d-flex justify-content-center flex-wrap">
+    <%= link_to public_user_path(current_user), class: 'text-decoration-none' do %>
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="text-center h3"><i class="fas fa-user"></i><br>
+        マイページ
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to public_users_path, class: 'text-decoration-none' do %>
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="text-center h3"><i class="fas fa-users"></i><br>
+        メンバー
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to groups_path, class: 'text-decoration-none' do %>
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="text-center h3"><i class="far fa-object-group fa-lg"></i><br>
+        グループ
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to companies_path, class: 'text-decoration-none' do %>
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="text-center h3"><i class="fas fa-building"></i><br>
+        得意先
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mt-5 d-flex justify-content-center">
+  <div class="col-md-6 mb-3">
+    <p>メンバー新着(6件)</p>
+    <div class="table-responsive">
+      <table class="table table-hover text-nowrap bg-light">
+        <thead class="thead-dark">
+          <tr>
+            <th>名前</th>
+            <th>部署</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, public_user_path(user), class: 'text-dark' %></td>
+            <td>
+              <% if user.department_id.present? %>
+                <%= user.department.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <p>得意先新着(6件)</p>
+    <%= render 'public/companies/index', companies: @companies %>
+  </div>
+</div>
+
+<p>プロジェクト新着(6件)</p>
+<%= render 'public/projects/index', projects: @projects %>
