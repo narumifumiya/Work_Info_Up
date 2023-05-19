@@ -13,133 +13,52 @@
       </ul>
     </div>
 
-    <div>
-      <div class="item-box ">
-        <%= link_to admin_users_path, class: 'text-decoration-none' do %>
-          <div class="item d-flex align-items-center justify-content-center">
-            <div class="text-center h3"><i class="fas fa-users"></i><br>
-            メンバー
-            </div>
+    <div class="item-box ">
+      <%= link_to admin_users_path, class: 'text-decoration-none' do %>
+        <div class="item d-flex align-items-center justify-content-center">
+          <div class="text-center h3"><i class="fas fa-users"></i><br>
+          メンバー
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
-        <%= link_to admin_departments_path, class: 'text-decoration-none' do %>
-          <div class="item d-flex align-items-center justify-content-center">
-            <div class="text-center h3"><i class="far fa-object-ungroup fa-lg"></i><br>
-            部署
-            </div>
+      <%= link_to admin_departments_path, class: 'text-decoration-none' do %>
+        <div class="item d-flex align-items-center justify-content-center">
+          <div class="text-center h3"><i class="far fa-object-ungroup fa-lg"></i><br>
+          部署
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
-        <%= link_to admin_groups_path, class: 'text-decoration-none' do %>
-          <div class="item d-flex align-items-center justify-content-center">
-            <div class="text-center h3"><i class="far fa-object-group fa-lg"></i><br>
-            グループ
-            </div>
+      <%= link_to admin_groups_path, class: 'text-decoration-none' do %>
+        <div class="item d-flex align-items-center justify-content-center">
+          <div class="text-center h3"><i class="far fa-object-group fa-lg"></i><br>
+          グループ
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
-        <%= link_to admin_companies_path, class: 'text-decoration-none' do %>
-          <div class="item d-flex align-items-center justify-content-center">
-            <div class="text-center h3"><i class="fas fa-building"></i><br>
-            得意先
-            </div>
+      <%= link_to admin_companies_path, class: 'text-decoration-none' do %>
+        <div class="item d-flex align-items-center justify-content-center">
+          <div class="text-center h3"><i class="fas fa-building"></i><br>
+          得意先
           </div>
-        <% end %>
-
-      </div>
+        </div>
+      <% end %>
     </div>
-
   </div>
-
+  
   <div class="row d-flex justify-content-center">
-
     <div class="col-md-6 mb-3">
       <p>メンバー新着(6件)</p>
-      <div class="table-responsive">
-        <table class="table table-hover text-nowrap bg-light">
-          <thead class="thead-dark">
-            <tr>
-              <th>名前</th>
-              <th>部署</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
-            <tr>
-              <td><%= link_to user.name, admin_user_path(user), class: 'text-dark' %></td>
-              <td>
-                <% if user.department_id.present? %>
-                  <%= user.department.name %>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+      <%= render 'admin/users/index', users: @users %>
     </div>
-
     <div class="col-md-6 mb-3">
       <p>得意先新着(6件)</p>
-      <div class="table-responsive">
-        <table class="table table-hover text-nowrap bg-light">
-          <thead class="thead-dark">
-            <tr>
-              <th>会社名</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @companies.each do |company| %>
-            <tr>
-              <td><%= link_to company.name, admin_company_path(company), class: 'text-dark' %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+      <%= render 'admin/companies/index', companies: @companies %>
     </div>
-
   </div>
-
   <p>プロジェクト新着(6件)</p>
-  <div class="table-responsive">
-    <table class="table table-hover text-nowrap bg-light">
-      <thead class="thead-dark">
-        <tr>
-          <th>プロジェクト名</th>
-          <th>受注ステータス</th>
-          <th>進捗ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @projects.each do |project| %>
-          <tr>
-            <td><%= link_to project.name, admin_company_project_path(project.company, project.id), class: 'text-dark' %></td>
-            <!-- 受注ステータスによって文字色変更 -->
-            <td class="font-weight-bold">
-              <% if project.order_status == "under_negotiation" %>
-                <span class="text-secondary"><%= project.order_status_i18n %></span>
-              <% elsif project.order_status == "ordered" %>
-                <span class="text-success"><%= project.order_status_i18n %></span>
-              <% else %>
-                 <span class="text-danger"><%= project.order_status_i18n %></span>
-              <% end %>
-            </td>
-            <!-- 進捗ステータスによって文字色変更 -->
-            <td class="font-weight-bold">
-              <% if project.progress_status == "not_started_yet" %>
-                <span class="text-secondary"><%= project.progress_status_i18n %></span>
-              <% elsif project.progress_status == "while_working" %>
-                <span class="text-primary"><%= project.progress_status_i18n %></span>
-              <% else %>
-                <span class="text-success"><%= project.progress_status_i18n %></span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-    
+  <%= render 'admin/projects/index', projects: @projects %>
+  
 </div>

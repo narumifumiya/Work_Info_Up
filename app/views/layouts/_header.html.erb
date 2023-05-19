@@ -61,19 +61,26 @@
           </li>
 
         <% elsif admin_signed_in? %>
+
+
           <li class="nav-item">
-            <%= link_to admin_companies_path , class: 'nav-link text-dark' do %>
-              <i class="far fa-building"></i> 得意先
+            <%= link_to  admin_users_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-users"></i> メンバー
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_departments_path, class: 'nav-link text-dark' do %>
-              <i class="far fa-object-group"></i> 部署
+              <i class="far fa-object-ungroup"></i> 部署
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to  admin_users_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-users"></i> メンバー
+            <%= link_to admin_groups_path, class: 'nav-link text-dark' do %>
+              <i class="far fa-object-group"></i> グループ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_companies_path , class: 'nav-link text-dark' do %>
+              <i class="far fa-building"></i> 得意先
             <% end %>
           </li>
           <li class="nav-item">

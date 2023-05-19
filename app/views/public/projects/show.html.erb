@@ -57,7 +57,10 @@
       <!-- プロジェクト作成者のみ編集可能 -->
       <div>
         <% if @project.user_id == current_user.id %>
-          <%= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
+          <%#= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
+          <%= link_to edit_company_project_path(@company, @project), class: 'btn btn-outline-success btn-sm' do %>
+            <i class="far fa-edit"></i> 編集
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -11,7 +11,9 @@ class Public::ChatsController < ApplicationController
     @group = Group.find(params[:group_id])
     @chat = current_user.chats.new(chat_params)
     @chat.group_id = @group.id
-    unless @chat.save
+    if @chat.save
+      @group.create_notification_chat!(current_user, @chat.id)
+    else
       render 'error'
     end
   end

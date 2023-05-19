@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
   has_many :chats, dependent: :destroy
 
+
   validates :name, presence: true, uniqueness: true
   # active_recordを導入している為、下記にてカラムと同じようにimageを呼び出す事が出来る
   has_one_attached :group_image
@@ -24,5 +25,52 @@ class Group < ApplicationRecord
       @group = Group.where("name LIKE?","%#{word}%")
     end
   end
+
+  # グループ参加通知作成メソッド
+  def create_notification_join!(current_user)
+    # グループメンバー全員を検索
+    group_users.each do |temp_id|
+      save_notification_join!(current_user, temp_id['user_id'])
+    end
+  end
+
+  def save_notification_join!(current_user, visited_id)
+    # グループ参加は複数人が参加することが考えられるため、複数回通知する
+    notification = current_user.active_notifications.new(
+      group_id: id,
+      visited_id: visited_id,
+      action: 'join'
+    )
+    # 自分へのグループ参加に対しての場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
+
+
+  # チャット通知作成メソッド
+  def create_notification_chat!(current_user, chat_id)
+    # グループメンバー全員を検索
+    group_users.each do |temp_id|
+      save_notification_chat!(current_user, chat_id, temp_id['user_id'])
+    end
+  end
+
+  def save_notification_chat!(current_user, chat_id, visited_id)
+    # グループチャットは複数人が何回もコメントすることが考えられるため、複数回通知する
+    notification = current_user.active_notifications.new(
+      group_id: id,
+      chat_id: chat_id,
+      visited_id: visited_id,
+      action: 'chat'
+    )
+    # 自分へのグループチャットに対しての場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
+
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_11_060319) do
+ActiveRecord::Schema.define(version: 2023_05_18_143956) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -118,6 +118,10 @@ ActiveRecord::Schema.define(version: 2023_05_11_060319) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "chat_id"
+    t.integer "group_id"
+    t.index ["chat_id"], name: "index_notifications_on_chat_id"
+    t.index ["group_id"], name: "index_notifications_on_group_id"
     t.index ["project_comment_id"], name: "index_notifications_on_project_comment_id"
     t.index ["project_id"], name: "index_notifications_on_project_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"

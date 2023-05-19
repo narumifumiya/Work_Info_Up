@@ -9,8 +9,12 @@
       <p>企業名：<%= @company.name%></p>
       <p><%= link_to "プロジェクト一覧", admin_company_projects_path(@company), class: 'btn btn-outline-secondary' %></p>
       <div>
-        <%= link_to "編集", edit_admin_company_path(@company), class: "btn btn-outline-success btn-sm"%>
-        <%= link_to "削除", admin_company_path(@company), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to edit_admin_company_path(@company), class: 'btn btn-outline-success btn-sm' do %>
+          <i class="far fa-edit"></i> 編集
+        <% end %>
+        <%= link_to admin_company_path(@company), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: "本当に削除しますか？" } do %>
+          <i class="fas fa-trash-alt"></i> 削除
+        <% end %>
       </div>
     </div>
   </div>
