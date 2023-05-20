@@ -1,19 +1,21 @@
 <div class="container">
   <h2 class="text-center">管理者ページ</h2>
-  <div class="row mt-5 mb-5 d-flex justify-content-around">
-    <div class="border border-light bg-white p-3 mb-3 col-md-5 col-11 d-flex align-items-center flex-wrap">
+  <div class="row mt-5">
+    <div class="col-10 col-sm-8 col-md-8 col-lg-7 col-xl-6 mx-auto border-top border-bottom border-dark p-2">
       <h5>管理者は下記の登録や編集、削除ができます。</h5>
       <ul>
-        <li>ユーザーの編集</li>
-        <li>得意先の登録、編集、削除</li>
-        <li>部署の登録、編集、削除</li>
-        <li>プロジェクトの編集、削除</li>
-        <li>プロジェクトコメントの削除</li>
-        <li>グループの削除</li>
+        <li style="list-style-type: square;">ユーザーの編集</li>
+        <li style="list-style-type: square;">得意先の登録、編集、削除</li>
+        <li style="list-style-type: square;">部署の登録、編集、削除</li>
+        <li style="list-style-type: square;">プロジェクトの編集、削除</li>
+        <li style="list-style-type: square;">プロジェクトコメントの削除</li>
+        <li style="list-style-type: square;">グループの削除</li>
       </ul>
     </div>
+  </div>
 
-    <div class="item-box ">
+  <div class="row mt-5">
+    <div class="col-lg-12 col-md-6 col-sm-8 col-12 mx-auto d-flex justify-content-center flex-wrap">
       <%= link_to admin_users_path, class: 'text-decoration-none' do %>
         <div class="item d-flex align-items-center justify-content-center">
           <div class="text-center h3"><i class="fas fa-users"></i><br>
@@ -47,8 +49,8 @@
       <% end %>
     </div>
   </div>
-  
-  <div class="row d-flex justify-content-center">
+
+  <div class="row d-flex justify-content-center mt-5">
     <div class="col-md-6 mb-3">
       <p>メンバー新着(6件)</p>
       <%= render 'admin/users/index', users: @users %>
@@ -60,5 +62,5 @@
   </div>
   <p>プロジェクト新着(6件)</p>
   <%= render 'admin/projects/index', projects: @projects %>
-  
+
 </div>

@@ -3,7 +3,6 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :is_matching_login_user, only: [:edit, :update]
 
-
   def index
     if params[:latest] #新しい順
       @users = User.latest.page(params[:page]).per(12)

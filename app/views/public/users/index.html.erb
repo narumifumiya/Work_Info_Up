@@ -4,9 +4,7 @@
   <div class="row mt-5">
     <div class="col-lg-10 col-md-11 col-sm-8 mx-auto">
       <div>
-        <%= link_to 'グループを作成する', new_group_path, class: 'text-dark' %>
-        |
-        <%= link_to 'グループ一覧', groups_path, class: 'text-dark' %>
+        <%= link_to 'グループ一覧', groups_path, class: 'btn btn-outline-primary mb-3' %>
       </div>
         <p>
           <%= link_to '新しい順', public_users_path(latest: "true"),  class: 'text-dark' %> |

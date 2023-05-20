@@ -1,7 +1,28 @@
 <div class="container">
   <h2 class="text-center">グループ一覧</h2>
 
-  <div class="row mt-5">
+  <!--モーダルフォーム-->
+  <div class="button_new mt-5">
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#groupModal" data-whatever="@group">グループ作成</button>
+  </div>
+
+  <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+  	  <div class="modal-content">
+  	  <div class="modal-header">
+  		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  		  <span aria-hidden="true">×</span>
+  		  </button>
+  	  </div>
+  		<div class="set_center_outer">
+  		<h2 class="page_title_en text-center">新規登録</h2>
+  		</div>
+  		<%= render "modal_group_form", group: @group %>
+   	  </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
     <div class="col-11 col-md-12 mx-auto">
       <P>
         <%= link_to '新しい順', groups_path(latest: "true"), class: 'text-dark' %> |

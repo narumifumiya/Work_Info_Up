@@ -10,6 +10,8 @@ class Public::GroupsController < ApplicationController
     else
       @groups = Group.page(params[:page])
     end
+    
+    @group = Group.new
   end
 
   def show
@@ -19,10 +21,6 @@ class Public::GroupsController < ApplicationController
     @group_owner = User.find_by(id: @group.owner_id)
   end
 
-  def new
-    @group = Group.new
-  end
-
   def create
     @group = Group.new(group_params)
     # 誰が作ったグループかを判断する為に必要。
@@ -30,7 +28,7 @@ class Public::GroupsController < ApplicationController
     if @group.save
       redirect_to group_path(@group), notice: "グループを作成しました"
     else
-      render :new
+      render :error
     end
   end
 
