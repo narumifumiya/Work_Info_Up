@@ -1,7 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
-// ヘッダーとフッダーのロゴフォント
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP:wght@600&family=Philosopher&family=Work+Sans:wght@600&display=swap');
 
 * {
@@ -45,7 +43,7 @@ main {
   padding: 30px;
 }
 
-// カード様
+// public/user/index用
 .user-card {
   min-height: 280px;
 }
@@ -77,18 +75,10 @@ main {
   background: #8ab1f5;
   color: #fff;
   margin: 5px;
-  // padding: 10px;
   width: 150px;
   height: 150px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1);
   transition: all .3s;
-}
-
-.item-box {
-  justify-content: center;
-  max-width: 400px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .item:hover {

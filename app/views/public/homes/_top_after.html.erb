@@ -43,18 +43,23 @@
           <tr>
             <th>名前</th>
             <th>部署</th>
+            <th>役職</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.name, public_user_path(user), class: 'text-dark' %></td>
-            <td>
-              <% if user.department_id.present? %>
-                <%= user.department.name %>
-              <% end %>
-            </td>
-          </tr>
+            <!-- 在籍中のみ表示、退社済みは表示しない -->
+            <% if user.is_deleted == false %>
+              <tr>
+                <td><%= link_to user.name, public_user_path(user), class: 'text-dark' %></td>
+                <td>
+                  <% if user.department_id.present? %>
+                    <%= user.department.name %>
+                  <% end %>
+                </td>
+                <td><%= user.position %></td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>

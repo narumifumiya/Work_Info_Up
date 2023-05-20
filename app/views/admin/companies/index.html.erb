@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="text-center mb-3">得意先一覧</h2>
+  <h2 class="text-center ">得意先一覧</h2>
 
   <!--モーダルフォーム-->
-  <div class="button_new">
+  <div class="button_new mt-5">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#companyModal" data-whatever="@company">新規登録</button>
   </div>
 
@@ -32,7 +32,7 @@
       <%= render 'admin/companies/index', companies: @companies %>
     </div>
   </div>
-  
+
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">
       <div class="d-flex justify-content-center"><%= paginate @companies %></div>
