@@ -14,7 +14,7 @@
     </div>
     <% if project_comment.user == current_user %>
       <div class="d-flex align-items-center">
-        <%= link_to company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment), method: :delete, remote: true, class: "text-dark ml-3" do %>
+        <%= link_to company_project_project_comment_path(project_comment.project.company,project_comment.project,project_comment), method: :delete, remote: true, class: "text-danger ml-3" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>

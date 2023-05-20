@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap justify-content-center">
     <% @users.each do |user| %>
     <div class="card-box">
-      <div class="m-2 card user-card", style="width:150px;">
+      <div class="m-2 card user-card justify-content-between", style="width:150px;">
           <%= link_to public_user_path(user.id) do %>
             <%= image_tag user.get_profile_image(150, 150), alt: user.name, class: 'card-img-top img-fluid' %>
           <% end %>
