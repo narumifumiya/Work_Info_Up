@@ -51,10 +51,12 @@
       <p>説明：<%= @project.introduction %></p>
       <p>営業担当：<%= link_to @project.user.name, admin_user_path(@project.user.id), class: 'text-dark' %></p>
       <div>
-        <%# if @project.user_id == current_user.id %>
-          <%= link_to "編集", edit_admin_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
-          <%= link_to "削除", admin_company_project_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
-        <%# end %>
+        <%= link_to edit_admin_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm" do %>
+          <i class="far fa-edit"></i> 編集
+        <% end %>
+        <%= link_to admin_company_project_path(@company, @project), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } do %>
+          <i class="fas fa-trash-alt"></i> 削除
+        <% end %>
       </div>
     </div>
 
