@@ -4,12 +4,12 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
+      <%= link_to "事業所追加", new_company_office_path(@company), class: "btn btn-outline-primary mb-3" %>
       <P>
         <%= link_to '新しい順', company_offices_path(latest: "true"), class: 'text-dark' %> |
         <%= link_to '古い順', company_offices_path(old: "true"), class: 'text-dark' %>
       </P>
       <%= render 'public/offices/index', offices: @offices %>
-      <%= link_to "事業所を追加する", new_company_office_path(@company), class: "btn btn-sm btn-primary mt-2" %>
     </div>
   </div>
 
