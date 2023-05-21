@@ -13,12 +13,8 @@
           <%= @user.department.name %>
         <% end %>
       </p>
-      <p>
-        <i class="far fa-envelope"></i>メールアドレス：<%= @user.email %>
-      </p>
-      <p>
-        <i class="fas fa-phone-alt"></i>電話番号：<%= @user.phone_number %>
-      </p>
+      <p><i class="far fa-envelope"></i> メールアドレス：<%= @user.email %></p>
+      <p><i class="fas fa-phone-alt"></i> 電話番号：<%= @user.phone_number %></p>
       <p><%= link_to "いいねしたプロジェクトを見る" , public_path(@user), class: 'btn btn-outline-dark btn-sm' %></p>
 
       <div>

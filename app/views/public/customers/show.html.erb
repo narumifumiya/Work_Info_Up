@@ -10,8 +10,8 @@
       <p>名前：<%= @customer.name %></p>
       <p>役職：<%= @customer.position %></p>
       <p>所属部署：<%= @customer.department %></p>
-      <p>メールアドレス：<%= @customer.email %></p>
-      <p>電話番号：<%= @customer.phone_number %></p>
+      <p><i class="far fa-envelope"></i> メールアドレス：<%= @customer.email %></p>
+      <p><i class="fas fa-phone-alt"></i> 電話番号：<%= @customer.phone_number %></p>
       <div>
         <%= link_to edit_company_customer_path(@company, @customer), class: 'btn btn-outline-success btn-sm' do %>
           <i class="far fa-edit"></i> 編集
