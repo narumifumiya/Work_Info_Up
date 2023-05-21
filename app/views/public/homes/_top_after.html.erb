@@ -49,7 +49,7 @@
         <tbody>
           <% @users.each do |user| %>
             <!-- 在籍中のみ表示、退社済みは表示しない -->
-            <% if user.is_deleted == false %>
+            <%# if user.is_deleted == false %>
               <tr>
                 <td><%= link_to user.name, public_user_path(user), class: 'text-dark' %></td>
                 <td>
@@ -59,7 +59,7 @@
                 </td>
                 <td><%= user.position %></td>
               </tr>
-            <% end %>
+            <%# end %>
           <% end %>
         </tbody>
       </table>
