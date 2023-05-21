@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   # ユーザー用
   scope module: :public do
     root to: 'homes#top'
-    # sign_upのエラーメッセージ表示後にリロードした際に
+    # sign_upのエラーメッセージ表示後にリロードした際にルートエラーが起きないように設定
     get "users" => 'users#users'
     resources :departments, only: [:show]
     get "search" => "searches#search"
-    resources :groups do
+    resources :groups, except: [:new] do
       resource :group_users, only: [:create, :destroy]
       resources :event_notices, only: [:new, :create]
       get "event_notices" => "event_notices#sent"
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
     # 得意先周辺
     resources :companies, only: [:index, :show] do
-      resources :offices, only: [:index, :new, :edit, :create, :update, :destroy]
+      resources :offices, except: [:show]
       resources :customers
       resources :projects, except: [:destroy] do
         resources :project_comments, only: [:create, :destroy]
@@ -40,13 +40,13 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    resources :departments
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :departments, except: [:new]
+    resources :users, only: [:index, :show, :edit, :update]
     resources :groups, only: [:index, :destroy]
     get "search" => "searches#search"
     # 得意先周辺
-    resources :companies do
-      resources :projects, only: [:index, :show, :edit, :update, :destroy] do
+    resources :companies, except: [:new] do
+      resources :projects, except: [:new, :create] do
         resources :project_comments, only: [:destroy] do
           collection do
             delete "destroy_all"
