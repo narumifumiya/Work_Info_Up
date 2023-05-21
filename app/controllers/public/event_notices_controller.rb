@@ -23,16 +23,22 @@ class Public::EventNoticesController < ApplicationController
       # enent[:group]で@groupを呼び出せるようになる（event_mailerで使う）
     }
 
-    if File.size(@image.tempfile) < 1024 * 1024 #ファイルサイズが１MB以内なら送信する
-      # app/mailers/event_mailer.rbコントローラ？のクラスメソッドを使用している
+    if @image.present?
+      if File.size(@image.tempfile) < 1024 * 1024 #ファイルサイズが１MB以内なら送信する
+        # app/mailers/event_mailer.rbコントローラ？のクラスメソッドを使用している
+        EventMailer.send_notifications_to_group(event)
+        # @group,@title,@body,@imageのデータを持ったまま、view/event_notices/sent.html.erbを表示する
+        render :sent
+      else
+        flash.now[:alert] =  "ファイルサイズが1MBを超えています。"
+        render :new
+      end
+    else
       EventMailer.send_notifications_to_group(event)
-  
       # @group,@title,@bodyのデータを持ったまま、view/event_notices/sent.html.erbを表示する
       render :sent
-    else
-      flash.now[:alert] =  "ファイルサイズが1MBを超えています。"
-      render :new
     end
+  
   end
 
   def sent
