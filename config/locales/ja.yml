@@ -9,7 +9,8 @@ ja:
         not_started_yet: "未着手"
         while_working: "作業中"
         completion: "完了"
-
+        
+  # devise関連のエラー分
   devise:
     confirmations:
       confirmed: 'アカウントを登録しました。'
@@ -75,7 +76,8 @@ ja:
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
-
+  
+  # 時刻関連
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"
@@ -112,7 +114,8 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
-
+  
+  # 各モデルのカラム関連
   activerecord:
     attributes:
       project:
@@ -140,7 +143,8 @@ ja:
         comment: "コメント"
       chat:
         message: "メッセージ"
-
+  
+  # ページネーション
   views:
     pagination:
       first: "&laquo; 最初"
