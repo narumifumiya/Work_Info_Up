@@ -10,7 +10,7 @@ class Public::GroupsController < ApplicationController
     else
       @groups = Group.page(params[:page])
     end
-    
+
     @group = Group.new
   end
 
@@ -57,11 +57,11 @@ class Public::GroupsController < ApplicationController
   end
 
   # params[:id]を持つ@groupのowner_idカラムのデータと自分のユーザーIDが一緒かどうかを確かめる。
-  # 違う場合はグループ一覧ページへ遷移させる。（オーナー以外は編集できない）before_actionで使用する。
+  # 違う場合はグループ詳細ページを再表示させる。（オーナー以外は編集できない）before_actionで使用する。
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
-      redirect_to groups_path
+      redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です"
     end
   end
 

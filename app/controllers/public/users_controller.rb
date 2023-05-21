@@ -4,12 +4,13 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
+    # .where(is_deleted: 'false')にて退社済みユーザーは表示しない
     if params[:latest] #新しい順
-      @users = User.latest.page(params[:page]).per(12)
+      @users = User.where(is_deleted: 'false').latest.page(params[:page]).per(12)
     elsif params[:old] == true #古い順
-      @users = User.old.page(params[:page]).per(12)
+      @users = User.where(is_deleted: 'false').old.page(params[:page]).per(12)
     else
-      @users = User.page(params[:page]).per(12)
+      @users = User.where(is_deleted: 'false').page(params[:page]).per(12)
     end
 
     @departments = Department.all
@@ -56,7 +57,7 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user_id = params[:id].to_i
     unless user_id == current_user.id
-      redirect_to public_user_path(current_user.id)
+      redirect_to public_user_path(current_user.id), alert: "ログインユーザー以外は編集できません"
     end
   end
 

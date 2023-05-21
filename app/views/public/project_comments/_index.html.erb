@@ -2,13 +2,13 @@
 <% project.project_comments.each do |project_comment| %>
   <div class="d-flex justify-content-between  p-2">
     <div class="d-flex flex-row align-items-center">
-      <div>
+      <div style="min-width:100px">
         <%= link_to public_user_path(project_comment.user), class: 'text-dark' do %>
           <%= image_tag project_comment.user.get_profile_image(50, 50),class: 'rounded-circle' %><br>
           <%= project_comment.user.name %>
         <% end %>
       </div>
-      <p>
+      <p class="break", style="max-width:800px">
         <%= project_comment.comment %>
       </p>
     </div>
