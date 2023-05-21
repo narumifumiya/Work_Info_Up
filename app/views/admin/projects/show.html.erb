@@ -1,12 +1,12 @@
 <div class="container">
   <h2 class="text-center"><%= @company.name %></h2>
   <h4 class="text-center">プロジェクト詳細</h4>
-  
+
   <div class="row mt-5">
     <div class="col-md-6 text-center mb-3">
       <%= image_tag @project.get_project_image(300,300) %><br>
       <%= link_to url_for(@project.project_image), class: 'text-dark' do %>
-        <i class="fas fa-image"></i>画像表示
+        <i class="fas fa-image"></i> 画像表示
       <% end %>
     </div>
     <div class="col-12 col-sm-8 col-md-6 mx-auto">
