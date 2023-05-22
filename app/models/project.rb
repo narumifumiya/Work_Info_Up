@@ -8,7 +8,9 @@ class Project < ApplicationRecord
   # 通知用
   has_many :notifications, dependent: :destroy
 
-  has_one_attached :project_image
+  # has_one_attached :project_image
+  # 画像の複数投稿を可能にする
+  has_many_attached :project_images
 
   enum order_status: { under_negotiation: 0, ordered: 1, lost_orders: 2 }
   enum progress_status: { not_started_yet: 0, while_working: 1, completion: 2 }
@@ -20,12 +22,13 @@ class Project < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
   scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
 
-  def get_project_image(width, height)
-    unless project_image.attached?
+  # 画像表示のメソッド、表示させるのは１枚目のみ
+  def get_project_images(width, height)
+    unless project_images.attached?
       file_path = Rails.root.join('app/assets/images/mitumori.png')
-      project_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      project_images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    project_image.variant(resize_to_limit: [width, height]).processed
+    project_images[0].variant(resize_to_limit: [width, height]).processed
   end
 
   # ユーザーがいいねをしているかを確認
