@@ -93,13 +93,13 @@ class Project < ApplicationRecord
 
   # コメント通知作成メソッド
   def create_notification_comment!(current_user, project_comment_id)
-    # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    temp_ids = ProjectComment.select(:user_id).where(project_id: id).where.not(user_id: current_user.id).distinct
+    # 自分と投稿者以外でコメントしている人をすべて取得し、全員に通知を送る、distinctで重複はまとめる
+    temp_ids = ProjectComment.select(:user_id).where(project_id: id).where.not(user_id: current_user.id).where.not(user_id: user_id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, project_comment_id, temp_id['user_id'])
     end
-    # まだ誰もコメントしていない場合は、投稿者に通知を送る
-   save_notification_comment!(current_user, project_comment_id, user_id)
+     # 投稿者には毎回通知を送る
+    save_notification_comment!(current_user, project_comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, project_comment_id, visited_id)
