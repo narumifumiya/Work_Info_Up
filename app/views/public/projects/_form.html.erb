@@ -21,8 +21,8 @@
   </div>
 
   <div class="form-group row">
-    <label for="image", class="col-md-3 mx-auto">画像</label>
-    <div class="col-md-9"><%= f.file_field :project_image, accept: 'image/*', id: "image" %></div>
+    <label for="image", class="col-md-3 mx-auto">画像<br>(複数登録可能)</label>
+    <div class="col-md-9"><%= f.file_field :project_images, accept: 'image/*', multiple: true, id: "image" %></div>
   </div>
 
   <div class="form-group row">
