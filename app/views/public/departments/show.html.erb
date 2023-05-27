@@ -11,16 +11,13 @@
     </div>
   </div>
 
-
   <div class="row">
     <div class="col-md-9 mb-3">
       <%= render 'public/users/index', users: @users %>
     </div>
-
     <div class="col-md-3 text-center">
       <%= render 'index', departments: @departments %>
     </div>
-
     <div class="mx-auto mt-5"><%= paginate @users %></div>
   </div>
 

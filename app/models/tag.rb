@@ -9,7 +9,6 @@ class Tag < ApplicationRecord
     end
     # 検索したtagsを一つ一つtag.projectsにして返す
     return tags.inject(init = []) {|result, tag| result + tag.projects}
-    
   end
   
 end

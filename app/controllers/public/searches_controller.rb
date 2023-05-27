@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     @word = params[:word]
     @search = params[:search]
-    
+
     if @range == "ユーザー"
       @users = User.looks(@search, @word).page(params[:page]).per(12)
     elsif @range == "得意先"

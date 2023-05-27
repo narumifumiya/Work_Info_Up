@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag('w-favicon.ico') %>
-    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,16 +15,13 @@
     <div class="fixed-top">
       <%= render 'layouts/header' %>
     </div>
-
     <!-- フラッシュメッセージ -->
     <div class="p-3">
       <%= render 'layouts/flash' %>
     </div>
-
     <main class="pt-5 pb-5 h-auto">
       <%= yield %>
     </main>
-
     <!-- フッター -->
     <%= render 'layouts/footer' %>
     <!-- ページ上部に戻るボタン -->
@@ -34,6 +30,6 @@
         <i class="fas fa-chevron-circle-left fa-rotate-90" style="color: #8ab1f5;"></i>
       </a>
     </span>
-
   </body>
+  
 </html>
