@@ -65,14 +65,14 @@ Company.create!(
 Office.create!(
   [
     {company_id: 1, name: '本社', post_code: '000-0000', address: '東京都港区', phone_number: '00-0000-0000'},
-    {company_id: 1, name: '豊島営業所', post_code: '000=0000', address: '東京都豊島区', phone_number: '00-0000-0000'},
-    {company_id: 1, name: '神奈川支店', post_code: '000=0000', address: '神奈川県横浜市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '札幌本社', post_code: '000=0000', address: '北海道札幌市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '旭川支店', post_code: '000=0000', address: '北海道旭川市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '函館支店', post_code: '000=0000', address: '北海道函館市', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '本社', post_code: '000=0000', address: '東京都練馬区', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '群馬支社', post_code: '000=0000', address: '群馬県高崎市', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '栃木支社', post_code: '000=0000', address: '栃木県宇都宮市', phone_number: '00-0000-0000'},
+    {company_id: 1, name: '豊島営業所', post_code: '000-0000', address: '東京都豊島区', phone_number: '00-0000-0000'},
+    {company_id: 1, name: '神奈川支店', post_code: '000-0000', address: '神奈川県横浜市', phone_number: '00-0000-0000'},
+    {company_id: 2, name: '札幌本社', post_code: '000-0000', address: '北海道札幌市', phone_number: '00-0000-0000'},
+    {company_id: 2, name: '旭川支店', post_code: '000-0000', address: '北海道旭川市', phone_number: '00-0000-0000'},
+    {company_id: 2, name: '函館支店', post_code: '000-0000', address: '北海道函館市', phone_number: '00-0000-0000'},
+    {company_id: 3, name: '本社', post_code: '000-0000', address: '東京都練馬区', phone_number: '00-0000-0000'},
+    {company_id: 3, name: '群馬支社', post_code: '000-0000', address: '群馬県高崎市', phone_number: '00-0000-0000'},
+    {company_id: 3, name: '栃木支社', post_code: '000-0000', address: '栃木県宇都宮市', phone_number: '00-0000-0000'},
   ]
 )
 # 顧客
