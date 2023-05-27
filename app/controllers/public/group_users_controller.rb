@@ -1,11 +1,11 @@
 class Public::GroupUsersController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     @group = Group.find(params[:group_id])
     # current_userIDを持ったgroup_userを作成する。作成時にgroup_idカラムにグループ詳細ページのIDを保存する。
     @group_user = current_user.group_users.new(group_id: params[:group_id])
     @group_user.save
-    # 通知用
     @group.create_notification_join!(current_user)
     redirect_to request.referer
   end

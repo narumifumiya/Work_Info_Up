@@ -5,7 +5,6 @@ class Project < ApplicationRecord
   has_many   :favorites       , dependent: :destroy
   has_many   :project_tags    , dependent: :destroy
   has_many   :tags            , through: :project_tags
-  # 通知用
   has_many :notifications, dependent: :destroy
 
   # has_one_attached :project_image

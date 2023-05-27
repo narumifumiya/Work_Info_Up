@@ -1,22 +1,22 @@
 <%= form_with model: [company, office]  do |f| %>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="name">事業所名</label></div>
+    <label for="name", class="col-md-3 mx-auto">事業所名</label>
     <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="post_code">郵便番号</label></div>
+    <label for="post_code", class="col-md-3 mx-auto">郵便番号</label>
     <div class="col-md-9"><%= f.text_field :post_code,  class: "form-control", id: "post_code" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="address">住所</label></div>
+    <label for="address", class="col-md-3 mx-auto">住所</label>
     <div class="col-md-9"><%= f.text_field :address,  class: "form-control", id: "address" %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3 mx-auto"><label for="phone_number">電話番号</label></div>
+    <label for="phone_number", class="col-md-3 mx-auto">電話番号</label>
     <div class="col-md-9"><%= f.text_field :phone_number,  class: "form-control", id: "phone_number" %></div>
   </div>
 
