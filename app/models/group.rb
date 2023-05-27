@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 140 }
   # active_recordを導入している為、下記にてカラムと同じようにimageを呼び出す事が出来る
   has_one_attached :group_image
 

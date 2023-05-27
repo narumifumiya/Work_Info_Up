@@ -9,7 +9,7 @@ ja:
         not_started_yet: "未着手"
         while_working: "作業中"
         completion: "完了"
-        
+
   # devise関連のエラー分
   devise:
     confirmations:
@@ -76,7 +76,7 @@ ja:
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
-  
+
   # 時刻関連
   datetime:
     distance_in_words:
@@ -114,7 +114,7 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
-  
+
   # 各モデルのカラム関連
   activerecord:
     attributes:
@@ -129,6 +129,7 @@ ja:
         email: "メールアドレス"
         phone_number: "電話番号"
         password: "パスワード"
+        password_confirmation: "確認用パスワード"
       office:
         name: "事業所名"
       customer:
@@ -139,11 +140,12 @@ ja:
         name: "部署名"
       group:
         name: "グループ名"
+        introduction: "紹介文"
       project_comment:
         comment: "コメント"
       chat:
         message: "メッセージ"
-  
+
   # ページネーション
   views:
     pagination:
