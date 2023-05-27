@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe ProjectComment, "モデルに関するテスト", type: :model do
-  before do
-    user = FactoryBot.create(:user)
-    project = FactoryBot.create(:project)
-  end
-    # @comment = FactoryBot.build(:comment, user_id: user.id, food_id: food.id)
 
   describe '実際に保存してみる' do
+    let!(:user) { create(:user) }
+    let!(:company) { create(:company) }
+    let!(:project) { create(:project, company: company, user: user) }
+
     it "有効な投稿内容の場合は保存されるか" do
-      expect(FactoryBot.build(:project_comment)).to be_valid
+      comment = FactoryBot.create(:project_comment, user_id: user.id, project_id: project.id)
+      expect(comment).to be_valid
     end
   end
 

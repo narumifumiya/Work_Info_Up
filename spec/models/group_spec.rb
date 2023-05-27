@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Group, "モデルに関するテスト", type: :model do
-  before do
-    user = FactoryBot.create(:user)
-  end
 
   describe '実際に保存してみる' do
     it "有効な投稿内容の場合は保存されるか" do

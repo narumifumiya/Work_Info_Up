@@ -28,12 +28,6 @@ describe 'project投稿のテスト' do
         expect(page).to have_link "戻る", href: company_path(company.id)
       end
       it 'projectの名前と受注ステータス、の表示が表示されているか、名前は詳細ページのリンクになっているか' do
-        # (1..5).each do |i|
-          # Project.create(name:'hoge'+i.to_s,start_date:'phone_number'+i.to_s,department:'position'+i.to_s)
-          # project.create(:project, company: company, user: user)
-          # byebug
-          # データが作成されていない
-        # end
         visit company_projects_path(company.id)
         Project.all.each_with_index do |project|
           expect(page).to have_link project.name, href: company_project_path(company.id, project.id)
@@ -44,7 +38,7 @@ describe 'project投稿のテスト' do
     end
 
   end
-  describe '顧客新規作成画面のテスト' do
+  describe 'project新規作成画面のテスト' do
     before  do
       visit new_company_project_path(company)
     end
@@ -54,7 +48,7 @@ describe 'project投稿のテスト' do
         expect(page).to have_field 'project[contract_amount]'
         expect(page).to have_field 'project[introduction]'
         expect(page).to have_field 'project[tag_name]'
-        # expect(page).to have_field 'project[project_images]'
+        expect(page).to have_field 'project[project_images][]'
         expect(page).to have_field 'project[start_date]'
         expect(page).to have_field 'project[end_date]'
         expect(page).to have_field 'project[order_status]'
@@ -134,8 +128,8 @@ describe 'project投稿のテスト' do
         expect(page).to have_field 'project[name]', with: project.name
         expect(page).to have_field 'project[contract_amount]', with: project.contract_amount
         expect(page).to have_field 'project[introduction]', with: project.introduction
-        # expect(page).to have_field 'project[tag_name]', with: project.tags
-        # expect(page).to have_field 'project[project_images]'
+        expect(page).to have_field 'project[tag_name]'
+        expect(page).to have_field 'project[project_images][]'
         expect(page).to have_field 'project[start_date]', with: project.start_date
         expect(page).to have_field 'project[end_date]', with: project.end_date
         expect(page).to have_field 'project[order_status]', with: project.order_status

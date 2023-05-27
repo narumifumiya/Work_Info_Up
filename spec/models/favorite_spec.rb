@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Favorite, "モデルに関するテスト", type: :model do
-  before do
-    user = FactoryBot.create(:user)
-    project = FactoryBot.create(:project)
-  end
 
   describe '実際に保存してみる' do
+    let!(:user) { create(:user) }
+    let!(:company) { create(:company) }
+    let!(:project) { create(:project, company: company, user: user) }
     it "有効な投稿内容の場合は保存されるか" do
-      expect(FactoryBot.build(:favorite)).to be_valid
+      favorite = FactoryBot.create(:favorite, user_id: user.id, project_id: project.id)
+      expect(favorite).to be_valid
     end
   end
 

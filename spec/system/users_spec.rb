@@ -28,9 +28,7 @@ describe 'ユーザー編集のテスト' do
         expect(page).to have_link "グループ一覧", href: groups_path
       end
       it 'userの写真、名前、役職、部署が表示されているか' do
-        # (1..5).each do |i|
-        #   User.create(name:'hoge'+i.to_s,name_kana:'name_kana'+i.to_s,department_id:department.name,positon:'position'+i.to_s)
-        # end
+
         visit public_users_path
         User.all.each_with_index do |user|
           expect(page).to have_selector("img[src$='default-image.jpg']")
