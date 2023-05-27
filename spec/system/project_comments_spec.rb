@@ -48,15 +48,6 @@ describe 'project_comment投稿のテスト' do
         expect(page).to have_button ''
       end
     end
-    context '投稿処理に関するテスト' do
-      it '投稿に成功しコメントが表示されるか' do
-
-        fill_in 'project_comment[comment]', with: Faker::Lorem.characters(number:140)
-        # ボタンがエラーになる
-        # click_button '.btn'
-        # expect(page).to find
-      end
-    end
   end
 end
 

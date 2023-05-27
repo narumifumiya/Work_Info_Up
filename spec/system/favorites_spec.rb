@@ -25,15 +25,4 @@ describe 'project_comment投稿のテスト' do
     end
   end
 
-  describe 'いいね投稿のテスト' do
-    before  do
-      visit company_project_path(company.id, project.id)
-    end
-    it 'いいねした状態でいいねを押すとカウントが減か' do
-      # クリックできない
-      # expect(page).to find('').click
-      # expect(page).to change(Favorite, :count).by(-1)
-    end
-  end
-
 end
