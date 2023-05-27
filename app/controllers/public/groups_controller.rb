@@ -16,7 +16,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @users = @group.users.page(params[:page])
+    @users = @group.users.page(params[:page]).per(12)
     # グループオーナのユーザー情報を取ってきている
     @group_owner = User.find_by(id: @group.owner_id)
   end
