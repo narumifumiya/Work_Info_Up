@@ -20,7 +20,7 @@
           </thead>
           <tbody>
             <% @customers.each do |customer| %>
-              <tr>
+              <tr class="table_tr_link" data-href="/companies/<%= @company.id %>/customers/<%= customer.id %>">
                 <td><%= link_to customer.name, company_customer_path(@company, customer.id), class: 'text-dark' %></td>
                 <td><%= customer.position %></td>
                 <td><%= customer.department %></td>

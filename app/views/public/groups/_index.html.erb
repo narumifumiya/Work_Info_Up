@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <% groups.each do |group| %>
-        <tr>
+        <tr class="table_tr_link" data-href="/groups/<%= group.id%>">
           <td><%= image_tag group.get_group_image(50,50) %></td>
           <td><%= link_to group.name, group_path(group),class: 'text-dark' %></td>
           <td><%= group.introduction %></td>
