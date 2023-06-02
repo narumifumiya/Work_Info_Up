@@ -48,7 +48,7 @@
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <tr class="table_tr_link" data-href="/public/users/<%= user.id%>">
+            <tr class="table_tr_link" data-href="/public/users/<%= user.id %>">
               <td><%= link_to user.name, public_user_path(user), class: 'text-dark' %></td>
               <td>
                 <% if user.department_id.present? %>
