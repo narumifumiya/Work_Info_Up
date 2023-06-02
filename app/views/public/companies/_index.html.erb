@@ -7,7 +7,7 @@
     </thead>
     <tbody>
       <% companies.each do |company| %>
-        <tr>
+        <tr class="table_tr_link" data-href="/companies/<%= company.id%>">
           <td><%= link_to company.name, company_path(company.id), class: 'text-dark' %></td>
         </tr>
       <% end %>
