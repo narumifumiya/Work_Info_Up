@@ -15,7 +15,7 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import "./script.js";
 import "./table.js";
-import "packs/jquery.jpostal.js";
+// import "packs/jquery.jpostal.js";
 
 
 Rails.start()
