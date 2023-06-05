@@ -4,7 +4,6 @@
 
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
-
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle"
                 type="button" id="dropdownMenu1" data-toggle="dropdown"
@@ -17,29 +16,33 @@
         </div>
       </div>
 
-      <table class="table table-hover">
-        <tr>
-          <th>事業所名</th>
-          <td><%= @office.name %></td>
-        </tr>
-        <tr>
-          <th>所在地</th>
-          <td><%= @office.total_address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @office.phone_number %></td>
-        </tr>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover text-nowrap">
+          <tr>
+            <th>事業所名</th>
+            <td><%= @office.name %></td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td><%= @office.total_address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @office.phone_number %></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 
+<%# if @office.latitude.present? && @office.longitude.present? %>
 <div id="map"></div>
+<%# end %>
 <!--(地図を表示)-->
 
 <script type="text/javascript">
   function initMap() {
-    var test ={lat: <%= @office.latitude || 0 %>, lng: <%= @office.longitude || 0 %>};
+    var test ={lat: <%= @office.latitude %>, lng: <%= @office.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 15,
               center: test
