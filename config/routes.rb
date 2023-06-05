@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
     # 得意先周辺
     resources :companies, only: [:index, :show] do
-      resources :offices, except: [:show]
+      resources :offices
       resources :customers
       resources :projects, except: [:destroy] do
         resources :project_comments, only: [:create, :destroy]

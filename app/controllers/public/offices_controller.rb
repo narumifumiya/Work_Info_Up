@@ -22,12 +22,23 @@ class Public::OfficesController < ApplicationController
     @company = Company.find(params[:company_id])
     @office = Office.new(office_params)
     @office.company_id = @company.id
+    # postcodeから緯度、軽度を取得
+    geocode = Geocoder.search(params[:office][:postcode], params: { language: 'ja' }).first
+    @office.latitude = geocode.latitude
+    @office.longitude = geocode.longitude
+
     if @office.save
-      redirect_to company_offices_path(@company), notice: "事業所を追加しました"
+      redirect_to company_office_path(@company, @office), notice: "事業所を追加しました"
     else
       @company = Company.find(params[:company_id])
       render :new
     end
+  end
+
+  # 追加
+  def show
+    @company = Company.find(params[:company_id])
+    @office = Office.find(params[:id])
   end
 
   def edit
@@ -38,8 +49,12 @@ class Public::OfficesController < ApplicationController
   def update
     @company = Company.find(params[:company_id])
     @office = Office.find(params[:id])
+     # postcodeから緯度、軽度を取得
+    geocode = Geocoder.search(params[:office][:postcode], params: { language: 'ja' }).first
+    @office.latitude = geocode.latitude
+    @office.longitude = geocode.longitude
     if @office.update(office_params)
-      redirect_to company_offices_path(@company), notice: "事業所情報を更新しました"
+      redirect_to company_office_path(@company, @office), notice: "事業所情報を更新しました"
     else
       redirect_to request.referer, alert: "事業所名が入力されていません"
     end
@@ -49,7 +64,7 @@ class Public::OfficesController < ApplicationController
     @company = Company.find(params[:company_id])
     @office = Office.find(params[:id])
     @office.destroy
-    redirect_to request.referer, alert: "事業所を削除しました"
+    redirect_to company_offices_path(@company), alert: "事業所を削除しました"
   end
 
   private
