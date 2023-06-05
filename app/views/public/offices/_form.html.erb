@@ -16,30 +16,19 @@
   </div>
 
   <div class="form-group row">
-    <label for="office_address_city", class="col-md-3 mx-auto">市区町村</label>
+    <label for="office_address_city", class="col-md-3 mx-auto">市区町村<br>丁目・番地・号</label>
      <div class="col-md-9"><%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control', id: "office_address_city" %></div>
   </div>
 
-  <div class="form-group row">
-    <label for="office_address_street", class="col-md-3 mx-auto">番地</label>
-    <div class="col-md-9"><%= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control', id: "office_address_street" %></div>
-  </div>
+  <!--<div class="form-group row">-->
+  <!--  <label for="office_address_street", class="col-md-3 mx-auto">番地</label>-->
+  <!--  <div class="col-md-9"><%#= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control', id: "office_address_street" %></div>-->
+  <!--</div>-->
 
   <div class="form-group row">
     <label for="address_building", class="col-md-3 mx-auto">建物</label>
     <div class="col-md-9"><%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control', id: "address_building" %></div>
   </div>
-  
-
-  <!--<div class="form-group row">-->
-  <!--  <label for="post_code", class="col-md-3 mx-auto">郵便番号</label>-->
-  <!--  <div class="col-md-9"><%#= f.text_field :post_code,  class: "form-control", id: "post_code" %></div>-->
-  <!--</div>-->
-
-  <!--<div class="form-group row">-->
-  <!--  <label for="address", class="col-md-3 mx-auto">住所</label>-->
-  <!--  <div class="col-md-9"><%#= f.text_field :address,  class: "form-control", id: "address" %></div>-->
-  <!--</div>-->
 
   <div class="form-group row">
     <label for="phone_number", class="col-md-3 mx-auto">電話番号</label>

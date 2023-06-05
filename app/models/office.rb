@@ -7,12 +7,12 @@ class Office < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)} #descは降順…作成日が新しい順になる(10,9,8...)
   scope :old, -> {order(created_at: :asc)}    #ascは昇順…作成日が古い順になる(1,2,3...)
 
-  geocoded_by :postcode
-  after_validation :geocode, if: :postcode_changed?
+  geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
 
   # 郵便番号と住所を同時に表示
   def total_address
-    "〒#{postcode}　#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
+    "〒#{postcode}　#{self.prefecture_name}#{self.address_city}#{self.address_street}　#{self.address_building}"
   end
 
   # 都道府県コードから都道府県名に自動で変換する
