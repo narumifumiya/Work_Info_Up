@@ -1,0 +1,82 @@
+<div class="container">
+  <h2 class="text-center"><%= @company.name %></h2>
+  <h4 class="text-center">事業所詳細</h4>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle"
+                type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <%= link_to "編集", edit_company_office_path(@office.company, @office.id), class: "dropdown-item" %>
+          <%= link_to "削除", company_office_path(@office.company, @office.id), method: :delete, class: "dropdown-item", data: { confirm: "本当に削除しますか？" } %>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover text-nowrap">
+          <tr>
+            <th>事業所名</th>
+            <td><%= @office.name %></td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td><%= @office.total_address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @office.phone_number %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="map"></div>
+  <!--(地図を表示)-->
+  
+  <script type="text/javascript">
+    function initMap() {
+      var test ={lat: <%= @office.latitude %>, lng: <%= @office.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: test
+                });
+      var transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+  
+      var contentString = '住所：<%= @office.address_city %>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      var marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                  });
+  
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  <script async defer
+                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
+  </script>
+  
+  <style type="text/css">
+    #map { height: 300px;
+          width: 100%;}
+  </style>
+  <!-- 地図表示の記述ここまで -->
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+      <p class="text-center"><%= link_to "一覧へ戻る", company_offices_path(@company), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

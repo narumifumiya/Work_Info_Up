@@ -6,13 +6,23 @@
   </div>
 
   <div class="form-group row">
-    <label for="post_code", class="col-md-3 mx-auto">郵便番号</label>
-    <div class="col-md-9"><%= f.text_field :post_code,  class: "form-control", id: "post_code" %></div>
+    <label for="office_postcode", class="col-md-3 mx-auto">郵便番号</label>
+    <div class="col-md-9"><%= f.text_field :postcode,  class: "form-control", id: "office_postcode" %></div>
   </div>
 
   <div class="form-group row">
-    <label for="address", class="col-md-3 mx-auto">住所</label>
-    <div class="col-md-9"><%= f.text_field :address,  class: "form-control", id: "address" %></div>
+    <label for="office_prefecture_code", class="col-md-3 mx-auto">都道府県</label>
+    <div class="col-md-9"><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: "office_prefecture_code" %></div>
+  </div>
+
+  <div class="form-group row">
+    <label for="office_address_city", class="col-md-3 mx-auto">市区町村<br>丁目・番地・号</label>
+     <div class="col-md-9"><%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control', id: "office_address_city" %></div>
+  </div>
+
+  <div class="form-group row">
+    <label for="address_building", class="col-md-3 mx-auto">建物</label>
+    <div class="col-md-9"><%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control', id: "address_building" %></div>
   </div>
 
   <div class="form-group row">

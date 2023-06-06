@@ -89,3 +89,8 @@ main {
 .break {
   overflow-wrap: break-word;
 }
+
+// 各viewのtrリンクのカーソルをpointerに変更
+.table_tr_link {
+  cursor: pointer;
+}

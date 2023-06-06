@@ -132,6 +132,7 @@ ja:
         password_confirmation: "確認用パスワード"
       office:
         name: "事業所名"
+        postcode: "郵便番号"
       customer:
         name: "名前"
       company:

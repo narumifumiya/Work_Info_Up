@@ -5,21 +5,14 @@
         <th>事業所名</th>
         <th>所在地</th>
         <th>電話番号</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <% offices.each do |office| %>
-        <tr>
+        <tr class="table_tr_link" data-href="/companies/<%= office.company.id%>/offices/<%= office.id%>">
           <td><%= office.name %></td>
           <td><%= office.total_address %></td>
           <td><%= office.phone_number %></td>
-          <td>
-            <div class="row">
-              <div class="m-1"><%= link_to "編集", edit_company_office_path(office.company, office.id), class: "btn btn-outline-success btn-sm" %></div>
-              <div class="m-1"><%= link_to "削除", company_office_path(office.company, office.id), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %></div>
-            </div>
-          </td>
         </tr>
       <% end %>
     </tbody>
