@@ -10,7 +10,7 @@
     <tbody>
       <% projects.each do |project| %>
         <tr class="table_tr_link" data-href="/admin/companies/<%= project.company.id %>/projects/<%= project.id %>">
-          <td><%= link_to project.name, admin_company_project_path(project.company, project.id), class: 'text-dark' %></td>
+          <td><%= project.name %></td>
           <!-- 受注ステータスによって文字色変更 -->
           <td class="font-weight-bold">
             <% if project.order_status == "under_negotiation" %>

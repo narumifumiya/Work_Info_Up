@@ -8,7 +8,7 @@
     <tbody>
       <% companies.each do |company| %>
         <tr class="table_tr_link" data-href="/admin/companies/<%= company.id%>">
-          <td><%= link_to company.name, admin_company_path(company.id), class: 'text-dark' %></td>
+          <td><%= company.name %></td>
         </tr>
       <% end %>
     </tbody>
