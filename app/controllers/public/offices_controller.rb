@@ -73,7 +73,7 @@ class Public::OfficesController < ApplicationController
   private
 
   def office_params
-    params.require(:office).permit(:name, :phone_number, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
+    params.require(:office).permit(:name, :phone_number, :postcode, :prefecture_code, :address_city, :address_building)
   end
 
 end

@@ -4,7 +4,7 @@
     <label for="name", class="col-md-3 mx-auto">事業所名</label>
     <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
   </div>
-  
+
   <div class="form-group row">
     <label for="office_postcode", class="col-md-3 mx-auto">郵便番号</label>
     <div class="col-md-9"><%= f.text_field :postcode,  class: "form-control", id: "office_postcode" %></div>
@@ -19,11 +19,6 @@
     <label for="office_address_city", class="col-md-3 mx-auto">市区町村<br>丁目・番地・号</label>
      <div class="col-md-9"><%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control', id: "office_address_city" %></div>
   </div>
-
-  <!--<div class="form-group row">-->
-  <!--  <label for="office_address_street", class="col-md-3 mx-auto">番地</label>-->
-  <!--  <div class="col-md-9"><%#= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control', id: "office_address_street" %></div>-->
-  <!--</div>-->
 
   <div class="form-group row">
     <label for="address_building", class="col-md-3 mx-auto">建物</label>

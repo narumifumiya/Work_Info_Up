@@ -12,7 +12,7 @@ class Office < ApplicationRecord
 
   # 郵便番号と住所を同時に表示
   def total_address
-    "〒#{postcode}　#{self.prefecture_name}#{self.address_city}#{self.address_street}　#{self.address_building}"
+    "〒#{postcode}　#{self.prefecture_name}#{self.address_city}　#{self.address_building}"
   end
 
   # 都道府県コードから都道府県名に自動で変換する

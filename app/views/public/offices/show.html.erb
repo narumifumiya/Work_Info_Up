@@ -35,45 +35,43 @@
     </div>
   </div>
 
-<%# if @office.latitude.present? && @office.longitude.present? %>
-<div id="map"></div>
-<%# end %>
-<!--(地図を表示)-->
-
-<script type="text/javascript">
-  function initMap() {
-    var test ={lat: <%= @office.latitude %>, lng: <%= @office.longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: test
-              });
-    var transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
-
-    var contentString = '住所：<%= @office.address_city %>';
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-    var marker = new google.maps.Marker({
-                  position:test,
-                  map: map,
-                  title: contentString
+  <div id="map"></div>
+  <!--(地図を表示)-->
+  
+  <script type="text/javascript">
+    function initMap() {
+      var test ={lat: <%= @office.latitude %>, lng: <%= @office.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: test
                 });
-
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
-  }
-</script>
-<script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
-</script>
-
-<style type="text/css">
-  #map { height: 300px;
-        width: 100%;}
-</style>
-
+      var transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+  
+      var contentString = '住所：<%= @office.address_city %>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      var marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                  });
+  
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  <script async defer
+                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
+  </script>
+  
+  <style type="text/css">
+    #map { height: 300px;
+          width: 100%;}
+  </style>
+  <!-- 地図表示の記述ここまで -->
 
   <div class="row mt-5">
     <div class="col-md-9 mx-auto">

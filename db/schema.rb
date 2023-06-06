@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_05_123130) do
+ActiveRecord::Schema.define(version: 2023_06_06_021811) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -137,7 +137,6 @@ ActiveRecord::Schema.define(version: 2023_06_05_123130) do
     t.string "postcode"
     t.integer "prefecture_code"
     t.string "address_city"
-    t.string "address_street"
     t.string "address_building"
     t.float "latitude"
     t.float "longitude"
