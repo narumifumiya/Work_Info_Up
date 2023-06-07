@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="text-center"><%= @user.name %>さん</h2>
+  <h4 class="text-center mb-5">スケジュールカレンダー</h4>
+  <% if @user.id == current_user.id %>
+    <%= link_to '予定追加', new_public_user_task_path(@user.id), class:'btn btn-outline-primary' %>
+  <% end %>
+
+  <div>
+ 	<%= month_calendar events: @user.tasks do |date, tasks| %>
+      <%= date.day %>
+      <% tasks.each do |task| %>
+      <div class="task-data">
+      	<%= link_to task.title, public_user_task_path(@user, task) %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+      <p class="text-center"><%= link_to "戻る", public_user_path(@user), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

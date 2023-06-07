@@ -66,6 +66,7 @@ gem "enum_help"
 gem 'dotenv-rails'
 gem 'jp_prefecture'
 gem 'geocoder'
+gem "simple_calendar", "~> 2.4"
 group :production do
   gem 'mysql2'
 end

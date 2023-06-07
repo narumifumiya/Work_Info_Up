@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_06_021811) do
+ActiveRecord::Schema.define(version: 2023_06_07_071643) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -180,6 +180,16 @@ ActiveRecord::Schema.define(version: 2023_06_06_021811) do
     t.string "tag_name"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.date "start_time"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -206,4 +216,5 @@ ActiveRecord::Schema.define(version: 2023_06_06_021811) do
   add_foreign_key "group_users", "users"
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"
+  add_foreign_key "tasks", "users"
 end
