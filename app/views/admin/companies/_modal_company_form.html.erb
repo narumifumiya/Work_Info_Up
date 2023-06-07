@@ -1,10 +1,10 @@
 <div class="modal-form">
   <%= form_with model: company, url: admin_companies_path, local: false do |f| %>
 
-    <div id="modal_company_messages-error">
+    <div id="modal_company_messages-error" class=" mx-auto text-center">
       <%= render 'layouts/errors', obj: company %>
     </div>
-    
+
     <div class="form-group">
       <label for="name">得意先名</label><br>
       <%= f.text_field :name,  class: "form-control", id: "name" %>

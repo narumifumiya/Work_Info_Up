@@ -1,7 +1,7 @@
 <div class="modal-form">
   <%= form_with model: department, url: admin_departments_path, local: false do |f| %>
 
-    <div id="modal_department_messages-error">
+    <div id="modal_department_messages-error" class=" mx-auto text-center">
       <%= render 'layouts/errors', obj: department %>
     </div>
 

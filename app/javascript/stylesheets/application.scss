@@ -95,3 +95,11 @@ main {
 .table_tr_link {
   cursor: pointer;
 }
+
+
+// 画面幅が540px以下の場合に適用される
+@media screen and (max-width: 540px) {
+ .error-title {
+   font-size: 1.4rem;
+ }
+}
