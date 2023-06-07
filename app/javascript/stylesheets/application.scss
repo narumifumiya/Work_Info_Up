@@ -1,6 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP:wght@600&family=Philosopher&family=Work+Sans:wght@600&display=swap');
+@import 'simple_calendar.scss';
 
 * {
   font-family: 'Noto Sans JP', sans-serif;

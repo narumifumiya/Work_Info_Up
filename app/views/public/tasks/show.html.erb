@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="text-center"><%= @user.name %>さん</h2>
+  <h4 class="text-center mb-5">スケジュール詳細</h4>
+
+  <div class="row">
+    <div class="p-3 mx-auto" style="max-width: 540px;">
+    <P><span class="task-parts">日時：</span><%= @task.start_time %></P>
+    <p class="d-flex justify-content-start">
+      <span style="min-width:80px" class="task-parts">タイトル：</span>
+      <span class="break"><%= @task.title %></span>
+      </p>
+    <p class="d-flex justify-content-start">
+      <span style="min-width:50px" class="task-parts">内容:</span>
+      <span class="break"><%= @task.content %></span>
+    </p>
+
+    <% if @user.id == current_user.id %>
+      <%= link_to '編集', edit_public_user_task_path(@user, @task), class: 'btn btn-outline-success btn-sm'%>
+      <%= link_to '削除', public_user_task_path(@user, @task), method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+      <p class="text-center"><%= link_to "戻る", public_user_tasks_path(@user), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

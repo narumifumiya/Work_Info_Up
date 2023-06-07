@@ -24,10 +24,6 @@ class Public::OfficesController < ApplicationController
     @office.company_id = @company.id
 
     if @office.save
-      # postcodeから緯度、軽度を取得
-      # geocode = Geocoder.search(params[:office][:postcode], params: { language: 'ja' }).first
-      # @office.latitude = geocode.latitude
-      # @office.longitude = geocode.longitude
       redirect_to company_office_path(@company, @office), notice: "事業所を追加しました"
     else
       @company = Company.find(params[:company_id])
@@ -51,10 +47,6 @@ class Public::OfficesController < ApplicationController
     @office = Office.find(params[:id])
 
     if @office.update(office_params)
-      # postcodeから緯度、軽度を取得
-      # geocode = Geocoder.search(params[:office][:postcode], params: { language: 'ja' }).first
-      # @office.latitude = geocode.latitude
-      # @office.longitude = geocode.longitude
       redirect_to company_office_path(@company, @office), notice: "事業所情報を更新しました"
     else
       # redirect_to request.referer, alert: "事業所名が入力されていません"

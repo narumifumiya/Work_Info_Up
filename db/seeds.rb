@@ -64,15 +64,15 @@ Company.create!(
 # 事業所
 Office.create!(
   [
-    {company_id: 1, name: '本社', post_code: '000-0000', address: '東京都港区', phone_number: '00-0000-0000'},
-    {company_id: 1, name: '豊島営業所', post_code: '000-0000', address: '東京都豊島区', phone_number: '00-0000-0000'},
-    {company_id: 1, name: '神奈川支店', post_code: '000-0000', address: '神奈川県横浜市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '札幌本社', post_code: '000-0000', address: '北海道札幌市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '旭川支店', post_code: '000-0000', address: '北海道旭川市', phone_number: '00-0000-0000'},
-    {company_id: 2, name: '函館支店', post_code: '000-0000', address: '北海道函館市', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '本社', post_code: '000-0000', address: '東京都練馬区', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '群馬支社', post_code: '000-0000', address: '群馬県高崎市', phone_number: '00-0000-0000'},
-    {company_id: 3, name: '栃木支社', post_code: '000-0000', address: '栃木県宇都宮市', phone_number: '00-0000-0000'},
+    {company_id: 1, name: '本社', phone_number: '00-0000-0000',postcode: "107-0052",prefecture_code: 13,address_city: "港区赤坂９丁目７− 39",latitude: 35.6646311,longitude: 139.7310087},
+    {company_id: 1, name: '豊島営業所', phone_number: '00-0000-0000', postcode: "171-0022",prefecture_code: 13,address_city: "豊島区南池袋１丁目",latitude: 35.7275147,longitude: 139.7109231},
+    {company_id: 1, name: '神奈川支店', phone_number: '00-0000-0000',postcode: "220-0011",prefecture_code: 14,address_city: "横浜市西区高島２丁目",latitude: 35.4645388,longitude: 139.6235333},
+    {company_id: 2, name: '札幌本社', phone_number: '00-0000-0000', postcode: "060-0806",prefecture_code: 1,address_city: "札幌市北区北六条西４丁目", latitude: 43.0685839,longitude: 141.3492257},
+    {company_id: 2, name: '旭川支店', phone_number: '00-0000-0000', postcode: "070-0030",prefecture_code: 1,address_city: "旭川市宮下通８丁目３",latitude: 43.7623232,longitude: 142.3579382},
+    {company_id: 2, name: '函館支店', phone_number: '00-0000-0000', postcode: "040-0063",prefecture_code: 1,address_city: "函館市若松町１２",latitude: 41.7728642,longitude: 140.7279842},
+    {company_id: 3, name: '本社', phone_number: '00-0000-0000', postcode: "310-0015 ",prefecture_code: 8,address_city: "水戸市宮１丁目１−１",latitude: 36.371319,longitude: 140.474097},
+    {company_id: 3, name: '群馬支社', phone_number: '00-0000-0000', postcode: "371-0024",prefecture_code: 10,address_city: "前橋市表町２丁目２９",latitude: 36.3834746,longitude: 139.0727145},
+    {company_id: 3, name: '栃木支社', phone_number: '00-0000-0000', postcode: "321-0965",prefecture_code: 9,address_city: "宇都宮市川向町１−２３",latitude: 36.5608166,longitude: 139.8981756},
   ]
 )
 # 顧客
