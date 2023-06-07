@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-
   # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
   namespace :public do
     resources :users, only: [:index, :show, :edit, :update] do
-      resources :tasks
+      resources :tasks, except: [:create, :update]
     end
     get '/users/:id/favorites' => 'users#favorites'
   end
+  # taskのformでurlのpublicが干渉してパーシャル化が出来ない為、namespaceの外でpathを指定
+  post "public/users/:user_id/tasks" => 'public/tasks#create', as: :user_tasks
+  patch "public/users/:user_id/tasks/:id" => 'public/tasks#update', as: :user_task
 
   # ユーザー用
   scope module: :public do

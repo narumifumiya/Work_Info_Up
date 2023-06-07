@@ -2,35 +2,13 @@
   <h2 class="text-center"><%= @user.name %>さん</h2>
   <h4 class="text-center mb-5">スケジュール作成</h4>
 
-  <div class="col-10 col-md-7 mx-auto">
+  <div class="col-10 col-md-7 mx-auto text-center">
     <%= render 'layouts/errors', obj: @task %>
   </div>
 
   <div class="row">
     <div class="col-10 col-md-7 mx-auto">
-      <%= form_with model: [@user, @task], url: public_user_tasks_path(@user) do |f| %>
-
-        <div class="form-group row">
-          <label for="title", class="col-md-3 mx-auto">タイトル</label>
-          <div class="col-md-9"><%= f.text_field :title,  class: "form-control", id: "title" %></div>
-        </div>
-
-        <div class="form-group row">
-          <label for="content", class="col-md-3 mx-auto">内容</label>
-          <div class="col-md-9"><%= f.text_area :content, rows: '5', class: "form-control", id: "content" %></div>
-        </div>
-
-        <div class="form-group row">
-          <label for="start_time", class="col-md-3 mx-auto">日程</label>
-          <div class="col-md-9"><%= f.date_field :start_time, class: 'form-control', id: "start_time" %></div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-md-3 mx-auto"></div>
-          <div class="col-md-9"><%= f.submit "登録", class: "btn btn-sm btn-success"%></div>
-        </div>
-
-      <% end %>
+      <%= render 'public/tasks/form', user: @user, task: @task %>
     </div>
   </div>
 
