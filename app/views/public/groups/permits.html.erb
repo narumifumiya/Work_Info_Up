@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="text-center">承認待ち一覧</h2>
+
+  <div class="row mt-3">
+    <div class="col-11 col-md-12 mx-auto">
+      <div class="table-responsive">
+      <table class="table table-hover text-nowrap bg-light">
+        <thead class="thead-dark">
+          <tr>
+            <th>名前</th>
+            <th>部署</th>
+            <th>役職</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @permits.each do |permit| %>
+            <tr>
+              <td><%= permit.user.name %></td>
+              <td>
+                <% if permit.user.department_id.present? %>
+                  <%= permit.user.department.name %>
+                <% end %>
+              </td>
+              <td><%= permit.user.position %></td>
+              <td>
+
+                <%= link_to '承認許可', group_group_users_path(@group, permit_id: permit.id), method: :post, class: "btn btn-sm btn-success" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+    <!--<div class="mx-auto mt-5"><%#= paginate @groups %></div>-->
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "戻る", group_path(@group), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

@@ -11,7 +11,6 @@
   <div class="row mt-2 ">
     <div class="col-11 col-md-10 col-lg-8 mx-auto p-3">
 
-      <% @notifications = @notifications.where.not(visitor_id: current_user.id) %>
       <% if @notifications.present? %>
         <div class="font-weight-bold">
           <%= render @notifications %>

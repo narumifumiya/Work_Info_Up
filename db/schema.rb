@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_07_071643) do
+ActiveRecord::Schema.define(version: 2023_06_08_135756) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -142,6 +142,15 @@ ActiveRecord::Schema.define(version: 2023_06_07_071643) do
     t.float "longitude"
   end
 
+  create_table "permits", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_permits_on_group_id"
+    t.index ["user_id"], name: "index_permits_on_user_id"
+  end
+
   create_table "project_comments", force: :cascade do |t|
     t.integer "project_id"
     t.integer "user_id"
@@ -214,6 +223,8 @@ ActiveRecord::Schema.define(version: 2023_06_07_071643) do
   add_foreign_key "chats", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "permits", "groups"
+  add_foreign_key "permits", "users"
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"
   add_foreign_key "tasks", "users"
