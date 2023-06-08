@@ -8,14 +8,14 @@ Rails.application.routes.draw do
     get '/users/:id/favorites' => 'users#favorites'
   end
   # taskのformでurlのpublicが干渉してパーシャル化が出来ない為、namespaceの外でpathを指定
-  post "public/users/:user_id/tasks" => 'public/tasks#create', as: :user_tasks
-  patch "public/users/:user_id/tasks/:id" => 'public/tasks#update', as: :user_task
+  post "public/users/:user_id/tasks" => "public/tasks#create", as: :user_tasks
+  patch "public/users/:user_id/tasks/:id" => "public/tasks#update", as: :user_task
 
   # ユーザー用
   scope module: :public do
-    root to: 'homes#top'
+    root to: "homes#top"
     # sign_upのエラーメッセージ表示後にリロードした際にルートエラーが起きないように設定
-    get "users" => 'users#users'
+    get "users" => "users#users"
     resources :departments, only: [:show]
     get "search" => "searches#search"
     resources :groups, except: [:new] do
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    root to: 'homes#top'
+    root to: "homes#top"
     resources :departments, except: [:new]
     resources :users, only: [:index, :show, :edit, :update]
     resources :groups, only: [:index, :destroy]
@@ -64,12 +64,12 @@ Rails.application.routes.draw do
 # URL /users/sign_in ...
 devise_for :users, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: "public/sessions"
 }
 
 # ゲストログイン用
 devise_scope :user do
-  post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  post "public/guest_sign_in", to: "public/sessions#guest_sign_in"
 end
 
 # 管理者用
