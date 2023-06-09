@@ -50,6 +50,11 @@ class Public::GroupsController < ApplicationController
     redirect_to groups_path, notice: "グループを削除しました"
   end
 
+  def permits
+    @group = Group.find(params[:id])
+    @permits = @group.permits.page(params[:page])
+  end
+
   private
 
   def group_params

@@ -19,11 +19,13 @@ Rails.application.routes.draw do
     resources :departments, only: [:show]
     get "search" => "searches#search"
     resources :groups, except: [:new] do
+      resource :permits, only: [:create, :destroy]
       resource :group_users, only: [:create, :destroy]
       resources :event_notices, only: [:new, :create]
       get "event_notices" => "event_notices#sent"
       resources :chats, only: [:index, :create, :destroy]
     end
+    get "groups/:id/permits" => "groups#permits", as: :permits
     # 得意先周辺
     resources :companies, only: [:index, :show] do
       resources :offices
