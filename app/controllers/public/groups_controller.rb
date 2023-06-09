@@ -52,7 +52,7 @@ class Public::GroupsController < ApplicationController
 
   def permits
     @group = Group.find(params[:id])
-    @permits = @group.permits
+    @permits = @group.permits.page(params[:page])
   end
 
   private

@@ -9,14 +9,6 @@
       <p>グループ名：<%= @group.name %></p>
       <p>紹介文：<%= @group.introduction %></p>
       <p>グループオーナー：<%= @group_owner.name %></p>
-      <!-- @groupに紐づいたgroup_user（user_idカラムに自分のIDを持っている）があるかどうかを確かめる。-->
-      <%# if @group.group_users.exists?(user_id: current_user.id) %>
-        <!-- group_usersコントローラーの#destroyアクションを発火　@groupからgroup_user(自分)を消す -->
-        <!--<p><%#= link_to 'グループを退出する', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>-->
-      <%# else %>
-        <!-- group_usersコントローラーの#createアクションを発火　@groupにgroup_user(自分)を追加する -->
-        <!--<p><%#= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %></p>-->
-      <%# end %>
 
       <% if @group.group_users.exists?(user_id: current_user.id) %>
         <p><%= link_to 'グループ退出', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
@@ -28,11 +20,22 @@
 
       <p><%= link_to 'チャットルーム', group_chats_path(@group), class: "btn btn-outline-primary btn-sm" %></p>
       <p><%= link_to 'グループメール', new_group_event_notice_path(@group), class: "btn btn-outline-info btn-sm" %></p>
+      
       <% if @group.owner_id == current_user.id %>
-        <p><%= link_to "承認待ち一覧", permits_path(@group), class: "btn btn-secondary" %></p>
-        <p><%= link_to 'グループ編集', edit_group_path(@group), class: "btn btn-outline-success btn-sm" %></p>
-        <p><%= link_to 'グループ削除', group_path(@group), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %></p>
+        <div class="dropdown">
+        <button class="btn btn-sm btn-secondary dropdown-toggle"
+                type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+          オーナー専用
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <%= link_to "承認待ち一覧", permits_path(@group),  class: "dropdown-item text-secondary" %>
+        <%= link_to 'グループ編集', edit_group_path(@group),  class: "dropdown-item text-success" %>
+        <%= link_to 'グループ削除', group_path(@group), method: :delete,  class: "dropdown-item text-danger", data: { confirm: "本当に削除しますか？" } %>
+        </div>
+      </div>
       <% end %>
+      
     </div>
   </div>
 
