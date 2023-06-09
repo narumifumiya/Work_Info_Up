@@ -29,9 +29,9 @@
           オーナー専用
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <%= link_to "承認待ち一覧", permits_path(@group),  class: "dropdown-item text-secondary" %>
-        <%= link_to 'グループ編集', edit_group_path(@group),  class: "dropdown-item text-success" %>
-        <%= link_to 'グループ削除', group_path(@group), method: :delete,  class: "dropdown-item text-danger", data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "承認待ち一覧", permits_path(@group),  class: "dropdown-item text-secondary" %>
+          <%= link_to 'グループ編集', edit_group_path(@group),  class: "dropdown-item text-success" %>
+          <%= link_to 'グループ削除', group_path(@group), method: :delete,  class: "dropdown-item text-danger", data: { confirm: "本当に削除しますか？" } %>
         </div>
       </div>
       <% end %>
