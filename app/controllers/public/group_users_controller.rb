@@ -1,6 +1,6 @@
 class Public::GroupUsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @group = Group.find(params[:group_id])
     @permit = Permit.find(params[:permit_id])
@@ -15,7 +15,7 @@ class Public::GroupUsersController < ApplicationController
     # current_userIDを持ったgroup_userの中からさらに、group_idカラムのデータがグループ詳細ページと一緒のデータを探す。
     group_user = current_user.group_users.find_by(group_id: params[:group_id])
     group_user.destroy
-    redirect_to request.referer
+    redirect_to request.referer, alert: "グループを退出しました"
   end
 
 end

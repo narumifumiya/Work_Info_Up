@@ -11,8 +11,8 @@
           Dropdown
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <%= link_to "編集", edit_company_office_path(@office.company, @office.id), class: "dropdown-item text-success" %>
-          <%= link_to "削除", company_office_path(@office.company, @office.id), method: :delete, class: "dropdown-item text-danger", data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "編集", edit_company_office_path(@office.company, @office.id), class: "dropdown-item text-success bg-transparent" %>
+          <%= link_to "削除", company_office_path(@office.company, @office.id), method: :delete, class: "dropdown-item text-danger bg-transparent", data: { confirm: "本当に削除しますか？" } %>
         </div>
       </div>
 
