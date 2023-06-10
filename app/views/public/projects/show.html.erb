@@ -46,7 +46,7 @@
           <td class="d-flex align-items-start">タグ：</td>
           <td>
             <% @project_tags.each do |tag| %>
-              <li style="list-style: none"><%= tag.tag_name %>
+              <li style="list-style: none"><i class="fas fa-tag"></i> <%= tag.tag_name %></li>
             <% end %>
           </td>
         </table>
@@ -60,7 +60,6 @@
       <!-- プロジェクト作成者のみ編集可能 -->
       <div>
         <% if @project.user_id == current_user.id %>
-          <%#= link_to "編集", edit_company_project_path(@company, @project), class: "btn btn-outline-success btn-sm"%>
           <%= link_to edit_company_project_path(@company, @project), class: 'btn btn-outline-success btn-sm' do %>
             <i class="far fa-edit"></i> 編集
           <% end %>

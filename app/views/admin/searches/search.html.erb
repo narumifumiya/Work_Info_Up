@@ -10,7 +10,7 @@
       <% elsif @range == "プロジェクト" %>
         <%= render 'admin/projects/index', projects: @projects %>
       <% elsif @range == "タグ" %>
-        <%= render 'admin/projects/index', projects: @tags %>
+        <%= render 'admin/projects/index', projects: @projects %>
       <% else %>
         <%= render 'admin/groups/index', groups: @groups %>
       <% end %>
@@ -23,6 +23,7 @@
     <% elsif @range == "プロジェクト" %>
       <div class="row mx-auto mt-5"><%= paginate @projects %></div>
     <% elsif @range == "タグ" %>
+      <div class="row mx-auto mt-5"><%= paginate @projects %></div>
     <% else %>
       <div class="row mx-auto mt-5"><%= paginate @groups %></div>
     <% end %>

@@ -13,7 +13,14 @@ class Public::SearchesController < ApplicationController
     elsif @range == "プロジェクト"
       @projects = Project.looks(@search, @word).page(params[:page])
     elsif @range == "タグ"
-      @tags = Tag.looks(@search, @word)
+      tags = Tag.looks(@search, @word)
+      # タグに関連する全てのプロジェクトのIDを取得する
+      project_ids = tags.inject([]) do |result, tag|
+        result + tag.projects.pluck(:id)
+      end
+      # プロジェクトのIDを元にプロジェクトを取得し、ページネーションを適用させる
+      # プロジェクトのIDは重複しないようにする
+      @projects = Project.where(id: project_ids.uniq).page(params[:page])
     elsif @range == "グループ"
       @groups = Group.looks(@search, @word).page(params[:page])
     end

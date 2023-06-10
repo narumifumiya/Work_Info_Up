@@ -46,7 +46,7 @@
           <td class="d-flex align-items-start">タグ：</td>
           <td>
             <% @project_tags.each do |tag| %>
-              <li style="list-style: none"><%= tag.tag_name %>
+              <li style="list-style: none"><i class="fas fa-tag"></i> <%= tag.tag_name %></li>
             <% end %>
           </td>
         </table>
