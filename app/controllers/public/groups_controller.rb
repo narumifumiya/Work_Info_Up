@@ -1,6 +1,6 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy, :permits]
 
   def index
     if params[:latest] #新しい順
@@ -62,7 +62,7 @@ class Public::GroupsController < ApplicationController
   end
 
   # params[:id]を持つ@groupのowner_idカラムのデータと自分のユーザーIDが一緒かどうかを確かめる。
-  # 違う場合はグループ詳細ページを再表示させる。（オーナー以外は編集できない）before_actionで使用する。
+  # 違う場合はグループ詳細ページを再表示させる。（オーナー以外は編集、削除、加入希望者ページの遷移はできない）before_actionで使用する。
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id

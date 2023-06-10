@@ -6,7 +6,7 @@
   <% end %>
 
   <div>
- 	<%= month_calendar events: @user.tasks do |date, tasks| %>
+   	<%= month_calendar events: @user.tasks do |date, tasks| %>
       <%= date.day %>
       <% tasks.each do |task| %>
       <div class="task-data">
