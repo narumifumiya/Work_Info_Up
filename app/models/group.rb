@@ -28,6 +28,23 @@ class Group < ApplicationRecord
     end
   end
 
+  # グループ参加申請の通知作成メソッド
+  def create_notification_permit!(current_user)
+    #自分がグループオーナに向けて通知を送る
+    save_notification_permit!(current_user, self.owner_id)
+  end
+
+  def save_notification_permit!(current_user, visited_id)
+    notification = current_user.active_notifications.new(
+      group_id: id,
+      visited_id: visited_id,
+      action: 'permit'
+    )
+
+    notification.save if notification.valid?
+  end
+
+
   # グループ参加通知作成メソッド
   def create_notification_join!(user)
     # グループメンバー全員を検索
