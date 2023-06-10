@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'tags/show'
+  end
   # devise usersのコントローラと干渉するため、publicを付けてURLを差別化
   namespace :public do
     resources :users, only: [:index, :show, :edit, :update] do
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
         resource :favorites, only: [:create, :destroy]
       end
     end
+    resources :tags, only: [:show]
     # 通知用
     resources :notifications, only: [:index] do
       collection do

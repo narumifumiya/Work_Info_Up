@@ -8,7 +8,6 @@
       </tr>
     </thead>
     <tbody>
-      <%# byebug %>
       <% projects.each do |project| %>
         <tr class="table_tr_link" data-href="/companies/<%= project.company.id %>/projects/<%= project.id %>">
           <td><%= project.name %></td>

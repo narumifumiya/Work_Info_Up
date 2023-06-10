@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="text-center">タグ：<%= @tag.tag_name %></h2>
+  <h4 class="text-center">プロジェクト一覧</h4>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+      <P>
+        <%= link_to '新しい順', tag_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', tag_path(old: "true"), class: 'text-dark' %>
+      </P>
+      <%= render 'public/projects/index', projects: @projects %>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+      <div class="d-flex justify-content-center"><%= paginate @projects %></div>
+    </div>
+  </div>
+
+</div>

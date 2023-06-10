@@ -7,8 +7,6 @@ class Tag < ApplicationRecord
     if search == "partial"
       tags = Tag.where("tag_name LIKE?","%#{word}%")
     end
-    # 検索したtagsを一つ一つtag.projectsにtags.inject(して返す
-    #return init = []) {|result, tag| result + tag.projects}
     return tags
   end
 
