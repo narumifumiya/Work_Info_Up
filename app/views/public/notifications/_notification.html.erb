@@ -49,6 +49,11 @@
           <p class="text-muted mb-0">
             <%= chat_content %>
           </p>
+          <!--追加-->
+        <% when 'permit' %>
+          <i class="fas fa-user-lock"></i>
+          <%= link_to group.name, group_path(group),class: "font-weight-bold text-dark" %>
+          に参加申請を出しました
         <% end %>
       </div>
 
