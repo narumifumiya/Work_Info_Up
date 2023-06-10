@@ -5,10 +5,10 @@
   <div class="row mt-5">
     <div class="col-11 col-md-12 mx-auto">
       <P>
-        <%= link_to '新しい順', tag_path(latest: "true"), class: 'text-dark' %> |
-        <%= link_to '古い順', tag_path(old: "true"), class: 'text-dark' %>
+        <%= link_to '新しい順', admin_tag_path(latest: "true"), class: 'text-dark' %> |
+        <%= link_to '古い順', admin_tag_path(old: "true"), class: 'text-dark' %>
       </P>
-      <%= render 'public/projects/index', projects: @projects %>
+      <%= render 'admin/projects/index', projects: @projects %>
     </div>
   </div>
 
