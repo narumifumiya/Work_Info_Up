@@ -11,7 +11,7 @@
       <p>グループオーナー：<%= @group_owner.name %></p>
 
       <% if @group.group_users.exists?(user_id: current_user.id) %>
-        <p><%= link_to 'グループ退出', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
+        <p><%= link_to 'グループ退出', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %></p>
       <% elsif @group.permits.exists?(user_id: current_user.id) %>
         <p><%= link_to '申請取消', group_permits_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></p>
       <% else %>
