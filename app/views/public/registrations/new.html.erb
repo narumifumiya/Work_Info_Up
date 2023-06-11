@@ -7,37 +7,36 @@
           <%= render "public/shared/error_messages", resource: resource %>
 
           <div class="form-group">
-            <div><label for="name">名前</label></div>
-            <div><%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", id: "name", placeholder: "Name" %></div>
+            <%= f.label :name, '名前' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control name",placeholder: "Name" %>
           </div>
 
           <div class="form-group">
-            <div><label for="name_kana">名前（フリガナ）</label></div>
-            <div><%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana", class: "form-control", id: "name_kana", placeholder: "Name Kana" %></div>
+            <%= f.label :name_kana, '名前（フリガナ）' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+            <%= f.text_field :name_kana, autocomplete: "name_kana", class: "form-control name_kana", placeholder: "Name Kana" %>
           </div>
 
           <div class="form-group">
-            <div><label for="email">メールアドレス</label></div>
-            <div><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email", placeholder: "Email" %></div>
+            <%= f.label :email, 'メールアドレス' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control email", placeholder: "Email" %>
           </div>
 
           <div class="form-group">
-            <div><label for="phone_number">電話番号</label></div>
-            <div><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", id: "phone_number", placeholder: "Phone Number" %></div>
+            <%= f.label :phone_number, '電話番号' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+            <%= f.text_field :phone_number, autocomplete: "phone_number", class: "form-control phone_number", placeholder: "Phone Number" %>
           </div>
 
           <div class="form-group">
-            <div><label for="new-password">パスワード</label></div>
-            <%#= f.label :password %>
+            <%= f.label :password, 'パスワード' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span><br>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <div><%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "new-password", placeholder: "Password" %></div>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control password", placeholder: "Password" %>
           </div>
 
           <div class="form-group">
-            <div><label for="password_confirmation">パスワード確認用</label></div>
-            <div><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "password_confirmation", placeholder: "Password confirmation" %></div>
+            <%= f.label :password_confirmation, 'パスワード確認用' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control password_confirmation", placeholder: "Password confirmation" %>
           </div>
 
           <div class="form-group ">

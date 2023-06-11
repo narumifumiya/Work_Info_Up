@@ -1,43 +1,42 @@
 <%= form_with model:user, url: public_user_path(user), method: :patch do |f| %>
 
-  <div class="form-group row">
-    <label for="name", class="col-md-3 mx-auto">名前</label>
-    <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
+  <div class="form-group">
+    <%= f.label :name, '名前' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control name",placeholder: "Name" %>
   </div>
 
-  <div class="form-group row">
-    <label for="name_kana", class="col-md-3 mx-auto">名前（フリガナ）</label>
-    <div class="col-md-9"><%= f.text_field :name_kana, class: "form-control", id: "name_kana" %></div>
+  <div class="form-group">
+    <%= f.label :name_kana, '名前（フリガナ）' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.text_field :name_kana, autocomplete: "name_kana", class: "form-control name_kana", placeholder: "Name Kana" %>
   </div>
 
-  <div class="form-group row">
-    <label for="email", class="col-md-3 mx-auto">メールアドレス</label>
-    <div class="col-md-9"><%= f.email_field :email, class: "form-control", id: "email" %></div>
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレス' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.email_field :email, autocomplete: "email", class: "form-control email", placeholder: "Email" %>
   </div>
 
-  <div class="form-group row">
-    <label for="phone_number", class="col-md-3 mx-auto">電話番号</label>
-    <div class="col-md-9"><%= f.text_field :phone_number, class: "form-control", id: "phone_number" %></div>
+  <div class="form-group">
+    <%= f.label :phone_number, '電話番号' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_field :phone_number, autocomplete: "phone_number", class: "form-control phone_number", placeholder: "Phone Number" %>
   </div>
 
-  <div class="form-group row">
-    <label for="department", class="col-md-3 mx-auto">所属部署</label>
-    <div class="col-md-9"><%= f.select :department_id, Department.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "department" %></div>
+  <div class="form-group">
+    <%= f.label :department, '所属部署' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span><br>
+    <%= f.select :department_id, Department.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control department"%>
   </div>
 
-  <div class="form-group row">
-    <label for="position", class="col-md-3 mx-auto">役職</label>
-    <div class="col-md-9"><%= f.text_field :position, class: "form-control", id: "position" %></div>
+  <div class="form-group">
+    <%= f.label :position, '役職' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_field :position, class: "form-control position", placeholder: "Position" %>
   </div>
 
-  <div class="form-group row">
-    <label for="image", class="col-md-3 mx-auto">画像</label>
-    <div class="col-md-9"><%= f.file_field :profile_image, accept: 'image/*', id: "image" %></div>
+  <div class="form-group">
+    <label for="image">画像</label><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <div><%= f.file_field :profile_image, accept: 'image/*', id: "image" %></div>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-md-3 mx-auto"></div>
-    <div class="col-md-9"><%= f.submit "登録", class: "btn btn-sm btn-success"%></div>
+  <div class="form-group">
+    <%= f.submit "登録", class: "btn btn-block btn-success"%>
   </div>
 
 <% end %>

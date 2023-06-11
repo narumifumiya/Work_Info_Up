@@ -1,23 +1,22 @@
 <%= form_with model: group, local: true do |f| %>
 
-  <div class="form-group row">
-    <label for="name", class="col-md-3 mx-auto">グループ名</label>
-    <div class="col-md-9"><%= f.text_field :name, class: "form-control", id: "name" %></div>
+  <div class="form-group">
+    <%= f.label :name, 'グループ名' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.text_field :name, autofocus: true, class: "form-control name" %>
   </div>
 
-  <div class="form-group row">
-    <label for="introduction", class="col-md-3 mx-auto">紹介文</label>
-    <div class="col-md-9"><%= f.text_area :introduction, class: 'form-control', id: "introduction"  %></div>
+  <div class="form-group">
+    <%= f.label :introduction, '紹介文' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_area :introduction, class: "form-control introduction" %>
   </div>
 
-  <div class="form-group row">
-    <label for="image", class="col-md-3 mx-auto">グループ画像</label>
-    <div class="col-md-9"><%= f.file_field :group_image, accept: 'image/*', id: "image" %></div>
+  <div class="form-group">
+    <label for="image">画像</label><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <div><%= f.file_field :group_image, accept: 'image/*', id: "image" %></div>
   </div>
-  
-  <div class="row mt-3">
-    <div class="col-md-3 mx-auto"></div>
-    <div class="col-md-9"><%= f.submit "登録", class: "btn btn-sm btn-success"%></div>
+
+  <div class="form-group">
+    <%= f.submit "登録", class: "btn btn-block btn-success"%>
   </div>
 
 <% end %>
