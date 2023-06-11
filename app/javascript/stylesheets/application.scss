@@ -28,6 +28,16 @@ main {
   font-family: 'Work Sans', sans-serif;
 }
 
+// 各formの必須、任意の箇所
+.form-parts {
+  font-size: 0.7rem;
+  padding: 1px 2px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
 // モーダル用
 .modal-header {
   border-bottom: none;

@@ -1,38 +1,37 @@
 <%= form_with model: [company, office]  do |f| %>
 
-  <div class="form-group row">
-    <label for="name", class="col-md-3 mx-auto">事業所名</label>
-    <div class="col-md-9"><%= f.text_field :name,  class: "form-control", id: "name" %></div>
+  <div class="form-group">
+    <%= f.label :name, '事業所名' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.text_field :name, autofocus: true, class: "form-control name" %>
   </div>
 
-  <div class="form-group row">
-    <label for="office_postcode", class="col-md-3 mx-auto">郵便番号</label>
-    <div class="col-md-9"><%= f.text_field :postcode,  class: "form-control", id: "office_postcode" %></div>
+  <div class="form-group">
+    <%= f.label :postcode, '郵便番号' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.text_field :postcode, class: "form-control postcode", id: "office_postcode" %>
   </div>
 
-  <div class="form-group row">
-    <label for="office_prefecture_code", class="col-md-3 mx-auto">都道府県</label>
-    <div class="col-md-9"><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: "office_prefecture_code" %></div>
+  <div class="form-group">
+    <%= f.label :prefecture_code, '都道府県' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control prefecture_code', id: "office_prefecture_code" %>
   </div>
 
-  <div class="form-group row">
-    <label for="office_address_city", class="col-md-3 mx-auto">市区町村<br>丁目・番地・号</label>
-     <div class="col-md-9"><%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control', id: "office_address_city" %></div>
+  <div class="form-group">
+    <%= f.label :address_city, '市区町村・丁目・番地・号' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_field :address_city, class: "form-control address_city", id: "office_address_city" %>
   </div>
 
-  <div class="form-group row">
-    <label for="address_building", class="col-md-3 mx-auto">建物</label>
-    <div class="col-md-9"><%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control', id: "address_building" %></div>
+  <div class="form-group">
+    <%= f.label :address_building, '建物' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_field :address_building, class: "form-control address_building" %>
   </div>
 
-  <div class="form-group row">
-    <label for="phone_number", class="col-md-3 mx-auto">電話番号</label>
-    <div class="col-md-9"><%= f.text_field :phone_number,  class: "form-control", id: "phone_number" %></div>
+  <div class="form-group">
+    <%= f.label :phone_number, '電話番号' %><span class="bg-secondary text-white rounded ml-1 form-parts">任意</span>
+    <%= f.text_field :phone_number, class: "form-control phone_number" %>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-md-3 mx-auto"></div>
-    <div class="col-md-9"><%= f.submit "登録", class: "btn btn-sm btn-success"%></div>
+  <div class="form-group">
+    <%= f.submit "登録", class: "btn btn-block btn-success"%>
   </div>
 
 <% end %>
