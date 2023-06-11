@@ -1,7 +1,7 @@
 <%= form_with model:company, url: admin_company_path(company) do |f| %>
 
   <div class="form-group">
-    <%= f.label :name, '企業名' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
+    <%= f.label :name, '得意先名' %><span class="bg-danger text-white rounded ml-1 form-parts">必須</span>
     <%= f.text_field :name, autofocus: true, class: "form-control name" %>
   </div>
 
