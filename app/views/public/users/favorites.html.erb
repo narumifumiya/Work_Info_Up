@@ -13,9 +13,9 @@
           </thead>
           <tbody>
             <% @favorites.each do |favorite| %>
-              <tr>
-                <td><%= link_to favorite.project.name, company_project_path(favorite.project.company, favorite.project.id), class: 'text-dark' %></td>
-
+              <tr class="table_tr_link" data-href="/companies/<%= favorite.project.company.id %>/projects/<%= favorite.project.id %>">
+                <td><%= favorite.project.name %></td>
+                <!-- プロジェクトの注文ステータスによって文字色変更 -->
                 <td class="font-weight-bold">
                   <% if favorite.project.order_status == "under_negotiation" %>
                     <span class="text-secondary"><%= favorite.project.order_status_i18n %></span>
@@ -25,7 +25,7 @@
                      <span class="text-danger"><%= favorite.project.order_status_i18n %></span>
                   <% end %>
                 </td>
-
+                <!-- プロジェクトの進捗ステータスによって文字色変更 -->
                 <td class="font-weight-bold">
                   <% if favorite.project.progress_status == "not_started_yet" %>
                     <span class="text-secondary"><%= favorite.project.progress_status_i18n %></span>
@@ -35,7 +35,6 @@
                     <span class="text-success"><%= favorite.project.progress_status_i18n %></span>
                   <% end %>
                 </td>
-
               </tr>
             <% end %>
           </tbody>
