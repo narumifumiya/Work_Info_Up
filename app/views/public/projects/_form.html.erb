@@ -38,18 +38,18 @@
   <div class="form-group">
     <div class="mb-1">注文ステータス</div>
     <div class="d-flex justify-content-start">
-      <div class="mr-3"><%= f.label :order_stauts_under_negotiation, "営業中" %><%= f.radio_button :order_status, "under_negotiation" %></div>
-      <div class="mr-3"><%= f.label :order_stauts_ordered, "受注済" %><%= f.radio_button :order_status, "ordered" %></div>
-      <div><%= f.label :order_lost_orders, "失注" %><%= f.radio_button :order_status, "lost_orders" %></div>
+      <div class="mr-3"><%= f.radio_button :order_status, "under_negotiation" %><%= f.label :order_stauts_under_negotiation, "営業中" %></div>
+      <div class="mr-3"><%= f.radio_button :order_status, "ordered" %><%= f.label :order_stauts_ordered, "受注済" %></div>
+      <div><%= f.radio_button :order_status, "lost_orders" %><%= f.label :order_lost_orders, "失注" %></div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="mb-1">進捗ステータス</div>
     <div class="d-flex justify-content-start">
-      <div class="mr-3"><%= f.label :progress_stauts_not_started_yet, "未着手" %><%= f.radio_button :progress_status, "not_started_yet" %></div>
-      <div class="mr-3"><%= f.label :progress_stauts_while_working, "作業中" %><%= f.radio_button :progress_status, "while_working" %></div>
-      <div><%= f.label :progress_stauts_completion, "完了" %><%= f.radio_button :progress_status, "completion" %></div>
+      <div class="mr-3"><%= f.radio_button :progress_status, "not_started_yet" %><%= f.label :progress_stauts_not_started_yet, "未着手" %></div>
+      <div class="mr-3"><%= f.radio_button :progress_status, "while_working" %><%= f.label :progress_stauts_while_working, "作業中" %></div>
+      <div><%= f.radio_button :progress_status, "completion" %><%= f.label :progress_stauts_completion, "完了" %></div>
     </div>
   </div>
 

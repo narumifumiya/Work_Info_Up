@@ -1,5 +1,4 @@
 class EventMailer < ApplicationMailer
-  # コントローラ？のように使用する
 
   # 下のクラスメソッド内で使用するメソッド
   # このメソッド（アクション）が発動するとviews/event_mailer/send_notification.text.erbを呼出して、
@@ -21,12 +20,12 @@ class EventMailer < ApplicationMailer
     )
   end
 
-  #　このクラスメソッドが発動されるとメールをグループメンバにメールを送信する
-  # フォームでメールを送信を押したタイミングで発動(event_noticesコントローラの#create発動時)
+  #　このクラスメソッド呼出されるとメールをグループメンバにメールを送信する
+  # フォームでメールを送信を押したタイミングで発動(event_noticesコントローラの#create発火時)
   def self.send_notifications_to_group(event) #引数のeventはevent_noticesコントローラでハッシュでデータを入れている
     group = event[:group] #group_idを呼出
     group.users.each do |member| #group_idに紐づくuserを順番に取り出す
-      # 上のメソッドを発動すると各メンバー毎にメールが作られて、.deliver_nowで送信をしている
+      # 上のメソッドを呼び出すと各メンバー毎にメールが作られて、.deliver_nowで送信をしている
       EventMailer.send_notification(member, event).deliver_now
     end
   end
